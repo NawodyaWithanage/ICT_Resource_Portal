@@ -25,7 +25,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-             font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Iskoola Pota', sans-serif;
         }
 
         body {
@@ -39,6 +39,7 @@
             overflow-x: hidden;
         }
 
+        /* --- Header & Navigation --- */
         header {
             background: rgba(6, 9, 15, 0.95);
             backdrop-filter: blur(15px);
@@ -88,6 +89,7 @@
             font-size: 15px;
             font-weight: 500;
             transition: 0.3s ease;
+            white-space: nowrap;
         }
 
         nav ul li a:hover {
@@ -101,6 +103,8 @@
             font-weight: 700 !important;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
+
+        /* --- Main Layout --- */
         main {
             max-width: 900px;
             margin: 40px auto;
@@ -158,11 +162,18 @@
             margin: 20px 0;
         }
 
+        /* --- Table Styling --- */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
             background: rgba(255,255,255,0.02);
+            min-width: 600px;
         }
 
         table, th, td {
@@ -183,34 +194,6 @@
             text-decoration: none;
             font-weight: 700;
             transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-action:hover {
-            box-shadow: 0 0 20px var(--accent-blue);
-            transform: scale(1.05);
-        }
-
-        .back-to-menu {
-            background: transparent;
-            border: 2px solid var(--accent-blue);
-            color: var(--accent-blue);
-            padding: 12px 25px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            display: block;
-            margin: 40px auto;
-            transition: 0.3s;
-            text-decoration: none;
-            text-align: center;
-            width: fit-content;
-        }
-
-        .back-to-menu:hover {
-            background: var(--accent-blue);
-            color: #000;
         }
 
         footer {
@@ -220,21 +203,19 @@
             border-top: 1px solid var(--border);
         }
 
-        .social-icons { margin-bottom: 25px; }
-        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
-        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
-        .social-icons img { width: 35px; filter: brightness(0.9); }
+        .social-icons img { width: 35px; margin: 0 12px; }
 
-        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
-
-        ul, ol { margin-left: 25px; margin-bottom: 15px; }
-        li { margin-bottom: 8px; color: var(--text-dim); }
-
-        @media (max-width: 768px) {
+        /* --- Mobile Responsive Rules --- */
+        @media (max-width: 992px) {
             nav { flex-direction: column; padding: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; margin-top: 15px; }
-            .logo-text { font-size: 18px; }
+            .logo-text { font-size: 20px; }
+        }
+
+        @media (max-width: 480px) {
             .glass-panel { padding: 20px; }
+            h2 { font-size: 1.3rem; }
+            .logo-text { font-size: 16px; }
         }
     </style>
 </head>
@@ -258,10 +239,9 @@
     </nav>
 </header>
 
-
 <main>
     <section class="hero-section" data-aos="zoom-in">
-        <h1>5. වදන්  සැකසුම් (MS Word)</h1>
+        <h1>5. වදන් සැකසුම් (MS Word)</h1>
         <p><h4>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී අපි MS Word හි ලේඛන ආකෘතිකරණය, වගු භාවිතය සහ තැපැල් ඒකාබද්ධ කිරීම (Mail Merge) පිළිබඳව ඉගෙන ගනිමු.</h4></p>
     </section>
 
@@ -279,7 +259,7 @@
 
         <h3>1.1 අකුරු ආකෘතිකරණය (Font Formatting)</h3>
         <p>අකුරු ආකෘතිකරණයේදී ප්‍රධාන වශයෙන් භාවිතා වන මෙවලම් පහත වගුවේ දැක්වේ:</p>
-        <div style="overflow-x:auto;">
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
@@ -304,10 +284,10 @@
                     <li><b>වමේ ගැළපීම (Left Align):</b> වම් පැත්තට සමපාතව පෙළ ගැස්වීම.</li>
                     <li><b>දකුණේ ගැළපීම (Right Align):</b> දකුණු පැත්තට සමපාතව පෙළ ගැස්වීම.</li>
                     <li><b>මධ්‍යයේ ගැළපීම (Center Align):</b> ලේඛනයේ මැදට පෙළ ගැස්වීම.</li>
-                    <li><b>දෙපසම ගැළපීම (Justify):</b> වම් සහ දකුණු ආන්තිකය (margins) දෙකටම සමපාතව පෙළ ගැස්වීම (ලිපි ලේඛන සඳහා වැදගත්).</li>
+                    <li><b>දෙපසම ගැළපීම (Justify):</b> වම් සහ දකුණු ආන්තිකය (margins) දෙකටම සමපාතව පෙළ ගැස්වීම.</li>
                 </ul>
             </li>
-            <li><b>පේළි පරතරය (Line Spacing):</b> ඡේදයක පේළි අතර ඇති පරතරය වෙනස් කිරීම (උදා: Single, 1.5 Lines, Double).</li>
+            <li><b>පේළි පරතරය (Line Spacing):</b> ඡේදයක පේළි අතර ඇති පරතරය වෙනස් කිරීම (Single, 1.5 Lines, Double).</li>
             <li><b>පිති ආන්තිකය (Indentation):</b> ඡේදයක වම් හෝ දකුණු ආන්තිකයේ ප්‍රමාණය වෙනස් කිරීම.</li>
             <li><b>ලැයිස්තු (Lists):</b> තොරතුරු සංවිධානය කිරීමට <b>බුලට් (Bullets)</b> හෝ <b>අංකනය (Numbering)</b> භාවිතා කිරීම.</li>
         </ul>
@@ -316,17 +296,14 @@
     <div class="glass-panel" data-aos="fade-up">
         <h2><i class="fas fa-table"></i> 2. වගු නිර්මාණය හා භාවිතය (Tables)</h2>
         <p>ලේඛනයක දත්ත ක්‍රමානුකූලව සහ සංවිධානාත්මකව ඉදිරිපත් කිරීම සඳහා වගු භාවිතා කරයි.</p>
-
         <h3>2.1 වගු නිර්මාණය</h3>
         <ol>
             <li><b>Insert Tab</b> (ඇතුළු කරන්න ටැබය) වෙත යන්න.</li>
             <li><b>Table</b> (වගුව) තෝරන්න.</li>
-            <li>අවශ්‍ය පේළි (Rows) සහ තීරු (Columns) ගණන තෝරන්න, නැතහොත් <b>Insert Table</b> විකල්පය භාවිතා කරන්න.</li>
+            <li>අවශ්‍ය පේළි (Rows) සහ තීරු (Columns) ගණන තෝරන්න.</li>
         </ol>
-
         <h3>2.2 වගු වෙනස් කිරීම</h3>
-        <p>වගුවක් තෝරාගත් විට <b>Table Tools (Design & Layout)</b> ටැබ් ස්වයංක්‍රීයව දිස් වේ.</p>
-        <div style="overflow-x:auto;">
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
@@ -337,9 +314,9 @@
                 <tbody>
                     <tr><td><b>Insert Above/Below</b></td><td>වත්මන් පේළියට ඉහළින් හෝ පහළින් නව පේළි ඇතුළු කිරීම.</td></tr>
                     <tr><td><b>Insert Left/Right</b></td><td>වත්මන් තීරුවට වමට හෝ දකුණට නව තීරු ඇතුළු කිරීම.</td></tr>
-                    <tr><td><b>Merge Cells</b> (සෛල ඒකාබද්ධ කිරීම)</td><td>තෝරාගත් සෛල කිහිපයක් එක් විශාල සෛලයක් බවට පත් කිරීම.</td></tr>
-                    <tr><td><b>Split Cells</b> (සෛල බෙදීම)</td><td>තනි සෛලයක් පේළි හා තීරු කිහිපයකට බෙදීම.</td></tr>
-                    <tr><td><b>Cell Alignment</b></td><td>සෛලයක් තුළ ඇති පෙළේ ස්ථානගත කිරීම (මැද, වම් ඉහළ, දකුණු පහළ ආදී).</td></tr>
+                    <tr><td><b>Merge Cells</b></td><td>තෝරාගත් සෛල කිහිපයක් එක් විශාල සෛලයක් බවට පත් කිරීම.</td></tr>
+                    <tr><td><b>Split Cells</b></td><td>තනි සෛලයක් පේළි හා තීරු කිහිපයකට බෙදීම.</td></tr>
+                    <tr><td><b>Cell Alignment</b></td><td>සෛලයක් තුළ ඇති පෙළේ ස්ථානගත කිරීම.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -347,16 +324,8 @@
 
     <div class="glass-panel" data-aos="fade-up">
         <h2><i class="fas fa-envelope-open-text"></i> 3. තැපැල් ඒකාබද්ධ කිරීම (Mail Merge)</h2>
-        <p>තැපැල් ඒකාබද්ධ කිරීම යනු <b>එකම ලේඛනයක් (Master Document)</b> විශාල පිරිසකට විවිධ දත්ත (නම්, ලිපිනයන් වැනි) භාවිත කරමින් ස්වයංක්‍රීයව නිර්මාණය කිරීමේ ක්‍රියාවලියයි.</p>
-        
-        <h3>3.1 අවශ්‍ය ප්‍රධාන සංරචක</h3>
-        <ul>
-            <li><b>ප්‍රධාන ලේඛනය (Main Document / Master Document):</b> ලිපිවලට පොදු වන ස්ථාවර අන්තර්ගතය අඩංගු ලේඛනයයි.</li>
-            <li><b>දත්ත මූලාශ්‍රය (Data Source):</b> මෙය විචල්‍ය දත්ත (Variable Data) අඩංගු ගොනුවයි (Excel, Word Table).</li>
-        </ul>
-
-        <h3>3.2 ක්‍රියාවලියේ පියවර (Mail Merge Steps)</h3>
-        <div style="overflow-x:auto;">
+        <p>තැපැල් ඒකාබද්ධ කිරීම යනු <b>එකම ලේඛනයක් (Master Document)</b> විශාල පිරිසකට විවිධ දත්ත භාවිත කරමින් නිර්මාණය කිරීමයි.</p>
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
@@ -366,61 +335,37 @@
                 </thead>
                 <tbody>
                     <tr><td><b>1. ලේඛන වර්ගය</b></td><td>Start Mail Merge → Letters, Envelopes ආදිය තෝරන්න.</td></tr>
-                    <tr><td><b>2. ලබන්නන් තෝරාගැනීම</b></td><td>Select Recipients → Use an Existing List (දත්ත මූලාශ්‍රය තෝරන්න).</td></tr>
-                    <tr><td><b>3. ක්ෂේත්‍ර ඇතුළු කිරීම</b></td><td>Insert Merge Field → විචල්‍ය දත්ත තිබිය යුතු ස්ථානයට ශීර්ෂයන් ඇතුළු කරන්න.</td></tr>
-                    <tr><td><b>4. පෙරදසුන</b></td><td>Preview Results → දත්ත නිවැරදිව ඒකාබද්ධ වී ඇත්දැයි පරීක්ෂා කරන්න.</td></tr>
+                    <tr><td><b>2. ලබන්නන් තෝරාගැනීම</b></td><td>Select Recipients → Use an Existing List.</td></tr>
+                    <tr><td><b>3. ක්ෂේත්‍ර ඇතුළු කිරීම</b></td><td>Insert Merge Field → විචල්‍ය දත්ත තිබිය යුතු ස්ථානයට ඇතුළු කරන්න.</td></tr>
+                    <tr><td><b>4. පෙරදසුන</b></td><td>Preview Results → පරීක්ෂා කරන්න.</td></tr>
                     <tr><td><b>5. ඒකාබද්ධ කිරීම</b></td><td>Finish & Merge → මුද්‍රණය කිරීමට හෝ වෙන වෙනම බැලීමට තෝරන්න.</td></tr>
                 </tbody>
             </table>
         </div>
-      </div>  
-        <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
+    </div>
+
+    <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
         <h2 style="color:yellow; justify-content: center;"><i class="fab fa-youtube"></i> වැඩිදුර අධ්‍යාපනය සඳහා</h2>
-        <p style="margin-bottom: 20px;">වදන්  සැකසුම් පිළිබඳ මෙම වීඩියෝව නරඹන්න.</p>
         <a href="https://www.youtube.com/watch?v=R3NPQ-2W3as&t=3s" class="btn-action" target="_blank">
             වීඩියෝව නරඹන්න <i class="fas fa-play-circle"></i>
         </a>
     </div>
-    
-
-    <div class="glass-panel" style="background: rgba(0, 210, 255, 0.05);" data-aos="fade-up">
-        <h2><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
-        <ol>
-            <li>පේළි පරතරය (Line Spacing) සහ ඡේද පරතරය (Paragraph Spacing) අතර වෙනස කුමක්ද?</li>
-            <li>ලේඛනයක ප්‍රධාන පෙළ ඇතුළත් කිරීමේදී වඩාත් සුදුසු Alignment වර්ගය කුමක්ද?</li>
-            <li>Mail Merge ක්‍රියාවලියේදී "ප්‍රධාන ලේඛනය" සහ "දත්ත මූලාශ්‍රය" මඟින් ඉටු කෙරෙන කාර්යයන් කෙටියෙන් විස්තර කරන්න.</li>
-            <li>වගුවක සෛල කිහිපයක් ඒකාබද්ධ කිරීමට (Combine) භාවිතා කරන මෙවලම කුමක්ද?</li>
-        </ol>
-        <p style="color: var(--accent-blue);">මෙම නිබන්ධනය තුළින් MS Word හි මූලික ආකෘතිකරණය සහ තැපැල් ඒකාබද්ධ කිරීමේ ක්‍රමවේදය පිළිබඳ අවබෝධයක් ලබා ගත හැකිය.</p>
-    </div>
-
-  
-        
-
-
 </main>
 
 <footer>
     <div class="social-icons">
         <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="insta.png" alt="Instagram"></a>
         <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
     </div>
-    
     <div class="footer-info">
         <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
         <p>withanagetharushi00@gmail.com | 0762903345</p>
-        <p>Gampaha, Sri Lanka</p>
     </div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
+    AOS.init({ duration: 1000, once: true, offset: 100 });
 </script>
 
 </body>
