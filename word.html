@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <title>OL ICT Resource Portal - වචන සැකසුම්</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --primary: #00f2fe;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            color: lightgreen;
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        .definition-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.02);
+        }
+
+        table, th, td {
+            border: 1px solid var(--border);
+        }
+
+        th { background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); }
+        th, td { padding: 12px; text-align: left; }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .back-to-menu {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .back-to-menu:hover {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
+        .social-icons img { width: 35px; filter: brightness(0.9); }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        ul, ol { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; color: var(--text-dim); }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; margin-top: 15px; }
+            .logo-text { font-size: 18px; }
+            .glass-panel { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo" class="main-logo"> 
+            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="NotesPage.html"> Notes</a></li>
+            <li><a href="tutorials.html" class="nav-active">Tutorial</a></li>
+            <li><a href="PastPapers.html"> Papers</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="Blogposts.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+    <section class="hero-section" data-aos="zoom-in">
+        <h1>5. වදන්  සැකසුම් (MS Word)</h1>
+        <p><h4>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී අපි MS Word හි ලේඛන ආකෘතිකරණය, වගු භාවිතය සහ තැපැල් ඒකාබද්ධ කිරීම (Mail Merge) පිළිබඳව ඉගෙන ගනිමු.</h4></p>
+    </section>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-info-circle"></i> හැඳින්වීම</h2>
+        <div class="definition-card">
+             <p><strong>වචන සැකසුම් මෘදුකාංගයක්</strong> යනු ලිපි, වාර්තා, විමසුම් පත්‍ර සහ පොත්පත් වැනි ලිඛිත ලේඛන නිර්මාණය කිරීමට, සංස්කරණය කිරීමට සහ ආකෘතිකරණය කිරීමට භාවිතා කරන යෙදුම් මෘදුකාංගයකි. </p>
+             <p>මෙහිදී අපි <b>Microsoft Word</b> මෘදුකාංගය භාවිතයෙන් ලේඛන සකස් කරන ආකාරය පිළිබඳව අවධානය යොමු කරමු.</p>
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-font"></i> 1. ලේඛන ආකෘතිකරණය (Document Formatting)</h2>
+        <p>ආකෘතිකරණය යනු ලේඛනයක් කියවීමට සහ ඉදිරිපත් කිරීමට පහසු වන පරිදි එහි පෙනුම වෙනස් කිරීමයි.</p>
+
+        <h3>1.1 අකුරු ආකෘතිකරණය (Font Formatting)</h3>
+        <p>අකුරු ආකෘතිකරණයේදී ප්‍රධාන වශයෙන් භාවිතා වන මෙවලම් පහත වගුවේ දැක්වේ:</p>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>කාර්යය</th>
+                        <th>Word මෙවලම (Home Tab)</th>
+                        <th>විස්තරය</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>අකුරු වර්ගය</b> (Font Type)</td><td>Cambria, Times New Roman, Iskoola Pota</td><td>අකුරු වල හැඩය වෙනස් කිරීම.</td></tr>
+                    <tr><td><b>අකුරු ප්‍රමාණය</b> (Font Size)</td><td>12, 14, 16</td><td>අකුරු වල විශාලත්වය වෙනස් කිරීම.</td></tr>
+                    <tr><td><b>ශෛලිය</b> (Style)</td><td><b>B</b> (Bold), <i>I</i> (Italic), U (Underline)</td><td>අකුරු තද කිරීම, ඇල කිරීම හෝ යටින් ඉරි ඇඳීම.</td></tr>
+                    <tr><td><b>වර්ණය</b> (Color)</td><td>Font Color</td><td>අකුරු වල වර්ණය වෙනස් කිරීම.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>1.2 ඡේද ආකෘතිකරණය (Paragraph Formatting)</h3>
+        <ul>
+            <li><b>ගැළපීම (Alignment):</b> ඡේදයක් පිටුවට සාපේක්ෂව ස්ථානගත කිරීම:
+                <ul>
+                    <li><b>වමේ ගැළපීම (Left Align):</b> වම් පැත්තට සමපාතව පෙළ ගැස්වීම.</li>
+                    <li><b>දකුණේ ගැළපීම (Right Align):</b> දකුණු පැත්තට සමපාතව පෙළ ගැස්වීම.</li>
+                    <li><b>මධ්‍යයේ ගැළපීම (Center Align):</b> ලේඛනයේ මැදට පෙළ ගැස්වීම.</li>
+                    <li><b>දෙපසම ගැළපීම (Justify):</b> වම් සහ දකුණු ආන්තිකය (margins) දෙකටම සමපාතව පෙළ ගැස්වීම (ලිපි ලේඛන සඳහා වැදගත්).</li>
+                </ul>
+            </li>
+            <li><b>පේළි පරතරය (Line Spacing):</b> ඡේදයක පේළි අතර ඇති පරතරය වෙනස් කිරීම (උදා: Single, 1.5 Lines, Double).</li>
+            <li><b>පිති ආන්තිකය (Indentation):</b> ඡේදයක වම් හෝ දකුණු ආන්තිකයේ ප්‍රමාණය වෙනස් කිරීම.</li>
+            <li><b>ලැයිස්තු (Lists):</b> තොරතුරු සංවිධානය කිරීමට <b>බුලට් (Bullets)</b> හෝ <b>අංකනය (Numbering)</b> භාවිතා කිරීම.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-table"></i> 2. වගු නිර්මාණය හා භාවිතය (Tables)</h2>
+        <p>ලේඛනයක දත්ත ක්‍රමානුකූලව සහ සංවිධානාත්මකව ඉදිරිපත් කිරීම සඳහා වගු භාවිතා කරයි.</p>
+
+        <h3>2.1 වගු නිර්මාණය</h3>
+        <ol>
+            <li><b>Insert Tab</b> (ඇතුළු කරන්න ටැබය) වෙත යන්න.</li>
+            <li><b>Table</b> (වගුව) තෝරන්න.</li>
+            <li>අවශ්‍ය පේළි (Rows) සහ තීරු (Columns) ගණන තෝරන්න, නැතහොත් <b>Insert Table</b> විකල්පය භාවිතා කරන්න.</li>
+        </ol>
+
+        <h3>2.2 වගු වෙනස් කිරීම</h3>
+        <p>වගුවක් තෝරාගත් විට <b>Table Tools (Design & Layout)</b> ටැබ් ස්වයංක්‍රීයව දිස් වේ.</p>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>කාර්යය (Layout Tab)</th>
+                        <th>විස්තරය</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>Insert Above/Below</b></td><td>වත්මන් පේළියට ඉහළින් හෝ පහළින් නව පේළි ඇතුළු කිරීම.</td></tr>
+                    <tr><td><b>Insert Left/Right</b></td><td>වත්මන් තීරුවට වමට හෝ දකුණට නව තීරු ඇතුළු කිරීම.</td></tr>
+                    <tr><td><b>Merge Cells</b> (සෛල ඒකාබද්ධ කිරීම)</td><td>තෝරාගත් සෛල කිහිපයක් එක් විශාල සෛලයක් බවට පත් කිරීම.</td></tr>
+                    <tr><td><b>Split Cells</b> (සෛල බෙදීම)</td><td>තනි සෛලයක් පේළි හා තීරු කිහිපයකට බෙදීම.</td></tr>
+                    <tr><td><b>Cell Alignment</b></td><td>සෛලයක් තුළ ඇති පෙළේ ස්ථානගත කිරීම (මැද, වම් ඉහළ, දකුණු පහළ ආදී).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-envelope-open-text"></i> 3. තැපැල් ඒකාබද්ධ කිරීම (Mail Merge)</h2>
+        <p>තැපැල් ඒකාබද්ධ කිරීම යනු <b>එකම ලේඛනයක් (Master Document)</b> විශාල පිරිසකට විවිධ දත්ත (නම්, ලිපිනයන් වැනි) භාවිත කරමින් ස්වයංක්‍රීයව නිර්මාණය කිරීමේ ක්‍රියාවලියයි.</p>
+        
+        <h3>3.1 අවශ්‍ය ප්‍රධාන සංරචක</h3>
+        <ul>
+            <li><b>ප්‍රධාන ලේඛනය (Main Document / Master Document):</b> ලිපිවලට පොදු වන ස්ථාවර අන්තර්ගතය අඩංගු ලේඛනයයි.</li>
+            <li><b>දත්ත මූලාශ්‍රය (Data Source):</b> මෙය විචල්‍ය දත්ත (Variable Data) අඩංගු ගොනුවයි (Excel, Word Table).</li>
+        </ul>
+
+        <h3>3.2 ක්‍රියාවලියේ පියවර (Mail Merge Steps)</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>පියවර</th>
+                        <th>විස්තරය (Mailings Tab)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>1. ලේඛන වර්ගය</b></td><td>Start Mail Merge → Letters, Envelopes ආදිය තෝරන්න.</td></tr>
+                    <tr><td><b>2. ලබන්නන් තෝරාගැනීම</b></td><td>Select Recipients → Use an Existing List (දත්ත මූලාශ්‍රය තෝරන්න).</td></tr>
+                    <tr><td><b>3. ක්ෂේත්‍ර ඇතුළු කිරීම</b></td><td>Insert Merge Field → විචල්‍ය දත්ත තිබිය යුතු ස්ථානයට ශීර්ෂයන් ඇතුළු කරන්න.</td></tr>
+                    <tr><td><b>4. පෙරදසුන</b></td><td>Preview Results → දත්ත නිවැරදිව ඒකාබද්ධ වී ඇත්දැයි පරීක්ෂා කරන්න.</td></tr>
+                    <tr><td><b>5. ඒකාබද්ධ කිරීම</b></td><td>Finish & Merge → මුද්‍රණය කිරීමට හෝ වෙන වෙනම බැලීමට තෝරන්න.</td></tr>
+                </tbody>
+            </table>
+        </div>
+      </div>  
+        <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
+        <h2 style="color:yellow; justify-content: center;"><i class="fab fa-youtube"></i> වැඩිදුර අධ්‍යාපනය සඳහා</h2>
+        <p style="margin-bottom: 20px;">වදන්  සැකසුම් පිළිබඳ මෙම වීඩියෝව නරඹන්න.</p>
+        <a href="https://www.youtube.com/watch?v=R3NPQ-2W3as&t=3s" class="btn-action" target="_blank">
+            වීඩියෝව නරඹන්න <i class="fas fa-play-circle"></i>
+        </a>
+    </div>
+    
+
+    <div class="glass-panel" style="background: rgba(0, 210, 255, 0.05);" data-aos="fade-up">
+        <h2><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
+        <ol>
+            <li>පේළි පරතරය (Line Spacing) සහ ඡේද පරතරය (Paragraph Spacing) අතර වෙනස කුමක්ද?</li>
+            <li>ලේඛනයක ප්‍රධාන පෙළ ඇතුළත් කිරීමේදී වඩාත් සුදුසු Alignment වර්ගය කුමක්ද?</li>
+            <li>Mail Merge ක්‍රියාවලියේදී "ප්‍රධාන ලේඛනය" සහ "දත්ත මූලාශ්‍රය" මඟින් ඉටු කෙරෙන කාර්යයන් කෙටියෙන් විස්තර කරන්න.</li>
+            <li>වගුවක සෛල කිහිපයක් ඒකාබද්ධ කිරීමට (Combine) භාවිතා කරන මෙවලම කුමක්ද?</li>
+        </ol>
+        <p style="color: var(--accent-blue);">මෙම නිබන්ධනය තුළින් MS Word හි මූලික ආකෘතිකරණය සහ තැපැල් ඒකාබද්ධ කිරීමේ ක්‍රමවේදය පිළිබඳ අවබෝධයක් ලබා ගත හැකිය.</p>
+    </div>
+
+  
+        
+
+
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+    </div>
+    
+    <div class="footer-info">
+        <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+        <p>withanagetharushi00@gmail.com | 0762903345</p>
+        <p>Gampaha, Sri Lanka</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

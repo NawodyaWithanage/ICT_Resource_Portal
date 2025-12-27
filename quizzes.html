@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT Resource Portal | Quizzes</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.85); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(15, 23, 42, 0.9); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box;  font-family: 'Poppins', sans-serif; }
+
+        body {
+          
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            color: var(--text-white);
+            min-height: 100vh;
+        }
+
+        
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .main-logo {
+            width: 60px;  
+            height: 60px; 
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; 
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 12px;
+        }
+
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-quize {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+      
+        @media (max-width: 1100px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo-text { font-size: 18px; }
+            .main-logo { width: 45px; height: 45px; }
+            nav ul li a { padding: 8px 15px; font-size: 13px; }
+            header { padding: 15px 0; }
+        }
+
+       
+        .container { max-width: 800px; margin: 60px auto; padding: 20px; }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            text-align: center;
+            backdrop-filter: blur(10px); /
+        }
+
+        h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--accent-blue); }
+
+        .btn {
+            width: 100%; padding: 16px; margin: 10px 0; border: none; border-radius: 12px;
+            font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+
+        .btn-start { background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); color: #000; }
+        .btn-admin { background: rgba(255,255,255,0.1); color: #fff; margin-top: 5px; }
+        .btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+        .option {
+            background: rgba(255,255,255,0.05); color: var(--text-dim); text-align: left;
+            border: 1px solid rgba(255,255,255,0.1); margin-bottom: 12px;
+        }
+
+        .option:hover { background: rgba(0, 210, 255, 0.1); border-color: var(--accent-blue); color: #fff; }
+
+        .top { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; color: var(--accent-blue); }
+
+        input, select {
+            width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px;
+            background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: #fff;
+        }
+
+        #board { list-style: none; padding: 0; margin-top: 20px; }
+        #board li {
+            background: rgba(255,255,255,0.05); padding: 12px; margin-bottom: 8px;
+            border-radius: 10px; display: flex; justify-content: space-between;
+            border-left: 5px solid var(--accent-blue);
+        }
+
+        .hide { display: none; }
+
+       
+        footer {
+            background: #06090f;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+        }
+
+        .social-icons a { margin: 0 15px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(10deg); }
+        .social-icons img { width: 35px; }
+
+        .footer-text { margin-top: 25px; font-size: 14px; color: var(--text-dim); line-height: 1.8; }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .logo-text { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text">O/L ICT Resource Portal</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="PastPapers.html">Papers</a></li>
+                <li><a href="quizzes.html" class="nav-quize">Quizzes</a></li>
+                <li><a href="Blogposts.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card" id="start" data-aos="fade-up">
+            <h2> O/L ICT MCQ Quizzes</h2>
+            <p style="color:var(--text-dim); margin-bottom:25px;">ප්‍රශ්න 20 බැගින් සමන්විත අහඹු ප්‍රශ්නාවලියට මුහුණ දී ඔබේ දැනුම පරීක්ෂා කරගන්න.</p>
+            <button class="btn btn-start" onclick="startQuiz()">ප්‍රශ්නාවලිය අරඹන්න (Start)</button>
+            <button class="btn btn-admin" onclick="openAdmin()">Admin Mode</button>
+        </div>
+
+        <div class="card hide" id="quiz">
+            <div class="top">
+                <span id="timer">⏱ 30</span>
+                <span id="count"></span>
+            </div>
+            <h3 id="question" style="text-align: left; margin-bottom: 25px; line-height: 1.5;"></h3>
+            <div id="options"></div>
+        </div>
+
+        <div class="card hide" id="result">
+            <h2>ප්‍රතිඵල සාරාංශය </h2>
+            <p id="final" style="font-size: 24px; font-weight: 800; margin: 20px 0; color: var(--accent-blue);"></p>
+            <input type="text" id="username" placeholder="ඔබගේ නම ඇතුළත් කරන්න...">
+            <button class="btn btn-start" onclick="saveScore()">ලකුණු පුවරුවට එක් කරන්න</button>
+            <h3 style="margin-top: 30px;"> Leaderboard</h3>
+            <ul id="board"></ul>
+            <button class="btn btn-admin" onclick="location.reload()">නැවත උත්සාහ කරන්න</button>
+        </div>
+
+        <div class="card hide" id="admin">
+            <h2>නව ප්‍රශ්නයක් එක් කරන්න</h2>
+            <input id="aq" placeholder="ප්‍රශ්නය">
+            <input id="o1" placeholder="පිළිතුර 1">
+            <input id="o2" placeholder="පිළිතුර 2">
+            <input id="o3" placeholder="පිළිතුර 3">
+            <input id="o4" placeholder="පිළිතුර 4">
+            <select id="aa">
+                <option value="0">පිළිතුර 1 නිවැරදියි</option>
+                <option value="1">පිළිතුර 2 නිවැරදියි</option>
+                <option value="2">පිළිතුර 3 නිවැරදියි</option>
+                <option value="3">පිළිතුර 4 නිවැරදියි</option>
+            </select>
+            <button class="btn btn-start" onclick="addQ()">එක් කරන්න</button>
+            <button class="btn btn-admin" onclick="location.reload()">ආපසු</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="FB"></a>
+            <a href="#"><img src="insta.png" alt="IG"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YT"></a>
+        </div>
+        <div class="footer-text">
+            <b>&copy; 2025 OL ICT Resource Portal</b><br>
+            withanagetharushi00@gmail.com | 0762903345<br>
+            Gampaha, Sri Lanka
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+       
+       
+            let allQ=[
+    {q:"CPU යනු කුමක්ද?",o:["Central Processing Unit","Control Power Unit","Computer Personal Unit","Central Program Unit"],a:0},
+    {q:"Input device යනු කුමක්ද?",o:["Monitor","Printer","Keyboard","Speaker"],a:2},
+    {q:"Output device යනු කුමක්ද?",o:["Keyboard","Mouse","Monitor","Scanner"],a:2},
+    {q:"RAM කියන්නේ?",o:["Permanent memory","Temporary memory","Secondary memory","Cache"],a:1},
+    {q:"ROM කියන්නේ?",o:["Temporary","Permanent","Cache","Virtual"],a:1},
+    {"q":"Operating System එකක් කුමක්ද?","o":["MS Word","Windows","Mouse","CPU"],"a":1},
+    {"q":"Hard Disk එකක් භාවිතා කරන්නේ?","o":["Data input","Data output","Data storage","Processing"],"a":2},
+    {"q":"ALU එක අයත් වන්නේ?","o":["Input unit","Output unit","Memory unit","CPU"],"a":3},
+    {"q":"LAN කියන්නේ?","o":["Local Area Network","Large Area Network","Long Area Network","Logical Area Network"],"a":0},
+    {"q":"WAN කියන්නේ?","o":["Wide Area Network","Wireless Area Network","World Area Network","Web Area Network"],"a":0},
+    {"q":"PAN network එකක් උදාහරණයක් කුමක්ද?","o":["Bluetooth","Internet","LAN","MAN"],"a":0},
+    {"q":"Internet එක භාවිතා කරන්නේ?","o":["Data sharing","Gaming only","Typing","Printing"],"a":0},
+    {"q":"Email භාවිතා කරන්නේ?","o":["Chatting","File transfer","Electronic mail","Gaming"],"a":2},
+    {"q":"Browser එකක් කුමක්ද?","o":["Google Chrome","Windows","CPU","Router"],"a":0},
+    {"q":"Search engine එකක් කුමක්ද?","o":["Facebook","Google","Windows","Email"],"a":1},
+    {"q":"URL කියන්නේ?","o":["Uniform Resource Locator","Universal Resource Link","Uniform Record Locator","Unique Resource Locator"],"a":0},
+    {"q":"Website එකක් යනු?","o":["Single page","Collection of web pages","Email service","Search engine"],"a":1},
+    {"q":"WWW stands for?","o":["World Web Wide","World Wide Web","Web World Wide","Wide World Web"],"a":1},
+    {"q":"Router එකක් භාවිතා කරන්නේ?","o":["Connect networks","Store data","Display output","Input data"],"a":0},
+    {"q":"Switch එකක් භාවිතා කරන්නේ?","o":["Network connect","Print","Scan","Process"],"a":0},
+    {"q":"Firewall එකක කාර්යය කුමක්ද?","o":["Virus delete","Network security","Speed increase","Data storage"],"a":1},
+    {"q":"Virus එකක් යනු?","o":["Hardware device","Malicious software","Input device","OS"],"a":1},
+    {"q":"Antivirus software එකක් උදාහරණයක්?","o":["MS Word","Avast","Google","Windows"],"a":1},
+    {"q":"Spreadsheet software එකක් කුමක්ද?","o":["MS Word","MS Excel","PowerPoint","Paint"],"a":1},
+    {"q":"Word processing software එකක්?","o":["Excel","Access","Word","Chrome"],"a":2},
+    {"q":"Presentation software එකක්?","o":["MS Word","MS Excel","MS PowerPoint","Notepad"],"a":2},
+    {"q":"Database software එකක්?","o":["MS Access","Word","Paint","Chrome"],"a":0},
+    {"q":"Open source software එකක්?","o":["Windows","Linux","MS Office","Photoshop"],"a":1},
+    {"q":"Proprietary software එකක්?","o":["Linux","Ubuntu","Windows","LibreOffice"],"a":2},
+    {"q":"Freeware software එකක්?","o":["Paid software","Free but copyrighted","Open source","Hardware"],"a":1},
+    {"q":"Algorithm එකක් යනු?","o":["Programming language","Step by step solution","Flowchart","Program"],"a":1},
+    {"q":"Flowchart එකක් භාවිතා කරන්නේ?","o":["Coding","Logic representation","Testing","Debugging"],"a":1},
+    {"q":"Decision symbol එක කුමක්ද?","o":["Rectangle","Oval","Diamond","Circle"],"a":2},
+    {"q":"Start/End symbol එක?","o":["Rectangle","Oval","Diamond","Arrow"],"a":1},
+    {"q":"Process symbol එක?","o":["Oval","Rectangle","Diamond","Circle"],"a":1},
+    {"q":"Input/Output symbol එක?","o":["Parallelogram","Rectangle","Oval","Diamond"],"a":0},
+    {"q":"Programming language එකක්?","o":["HTML","CPU","Router","RAM"],"a":0},
+    {"q":"High level language එකක්?","o":["Machine language","Assembly","Python","Binary"],"a":2},
+    {"q":"Low level language එකක්?","o":["Python","Java","Machine language","HTML"],"a":2},
+    {"q":"Compiler එකක් භාවිතා කරන්නේ?","o":["Translate program","Execute OS","Store data","Input data"],"a":0},
+    {"q":"Binary system එක භාවිතා කරන්නේ?","o":["0 and 1","1 and 2","0 and 9","A and B"],"a":0},
+    {"q":"Bit එකක් යනු?","o":["8 bits","4 bits","Smallest data unit","Byte"],"a":2},
+    {"q":"Byte එකක් සමාන වන්නේ?","o":["4 bits","8 bits","16 bits","32 bits"],"a":1},
+    {"q":"KB එකක් සමාන වන්නේ?","o":["1000 bytes","1024 bytes","512 bytes","2048 bytes"],"a":1},
+    {"q":"MB එකක් සමාන වන්නේ?","o":["1000 KB","1024 KB","512 KB","2048 KB"],"a":1},
+    {"q":"Secondary memory එකක්?","o":["RAM","Cache","Hard disk","Register"],"a":2},
+    {"q":"Cache memory එකේ ලක්ෂණය?","o":["Slow","Temporary","Very fast","Permanent"],"a":2},
+    {"q":"Register memory එක තියෙන්නේ?","o":["Hard disk","RAM","CPU","ROM"],"a":2},
+    {"q":"Input unit එකක කාර්යය?","o":["Process data","Store data","Enter data","Display data"],"a":2},
+    {"q":"Output unit එකක කාර්යය?","o":["Input data","Store data","Display result","Process"],"a":2},
+    {"q":"E-learning කියන්නේ?","o":["Online learning","Classroom learning","Book reading","Exam only"],"a":0},
+    {"q":"ICT කියන්නේ?","o":["Information & Communication Technology","International Computer Technology","Internal Control Technique","Information Control Tool"],"a":0},
+    {"q":"Smart phone එකක් භාවිතා කරන්නේ?","o":["Calling only","Gaming only","Multiple tasks","Printing"],"a":2},
+    {"q":"Cloud computing යනු?","o":["Local storage","Online storage & services","Hardware","Network cable"],"a":1},
+    {"q":"Example of cloud service?","o":["Google Drive","CPU","RAM","Printer"],"a":0},
+    {"q":"Social media එකක්?","o":["Facebook","Windows","Excel","Linux"],"a":0},
+    {"q":"Cyber crime එකක්?","o":["Hacking","Typing","Printing","Scanning"],"a":0},
+    {"q":"Password එකක් හොඳ වන්නේ?","o":["Short","Common","Strong & complex","Name based"],"a":2},
+    {"q":"Backup කියන්නේ?","o":["Delete data","Copy data","Store extra copy","Format disk"],"a":2},
+    {"q":"ICT ethics කියන්නේ?","o":["Rules of ICT use","Hardware","Software","Network"],"a":0},
+    {"q":"HTML stands for?","o":["Hyper Text Markup Language","High Text Machine Language","Hyper Tool Mark Language","Home Text Markup"],"a":0},
+    {"q":"CSS භාවිතා කරන්නේ?","o":["Structure","Styling","Programming","Database"],"a":1},
+    {"q":"JavaScript භාවිතා කරන්නේ?","o":["Styling","Logic & interaction","Database","OS"],"a":1},
+    {"q":"Web page එකක් save කරන extension එක?","o":[".docx",".html",".exe",".mp3"],"a":1},
+    {"q":"Web server එකක්?","o":["Apache","Chrome","Windows","CPU"],"a":0},
+    {"q":"IP address එකක් යනු?","o":["Unique network address","Website name","Email","Password"],"a":0},
+    {"q":"DNS භාවිතා කරන්නේ?","o":["Translate domain to IP","Store files","Send email","Security"],"a":0},
+    {"q":"HTTPS යනු?","o":["Secure HTTP","Normal HTTP","File system","Email"],"a":0},
+    {"q":"Download කියන්නේ?","o":["Upload data","Receive data","Delete data","Print data"],"a":1},
+    {"q":"Upload කියන්නේ?","o":["Send data","Receive data","Store data","Delete data"],"a":0}
+
+];
+
+        let adminQ = JSON.parse(localStorage.getItem('adminQ')) || [];
+        allQ = [...allQ, ...adminQ];
+
+        let quiz = [], i = 0, score = 0, time = 30, t;
+
+        const timerElement = document.getElementById('timer');
+        const countElement = document.getElementById('count');
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const boardElement = document.getElementById('board');
+
+        function startQuiz() {
+            quiz = allQ.sort(() => 0.5 - Math.random()).slice(0, 20);
+            i = 0; score = 0;
+            show('quiz');
+            loadQ();
+            timer();
+        }
+
+        function loadQ() {
+            countElement.innerText = `ප්‍රශ්නය: ${i + 1} / ${quiz.length}`;
+            questionElement.innerText = quiz[i].q;
+            optionsElement.innerHTML = '';
+            quiz[i].o.forEach((opt, idx) => {
+                let b = document.createElement('button');
+                b.className = 'btn option';
+                b.innerText = opt;
+                b.onclick = () => checkAns(idx);
+                optionsElement.appendChild(b);
+            });
+        }
+
+        function checkAns(idx) {
+            clearInterval(t);
+            const btns = optionsElement.getElementsByClassName('option');
+            if (idx === quiz[i].a) {
+                score++;
+                btns[idx].style.background = "#00ff88";
+                btns[idx].style.color = "#000";
+            } else {
+                btns[idx].style.background = "#ff4d4d";
+                btns[quiz[i].a].style.background = "#00ff88";
+                btns[quiz[i].a].style.color = "#000";
+            }
+            setTimeout(next, 1000);
+        }
+
+        function next() {
+            if (i < quiz.length - 1) {
+                i++; time = 30; loadQ(); timer();
+            } else { finish(); }
+        }
+
+        function timer() {
+            clearInterval(t);
+            timerElement.innerText = `⏱ ${time}`;
+            t = setInterval(() => {
+                time--;
+                timerElement.innerText = `⏱ ${time}`;
+                if (time <= 0) next();
+            }, 1000);
+        }
+
+        function finish() {
+            show('result');
+            document.getElementById('final').innerText = `ඔබ ලබාගත් ලකුණු: ${score} / ${quiz.length}`;
+            loadBoard();
+        }
+
+        function saveScore() {
+            let n = document.getElementById('username').value.trim();
+            if (!n) return alert('කරුණාකර නම ඇතුළත් කරන්න!');
+            let b = JSON.parse(localStorage.getItem('board')) || [];
+            b.push({ n: n, score: score });
+            b.sort((a, c) => c.score - a.score);
+            localStorage.setItem('board', JSON.stringify(b));
+            loadBoard();
+            alert('සාර්ථකව සුරැකුණි!');
+        }
+
+        function loadBoard() {
+            boardElement.innerHTML = '';
+            let data = JSON.parse(localStorage.getItem('board')) || [];
+            data.slice(0, 5).forEach((entry, idx) => {
+                boardElement.innerHTML += `<li><span>${idx + 1}. ${entry.n}</span> <span>${entry.score} Marks</span></li>`;
+            });
+        }
+
+        function openAdmin() { show('admin'); }
+
+        function addQ() {
+            let q = {
+                q: document.getElementById('aq').value,
+                o: [document.getElementById('o1').value, document.getElementById('o2').value, document.getElementById('o3').value, document.getElementById('o4').value],
+                a: parseInt(document.getElementById('aa').value)
+            };
+            if(!q.q || !q.o[0]) return alert('සියලු ක්ෂේත්‍ර පුරවන්න!');
+            adminQ.push(q);
+            localStorage.setItem('adminQ', JSON.stringify(adminQ));
+            alert('සාර්ථකව එක් කරන ලදී!');
+            location.reload();
+        }
+
+        function show(id) {
+            ['start', 'quiz', 'result', 'admin'].forEach(x => document.getElementById(x).classList.add('hide'));
+            document.getElementById(id).classList.remove('hide');
+        }
+    </script>
+</body>
+</html>

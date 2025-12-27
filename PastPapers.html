@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT Resource Portal | Past Papers</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.85); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(15, 23, 42, 0.75); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box;  font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+       
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0; /* Padding අඩු කර size එක හරිගස්සා ඇත */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px; /* Logo size එක හරිගස්සා ඇත */
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; /* Font size එක හරිගස්සා ඇත */
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+       
+        .hero { text-align: center; padding: 80px 20px 40px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; }
+        .hero h4 { color: var(--text-dim); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+
+        
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 25px 80px; }
+
+        .past-paper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .paper-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .paper-card h3 { color: var(--accent-blue); font-size: 1.4rem; margin-bottom: 15px; }
+        .paper-card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 25px; }
+
+        .download-btn {
+            display: inline-block;
+            padding: 14px 24px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+        }
+
+        #backToTop {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 50px; height: 50px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000; border: none; border-radius: 50%;
+            font-size: 20px; cursor: pointer; display: none; z-index: 2000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+
+       
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        
+      
+        .social-icons a:hover { 
+            transform: scale(1.3) rotate(15deg); 
+        }
+        
+        .social-icons img { 
+            width: 35px; 
+            filter: brightness(0.9); 
+            transition: 0.3s;
+        }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .logo-text { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text">O/L ICT Resource Portal</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="PastPapers.html" class="nav-active">Papers</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="blogposts.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero" data-aos="fade-up">
+        <h1>පසුගිය විභාග ප්‍රශ්න පත්‍ර</h1>
+        <h4>මෙහිදී ඔබට 2013 වසරේ සිට 2024 වසර දක්වා අ.පො.ස. (සා.පෙළ) තොරතුරු හා සන්නිවේදන තාක්ෂණය විෂයයෙහි පසුගිය ප්‍රශ්න පත්‍ර (Past Papers) සහ ඒවායේ පිළිතුරු පත්‍ර ඉතා පහසුවෙන් බාගත කරගත හැක.</h4>
+    </div>
+
+    <div class="main-container">
+        <div class="past-paper-grid">
+            <div class="paper-card" data-aos="fade-up">
+                <h3>O/L ICT 2024 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2024 අධ්‍යයන පොදු සහතික පත්‍ර (සාමාන්්‍ය පෙළ) විභාගයේ නවතම ප්‍රශ්න පත්‍රය බාගත කරගන්න.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\20242025-OL-Information-And-Communication-Technology-Past-Paper.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>O/L ICT 2023 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2023 වසරේ පැවති සාමාන්්‍ය පෙළ විභාගයට අදාළ ICT ප්‍රශ්න පත්‍රය මෙතැනින් ලබාගන්න.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\20232024-OL-ICT-Past-Paper-in-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>O/L ICT 2022 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2022 වසරේ විභාග ප්‍රශ්න පත්‍රය සහ පිළිතුරු පත්‍ර මෙහි ඇතුළත් කර ඇත.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\20222023-OL-ICT-Past-Paper-and-Answers.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+            
+            <div class="paper-card" data-aos="fade-up">
+                <h3>O/L ICT 2021 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2021 ICT පසුගිය විභාග ප්‍රශ්න පත්‍රය සිංහල මාධ්‍යයෙන් බාගත කරගැනීමට මෙතැන ක්ලික් කරන්න.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2021-OL-ICT-Past-Paper-and-Answers-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+           <div class="paper-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>O/L ICT 2020 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2020 වසරේ පැවති සාමාන්්‍ය පෙළ විභාගයට අදාළ ICT ප්‍රශ්න පත්‍රය මෙතැනින් ලබාගන්න.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2020-OL-ICT-Past-Paper-and-Answers-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>O/L ICT 2019 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2019 වසරේ විභාග ප්‍රශ්න පත්‍රය සහ පිළිතුරු පත්‍ර මෙහි ඇතුළත් කර ඇත.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\GCE-OL-Information-Communication-Technology-paper-answers-–-2019.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up">
+                <h3>O/L ICT 2018 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2018 ICT පසුගිය විභාග ප්‍රශ්න පත්‍රය සහ ලකුණු ලබාදීමේ පටිපාටිය මෙතැනින් ලබාගන්න.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2018-OL-Information-Communication-Technology-Marking-Scheme-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>O/L ICT 2017 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2017 වසරේ පැවති විභාගයේ සම්පූර්ණ ප්‍රශ්න පත්‍රය බාගත කරගන්න.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2017-OL-Information-Communication-Technology-Past-Paper-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>O/L ICT 2016 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2016 අධ්‍යයන පොදු සහතික පත්‍ර (සාමාන්‍ය පෙළ) ICT විෂයයෙහි ප්‍රධාන ප්‍රශ්න පත්‍රය.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2016-OL-Information-Communication-Technology-Past-Paper-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up">
+                <h3>O/L ICT 2015 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2015 අධ්‍යයන පොදු සහතික පත්‍ර (සාමාන්‍ය පෙළ) ICT විෂයයෙහි ප්‍රධාන ප්‍රශ්න පත්‍රය.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2015-OL-Information-Communication-Technology-Past-Paper-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>O/L ICT 2014 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2014 අධ්‍යයන පොදු සහතික පත්‍ර (සාමාන්‍ය පෙළ) ICT විෂයයෙහි ප්‍රධාන ප්‍රශ්න පත්‍රය.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2014-OL-Information-And-Communication-Technology-Past-Paper-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+
+            <div class="paper-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>O/L ICT 2013 - ප්‍රධාන ප්‍රශ්න පත්‍රය</h3>
+                <p>2013 අධ්‍යයන පොදු සහතික පත්‍ර (සාමාන්‍ය පෙළ) ICT විෂයයෙහි ප්‍රධාන ප්‍රශ්න පත්‍රය.</p>
+                <a href="D:\Sliate\Project\ICT PROJECT\Project\Past Papers\2013-OL-Information-And-Communication-Technology-Past-Paper-Sinhala-Medium.pdf" download class="download-btn" target="blank">බාගත කරන්න (Download)</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="insta.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+        
+        <div class="footer-info">
+            <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+            <p>withanagetharushi00@gmail.com | 0762903345</p>
+            <p>Gampaha, Sri Lanka</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                document.getElementById("backToTop").style.display = "block";
+            } else {
+                document.getElementById("backToTop").style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

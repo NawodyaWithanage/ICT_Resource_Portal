@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT | Programming Concepts සහ Flowcharts</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-blue: #00f3ff;
+            --accent-purple: #bc13fe;
+            --bg-dark: #020617;
+            --glass-bg: rgba(15, 23, 42, 0.85);
+            --border-glow: rgba(0, 243, 255, 0.3);
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #f8fafc;
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+       
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            filter: brightness(0.2) contrast(1.1);
+            animation: bgZoom 25s infinite alternate;
+        }
+
+        @keyframes bgZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .blob {
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { top: -10%; left: -10%; }
+            to { top: 60%; left: 70%; }
+        }
+
+      header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px; height: 60px;
+            border-radius: 12px; object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px; font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover { color: var(--accent-blue); background: rgba(255, 255, 255, 0.05); }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+        
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: 0.4s;
+        }
+
+        .glass-panel:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-align: center; margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, var(--text-dim));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        h2 { color: var(--accent-blue); margin: 30px 0 20px; display: flex; align-items: center; gap: 15px; }
+        h3 { color: var(--accent-purple); margin-bottom: 15px; }
+
+        .featured-image { width: 100%; border-radius: 20px; margin: 25px 0; border: 1px solid var(--border-glow); }
+
+        .motivation-card {
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.1), rgba(0, 243, 255, 0.1));
+            border: 2px dashed var(--accent-blue);
+            border-radius: 30px; padding: 40px; text-align: center; margin: 50px 0;
+        }
+
+        .comment-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid var(--accent-purple); }
+        .comment-author { color: var(--accent-blue); font-weight: bold; }
+
+        .comment-form input, .comment-form textarea {
+            width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid #333; margin-bottom: 15px;
+        }
+        .btn-submit {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000; padding: 14px 35px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+.btn-submit:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-blue); }
+        footer { background: #010409; padding: 50px 20px; text-align: center; border-top: 1px solid var(--border-glow); margin-top: 100px; }
+        .social-icons img { width: 30px; margin: 0 10px; transition: 0.3s; }
+        .social-icons img:hover { transform: scale(1.2); }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); width: 50px; height: 50px;
+            border-radius: 50%; border: none; cursor: pointer; display: none; z-index: 100;
+        }
+
+        @media (max-width: 768px) { nav ul { display: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+    <div class="blob"></div>
+
+   <header>
+        <nav>
+            <a href="OLICTResoursePortal.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html" >Tutorials</a></li>
+                <li><a href="PastPapers.html">Papers</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="blogposts.html" class="nav-active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section data-aos="fade-down">
+            <h1>මූලික Programming Concepts සහ Flowcharts</h1>
+            <div style="text-align: center; color: var(--accent-purple); font-weight: bold; margin-bottom: 30px;">
+                <span><i class="fas fa-user"></i> Nawodya Withanage</span> | 
+                <span><i class="fas fa-calendar"></i> December 17, 2025</span>  &nbsp <span><i class="fas fa-clock"></i> 15 මිනිත්තු</span>
+            </div>
+            <img src="https://www.edrawsoft.com/templates/images/simple-algorithm-flowchart.png" class="featured-image" alt="Header">
+        </section>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <p>O/L ICT විෂයේ programming section එක ඉතාම වැදගත්. මෙතනදී <strong>Algorithm, Pseudocode, Flowcharts, Variables, Conditions</strong> සහ <strong>Loops</strong> ගැන අපි ඉගෙන ගන්නවා.</p>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-right">
+            <h2><i class="fas fa-code"></i> Algorithm යනු කුමක්ද?</h2>
+            <p>Algorithm යනු problem එකක් solve කරන step-by-step instructions එකතුවක්. එය සරලව pseudocode හෝ flowchart විදිහට පෙන්විය හැකියි.</p>
+            <img src="https://images.examples.com/wp-content/uploads/2024/06/Pseudocode-Examples-1.png" class="featured-image">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-left">
+            <h2><i class="fas fa-project-diagram"></i> Flowcharts (ගැලීම් සටහන්)</h2>
+            <p>Flowchart එකකින් කරන්නේ programming logic එක රූපමය ආකාරයෙන් (visually) ඉදිරිපත් කිරීමයි. මේ සඳහා ජාත්‍යන්තරව පිළිගත් සංකේත භාවිතා කරනවා.</p>
+            
+            <img src="https://www.smartdraw.com/flowchart/img/basic-symbols-table.jpg" class="featured-image">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h2><i class="fas fa-shapes"></i> Scratch Programming</h2>
+            <p>Scratch යනු මුලින්ම programming ඉගෙන ගන්නා අයට ඉතාමත් සුදුසු tool එකක්. මෙහි blocks drag කරමින් logic නිර්මාණය කළ හැකියි.</p>
+            <img src="https://i.ytimg.com/vi/CdZFYOfp4FY/maxresdefault.jpg" class="featured-image">
+        </div>
+
+        <div class="motivation-card" data-aos="zoom-in">
+            <h2><i class="fas fa-rocket"></i> Motivation</h2>
+            <blockquote>“Programming ඉගෙන ගන්න ආරම්භ කරන්න – ලෝකයේ අනාගතය තීරණය වන්නේ තාක්ෂණය මතයි!”</blockquote>
+            <p><strong>ඔයාගේ O/L exam එකට සුබ පැතුම්! Flowcharts හොඳින් ඇඳලා පුහුණු වෙන්න.</strong></p>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h3><i class="fas fa-comments"></i> අදහස් (<span id="commentCount">0</span>)</h3>
+            <div id="commentsList"></div>
+
+            <div class="comment-form" style="margin-top: 30px;">
+                <h4>ඔබේ අදහස එකතු කරන්න</h4>
+                <input type="text" id="commentName" placeholder="ඔබේ නම">
+                <textarea id="commentText" rows="3" placeholder="ඔබේ අදහස"></textarea>
+                <button class="btn-submit" id="submitComment">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="insta.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+        <div style="color: var(--text-dim); font-size: 13px; margin-top: 20px;">
+            <p>&copy; 2025 O/L ICT Resource Portal</p> <br> 0762903345 <br>
+            <p>withanagetharushi00@gmail.com | Gampaha, Sri Lanka</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+       
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        window.onscroll = () => {
+            scrollBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+        };
+        scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+       
+        const submitBtn = document.getElementById('submitComment');
+        const commentsList = document.getElementById('commentsList');
+        const countDisplay = document.getElementById('commentCount');
+        
+        let comments = JSON.parse(localStorage.getItem('prog_comments')) || [
+            { name: "කමිල්", text: "Flowcharts පැහැදිලියි. ස්තූතියි!" },
+            { name: "නෙත්මි", text: "Scratch examples ටික ගොඩක් වටිනවා." }
+        ];
+
+        function render() {
+            commentsList.innerHTML = '';
+            comments.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'comment-box';
+                div.innerHTML = `<div class="comment-author">${c.name}</div><p>${c.text}</p>`;
+                commentsList.appendChild(div);
+            });
+            countDisplay.innerText = comments.length;
+        }
+
+        submitBtn.onclick = () => {
+            const name = document.getElementById('commentName').value;
+            const text = document.getElementById('commentText').value;
+            if(name && text) {
+                comments.push({ name, text });
+                localStorage.setItem('prog_comments', JSON.stringify(comments));
+                document.getElementById('commentName').value = '';
+                document.getElementById('commentText').value = '';
+                render();
+            }
+        };
+        render();
+    </script>
+</body>
+</html>

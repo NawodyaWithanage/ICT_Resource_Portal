@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT Tutorials | Resource Portal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #06090f;
+            --bg-secondary: #12161f;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(15, 23, 42, 0.9); 
+            --text-white: #ffffff;
+            --text-dim: #94a3b8;
+       
+            --bg-overlay: rgba(6, 9, 15, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box;  font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+        body {
+             /* Online Technology Background Image */
+             background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2048') center/cover fixed no-repeat;
+            color: var(--text-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 12px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+       
+        .hero { text-align: center; padding: 80px 20px 40px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--text-white); }
+        .hero h3 { color: var(--accent-blue); font-weight: 400; margin-bottom: 10px; }
+        .hero h4 { color: var(--text-dim); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+
+        .main-container { max-width: 1100px; margin: 0 auto; padding: 0 25px 80px; }
+
+        h2 { 
+            color: var(--accent-blue); 
+            font-size: 2rem; 
+            margin: 50px 0 30px; 
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        h2::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+        
+        .tutorial-list { list-style: none; }
+
+        .tutorial-item {
+            background: var(--card-bg);
+            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tutorial-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+        }
+
+        .tutorial-item a {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .tutorial-item p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+       
+        .tutorial-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; height: 100%; width: 4px;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            opacity: 0; transition: 0.3s;
+        }
+        .tutorial-item:hover::before { opacity: 1; }
+
+       
+        #backToTop {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 50px; height: 50px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000; border: none; border-radius: 50%;
+            font-size: 20px; cursor: pointer; display: none; z-index: 2000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+
+       
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(10deg); }
+        .social-icons img { width: 35px; filter: brightness(0.8); }
+        
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; padding: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2rem; }
+            .logo-text { font-size: 18px; }
+        }
+
+       
+        .notepad-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 2000;
+        }
+
+        #notepad-content {
+            width: 300px;
+            height: 350px;
+            background: #1e293b;
+            border: 2px solid var(--accent-blue);
+            border-radius: 15px;
+            display: none; 
+            flex-direction: column;
+            padding: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+        }
+
+        #notepad-content h5 { margin-bottom: 10px; color: var(--accent-blue); display: flex; justify-content: space-between; }
+
+        #note-area {
+            flex: 1;
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            resize: none;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .note-btns { margin-top: 10px; display: flex; gap: 5px; }
+        .note-btns button { 
+            flex: 1; padding: 5px; border: none; border-radius: 5px; cursor: pointer; font-size: 11px; font-weight: 700;
+        }
+        .btn-download { background: var(--accent-blue); color: #000; }
+        .btn-clear { background: #ef4444; color: white; }
+
+        .notepad-toggle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,210,255,0.4);
+            font-size: 24px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="notepad-container">
+        <div id="notepad-content">
+            <h5>Digital Note </h5>
+            <textarea id="note-area" placeholder="පාඩම බලන අතරතුර වැදගත් දේ මෙහි සටහන් කරගන්න..."></textarea>
+            <div class="note-btns">
+                <button class="btn-download" onclick="downloadNote()">Save as File</button>
+                <button class="btn-clear" onclick="clearNote()">Clear</button>
+            </div>
+        </div>
+        <button class="notepad-toggle" onclick="toggleNotepad()">📝</button>
+    </div>
+
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text">O/L ICT Resource Portal</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html" class="nav-active">Tutorials</a></li>
+                <li><a href="PastPapers.html">Papers</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="blogposts.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero" data-aos="fade-up">
+        <h1>අ.පො.ස සා.පෙළ ICT නිබන්ධන</h1>
+        <h3>නිබන්ධන අංශයට ඔබව සාදරයෙන් පිළිගනිමු!</h3>
+        <h4>මෙහිදී ඔබට අ.පො.ස. (සා.පෙළ) තොරතුරු හා සන්නිවේදන තාක්ෂණ විෂය නිර්දේශයට (10 සහ 11 ශ්‍රේණි) අදාළ ප්‍රධාන මාතෘකා යටතේ සරල, පියවරෙන් පියවර මග පෙන්වන නිබන්ධන සොයාගත හැකිය.</h4>
+        <br>
+        <p style="color: yellow;">පාඩම් බලන ගමන් වැදගත් දේවල් සටහන් කරගන්න වම් පස ඇති Notepad එක භාවිතා කරන්න.</p>
+    </div>
+
+    <div class="main-container">
+        
+        <section data-aos="fade-right">
+            <h2>10 ශ්‍රේණියේ නිබන්ධන</h2>
+            <ul class="tutorial-list">
+                <li class="tutorial-item">
+                    <a href="partsofcomputer.html">1. පරිගණක පද්ධතියක මූලික ලක්ෂණ</a>
+                    <p>පරිගණකයක කොටස්, ආදාන/නිමැවුම් උපකරණ, ගබඩාකරණය සහ පරිගණකය ක්‍රියාත්මක වීම.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="Binary_Explanation.html">2. පරිගණකයේ දත්ත නිරූපණය</a>
+                    <p>ද්විමය පද්ධතිය, සංඛ්‍යා පරිවර්තන (දශම සිට ද්විමය දක්වා), ASCII කේත.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="logicgate.html">3. තාර්කික ද්වාර සහ බූලියන් ඇල්ජිබ්‍රා</a>
+                    <p>AND, OR, NOT ද්වාර, සත්‍ය වගු, මූලික තාර්කික පරිපථ.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="operatingsystem.html">4. මෙහෙයුම් පද්ධති</a>
+                    <p>මෙහෙයුම් පද්ධතියේ කාර්යයන්, වර්ග (Windows, Linux), ගොනු කළමනාකරණය.</p>
+                </li>
+             <li class="tutorial-item">
+                    <a href="word.html">5. වචන සැකසුම් (MS Word)</a>
+                    <p>ලේඛන ආකෘතිකරණය, වගු, තැපැල් ඒකාබද්ධ කිරීම.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="excel.html">6. විස්තීර්ණ පත්‍ර (MS Excel)</a>
+                    <p>සූත්‍ර, කාර්යයන් (SUM, AVERAGE), චාර්ට්.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="powerpoint.html">7. ඉදිරිපත් කිරීම් (MS PowerPoint)</a>
+                    <p>ස්ලයිඩ් නිර්මාණය, ඇනිමේෂන්, සංක්‍රාන්ති.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="access.html">8. දත්ත සමුදායන් (MS Access)</a>
+                    <p>වගු, විමර්ශන, ආකෘති, වාර්තා.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section data-aos="fade-left">
+            <h2>11 ශ්‍රේණියේ නිබන්ධන</h2>
+            <ul class="tutorial-list">
+                <li class="tutorial-item">
+                    <a href="foundational.html">9. මූලික වැඩසටහන්කරණ සංකල්ප</a>
+                    <p>ප්‍රවාහ රූප සටහන්, ස्यूඩෝකෝඩ්, විචල්‍ය, ලූප්, කොන්දේසි.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="SDLC.html">10. පද්ධති සංවර්ධන ජීවන චක්‍රය (SDLC)</a>
+                    <p>අදියර: සැලසුම්කරණය, විශ්ලේෂණය, නිර්මාණය, ක්‍රියාත්මක කිරීම, නඩත්තුව.</p>
+                </li>
+             <li class="tutorial-item">
+                    <a href="email.html">11. අන්තර්ජාලය සහ විද්‍යුත් තැපෑල</a>
+                    <p>අන්තර්ජාලය ක්‍රියාත්මක වීම, බ්‍රවුසර්, සෙවුම් යන්ත්‍ර, තැපැල් ශිෂ්ටාචාර.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="webdesign.html">12. බහුමාධ්‍ය සහ වෙබ් නිර්මාණ මූලික</a>
+                    <p>රූප, ශබ්ද, වීඩියෝ; HTML හැඳින්වීම.</p>
+                </li>
+                <li class="tutorial-item">
+                    <a href="Last_tutorial.html">13. සමාජයේ ICT සහ සදාචාරය</a>
+                    <p>වාසි, අවදානම්, සයිබර් ආරක්ෂාව, පෞද්ගලිකත්වය.</p>
+                </li>
+            </ul>
+        </section>
+
+        <p style="text-align: center; color: var(--accent-blue); margin-top: 40px;" data-aos="zoom-in">Click on any tutorial link to view detailed explanations. New tutorials will be added regularly!</p>
+
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="insta.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+        
+        <div class="footer-info">
+            <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+            <p>withanagetharushi00@gmail.com | 0762903345</p>
+            <p>Gampaha, Sri Lanka</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                document.getElementById("backToTop").style.display = "block";
+            } else {
+                document.getElementById("backToTop").style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+       
+        const noteArea = document.getElementById('note-area');
+        const notepadContent = document.getElementById('notepad-content');
+
+        noteArea.value = localStorage.getItem('ict_notes') || "";
+
+        noteArea.addEventListener('input', () => {
+            localStorage.setItem('ict_notes', noteArea.value);
+        });
+
+        function toggleNotepad() {
+            notepadContent.style.display = notepadContent.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function clearNote() {
+            if(confirm("ඔබේ සටහන් සියල්ල මැකීමට අවශ්‍යද?")) {
+                noteArea.value = "";
+                localStorage.removeItem('ict_notes');
+            }
+        }
+
+        function downloadNote() {
+            const text = noteArea.value;
+            if(!text) { alert("මුලින්ම යමක් සටහන් කරන්න!"); return; }
+            const blob = new Blob([text], { type: 'text/plain' });
+            const anchor = document.createElement('a');
+            anchor.download = 'My_ICT_Notes.txt';
+            anchor.href = window.URL.createObjectURL(blob);
+            anchor.click();
+        }
+    </script>
+</body>
+</html>

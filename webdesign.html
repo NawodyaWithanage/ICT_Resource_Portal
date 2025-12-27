@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <title>OL ICT Resource Portal - 12. බහුමාධ්‍ය සහ වෙබ් නිර්මාණ මූලික</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --primary: #00f2fe;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: 'Poppins', sans-serif;
+}
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                            url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        main {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            color: lightgreen;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .definition-box {
+            background: rgba(0, 210, 255, 0.1);
+            border-left: 5px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .feature-list { list-style: none; }
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .feature-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        th { background: rgba(0, 210, 255, 0.2); color: var(--accent-blue); }
+
+        .exercise {
+            background: rgba(157, 80, 187, 0.05);
+            border-left: 5px solid var(--accent-purple);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .pseudocode-box {
+            background: #0f172a;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            color: #38bdf8;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .back-to-menu {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            transition: 0.3s;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .back-to-menu:hover {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
+        .social-icons img { width: 35px; }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        @media (max-width: 992px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo" class="main-logo"> 
+            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="NotesPage.html"> Notes</a></li>
+            <li><a href="tutorials.html" class="nav-active">Tutorial</a></li>
+            <li><a href="PastPapers"> Papers</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="Blogposts.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+    <section class="hero-section" data-aos="zoom-in">
+        <h1>12. බහුමාධ්‍ය සහ වෙබ් නිර්මාණ මූලික</h1>
+        <p>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී බහුමාධ්‍ය මූලිකාංග (රූප, ශබ්ද, වීඩියෝ) සහ වෙබ් අඩවි වල පදනම වන HTML පිළිබඳව ඉගෙන ගනිමු.</p>
+    </section>
+
+    <div class="glass-panel" data-aos="fade-up">
+ <h2><i class="fas fa-sync-alt"></i> හැඳින්වීම</h2>
+        <div class="definition-box">
+            <strong>බහුමාධ්‍ය (Multimedia)</strong> යනු තොරතුරු ඉදිරිපත් කිරීම සඳහා <b>පෙළ (Text)</b>, <b>රූප (Images)</b>, <b>ශබ්ද (Audio)</b>, <b>වීඩියෝ (Video)</b> සහ <b>සජීවීකරණ (Animation)</b> වැනි විවිධ මාධ්‍ය සංයෝජනය කිරීමයි.
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-photo-video"></i> 1. බහුමාධ්‍ය මූලිකාංග</h2>
+        
+        <h3>1.1. රූප (Images)</h3>
+        <p>පරිගණකයේ රූප ගබඩා කිරීමේ ප්‍රධාන ආකාර දෙකකි:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>රූප වර්ගය</th>
+                    <th>විස්තරය</th>
+                    <th>උදාහරණ ගොනු ආකෘති</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Bitmap / Raster Images</b></td>
+                    <td>තිත් (Pixels) සමූහයකින් සමන්විත වේ. විශාල කළ විට රූපයේ ගුණාත්මකභාවය අඩු වේ.</td>
+                    <td>JPEG, PNG, GIF, BMP</td>
+                </tr>
+                <tr>
+                    <td><b>Vector Images</b></td>
+                    <td>ගණිතමය සමීකරණ මඟින් නිරූපණය වේ. ඕනෑම ප්‍රමාණයකට විශාල කළ විට ගුණාත්මකභාවය නොවෙනස්ව පවතී.</td>
+                    <td>SVG, AI, EPS</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.2. ශබ්ද (Audio)</h3>
+        <ul class="feature-list">
+            <li><b>Waveform / Digitized Audio:</b> සැබෑ ශබ්ද තරංග නියැදි (Samples) ලෙස ලබාගෙන ගබඩා කිරීම. (උදා: WAV).</li>
+            <li><b>MIDI (Musical Instrument Digital Interface):</b> ශබ්දය වෙනුවට, සංගීත උපදෙස් ගබඩා කරයි. ගොනු ප්‍රමාණය ඉතා කුඩාය.</li>
+        </ul>
+
+        <h3>1.3. වීඩියෝ (Video)</h3>
+        <p>වීඩියෝ යනු අනුප්‍රාප්තික රූප රාමු (Sequence of Frames) වේගයෙන් ප්‍රදර්ශනය කිරීමයි.</p>
+        <ul class="feature-list">
+            <li><b>Frame Rate (රාමු අනුපාතය):</b> තත්පරයකට පෙන්වන රූප රාමු ගණන (FPS).</li>
+            <li><b>ජනප්‍රිය ගොනු ආකෘති:</b> MP4, AVI, MOV.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-code"></i> 2. වෙබ් නිර්මාණ මූලික: HTML හැඳින්වීම</h2>
+        <p><strong>HTML (HyperText Markup Language)</strong> යනු වෙබ් පිටු වල අන්තර්ගතය සහ ව්‍යුහය නිර්මාණය කිරීමට භාවිතා කරන සම්මත Markup භාෂාවයි.</p>
+
+        <h3>2.1. HTML මූලික ව්‍යුහය</h3>
+        <div class="pseudocode-box">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="si"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;වෙබ් පිටුවේ මාතෘකාව&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;ප්‍රධාන මාතෘකාව&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;මෙය ඡේදයකි.&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+        </div>
+
+        <h3>2.2. බහුලව භාවිතා වන HTML ටැග් (Tags)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>HTML ටැගය</th>
+                    <th>කාර්යය</th>
+                    <th>උදාහරණය</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt;h1&gt; to &lt;h6&gt;</td>
+                    <td>මාතෘකා නිර්මාණය කිරීමට.</td>
+                    <td>&lt;h1&gt;මාතෘකාව&lt;/h1&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;p&gt;</td>
+                    <td>ඡේදයක් නිර්මාණය කිරීමට.</td>
+                    <td>&lt;p&gt;ඡේදයකි.&lt;/p&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;a&gt;</td>
+                    <td>සබැඳියක් (Hyperlink) නිර්මාණය කිරීමට.</td>
+                    <td>&lt;a href="#"&gt;Link&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;img&gt;</td>
+                    <td>රූපයක් ඇතුළත් කිරීමට.</td>
+                    <td>&lt;img src="img.jpg"&gt;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.3. Attributes (ගුණාංග)</h3>
+        <p>Attributes යනු ටැග් එකකට අමතර තොරතුරු සැපයීමට භාවිතා කරන යෙදුම් වේ. (උදා: &lt;img&gt; ටැගයේ ඇති <code>src</code>, <code>alt</code>).</p>
+    </div>
+
+    <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
+        <h2 style="color:yellow; justify-content: center;"><i class="fab fa-youtube"></i> වැඩිදුර අධ්‍යාපනය සඳහා</h2>
+        <p style="margin-bottom: 20px;">බහුමාධ්‍ය සහ HTML පිළිබඳ මෙම වීඩියෝව නරඹන්න.</p>
+        <a href="https://www.youtube.com/watch?v=5H_O1HV0tSU" class="btn-action" target="_blank">
+            වීඩියෝව නරඹන්න <i class="fas fa-play-circle"></i>
+        </a>
+    </div>
+
+    <div class="glass-panel exercise" data-aos="fade-up">
+        <h2><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
+        <ol style="margin-left: 20px; color: var(--text-dim);">
+            <li>Bitmap (Raster) සහ Vector රූප ආකෘති අතර ඇති ප්‍රධාන වෙනස කුමක්ද?</li>
+            <li>ශබ්ද ගොනු වර්ග දෙකක් නම් කරන්න.</li>
+            <li>HTML ලේඛනයක &lt;head&gt; ටැගය තුළ අඩංගු විය යුත්තේ කුමක්ද?</li>
+            <li>HTML ගුණාංගයක (Attribute) කාර්යය කුමක්ද? උදාහරණයක් දෙන්න.</li>
+        </ol>
+    </div>
+
+    <a href="tutorials.html" class="back-to-menu" data-aos="fade-in">
+        <i class="fas fa-arrow-left"></i> නිබන්ධන මෙනුවට ආපසු
+    </a>
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+    </div>
+    <div class="footer-info">
+        <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+        <p>withanagetharushi00@gmail.com | 0762903345</p>
+        <p>Gampaha, Sri Lanka</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

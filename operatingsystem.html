@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <title>OL ICT Resource Portal - මෙහෙයුම් පද්ධති</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --primary: #00f2fe;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            color: lightgreen;
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        .definition-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .feature-list { list-style: none; }
+        .feature-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .feature-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.02);
+        }
+
+        table, th, td {
+            border: 1px solid var(--border);
+        }
+
+        th { background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); }
+        th, td { padding: 12px; text-align: center; }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .back-to-menu {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            transition: 0.3s;
+        }
+
+        .back-to-menu:hover {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
+        .social-icons img { width: 35px; filter: brightness(0.9); }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; margin-top: 15px; }
+            .logo-text { font-size: 18px; }
+            .glass-panel { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo" class="main-logo"> 
+            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="NotesPage.html"> Notes</a></li>
+            <li><a href="tutorials.html" class="nav-active">Tutorial</a></li>
+            <li><a href="PastPapers.html"> Papers</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="Blogposts.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-section" data-aos="zoom-in">
+        <h1>4. මෙහෙයුම් පද්ධති (Operating Systems - OS)</h1>
+        <p><center><h4>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී අපි මෙහෙයුම් පද්ධතියක කාර්යයන්, වර්ග (Windows, Linux) සහ ගොනු කළමනාකරණය පිළිබඳව විස්තරාත්මකව ඉගෙන ගනිමු.</h4></center></p>
+    </section>
+
+    <div class="glass-panel" data-aos="fade-up">
+<h2><i class="fas fa-brain"></i> හැඳින්වීම</h2>
+        <div class="definition-card">
+             <p><strong>මෙහෙයුම් පද්ධතියක් (Operating System - OS)</strong> යනු පරිශීලකයා සහ පරිගණක දෘඪාංග අතර අතුරු මුහුණත ලෙස ක්‍රියා කරමින් දෘඪාංග සහ මෘදුකාංග සම්පත් කළමනාකරණය කරන ප්‍රධානතම පද්ධති මෘදුකාංගයයි. 
+             </p>
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-tasks"></i> 1. මෙහෙයුම් පද්ධතියක කාර්යයන් (Functions of an OS)</h2>
+        <p>මෙහෙයුම් පද්ධතියක් ඉටු කරන ප්‍රධාන කාර්යයන් පහත දැක්වේ.</p>
+
+        <h3>1.1 සම්පත් කළමනාකරණය (Resource Management)</h3>
+        <ul class="feature-list">
+            <li>මතක කළමනාකරණය (Memory Management):
+               
+                <b>   වැඩසටහන් ක්‍රියාත්මක වීමට අවශ්‍ය මතක ප්‍රමාණය (RAM) වෙන් කිරීම සහ නිදහස් කිරීම <br>
+                  විවිධ ක්‍රියාවලි (processes) අතර මතකය බෙදා හැරීම. </b>
+                
+            </li>
+            <li>CPU කළමනාකරණය (Processor/CPU Management):
+              
+                  <b>  CPU කාලය විවිධ වැඩසටහන් අතර කාර්යක්ෂමව බෙදා හැරීම (Scheduling). <br>
+                    කුමන කාර්යය ඊළඟට CPU වෙත ලබා දිය යුතුද යන්න තීරණය කිරීම. </b>
+                
+            </li>
+        </ul>
+
+        <h3>1.2 ආදාන/නිමැවුම් කළමනාකරණය (Input/Output Management)</h3>
+        <ul class="feature-list">
+            <li>පරිගණකයට සම්බන්ධ කර ඇති ආදාන (යතුරුපුවරුව, මූසිකය) සහ නිමැවුම් (මුද්‍රණ යන්ත්‍ර, මොනිටරය) උපාංග පාලනය කිරීම.</li>
+            <li>උපාංග ධාවක (Device Drivers) භාවිතයෙන් දෘඪාංග සමඟ සන්නිවේදනය කිරීම.</li>
+        </ul>
+
+        <h3>1.3 දෝෂ කළමනාකරණය (Error Handling)</h3>
+        <ul class="feature-list">
+            <li>දෘඪාංග හෝ මෘදුකාංග දෝෂ හඳුනාගෙන ඒවා නිවැරදි කිරීම හෝ පරිශීලකයාට දැනුම් දීම.</li>
+        </ul>
+        
+        <h3>1.4 ආරක්ෂාව සහ ප්‍රවේශ පාලනය (Security and Access Control)</h3>
+        <ul class="feature-list">
+            <li>අනවසර ප්‍රවේශයන්ගෙන් දත්ත ආරක්ෂා කිරීම (මුරපද ආරක්ෂාව).</li>
+            <li>විවිධ පරිශීලකයන්ට ගොනු සහ සම්පත් වෙත ප්‍රවේශ වීමට ඇති අවසරයන් පාලනය කිරීම.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-layer-group"></i> 2. මෙහෙයුම් පද්ධති වර්ගීකරණය (OS Classification)</h2>
+        
+        <h3>2.1 භාවිතය අනුව (By Usage)</h3>
+        <ul class="feature-list">
+            <li>තනි පරිශීලක (Single-User OS):එක් අවස්ථාවකදී එක් පරිශීලකයෙකුට පමණක් භාවිතා කිරීමට ඉඩ දෙයි. (උදා: පැරණි MS-DOS).</li>
+            <li>බහු පරිශීලක (Multi-User OS): එකවර පරිශීලකයන් කිහිප දෙනෙකුට එකම පරිගණක සම්පත් වෙත ප්‍රවේශ වීමට ඉඩ දෙයි. (උදා: Linux, Windows Server).</li>
+        </ul>
+
+        <h3>2.2 ක්‍රියාවලි අනුව (By Processing)</h3>
+        <ul class="feature-list">
+            <li>තනි කාර්ය (Single-Tasking OS): එක් අවස්ථාවකදී එක් වැඩසටහනක් පමණක් ක්‍රියාත්මක කළ හැක.</li>
+            <li>බහු කාර්ය (Multi-Tasking OS): එකවර වැඩසටහන් කිහිපයක් ක්‍රියාත්මක කිරීමට ඉඩ දෙයි (අද බහුලව භාවිතා වන සියලුම OS).</li>
+        </ul>
+
+        <h3>2.3 වේදිකා අනුව (By Platform)</h3>
+        <p>පහත දැක්වෙන්නේ පොදු මෙහෙයුම් පද්ධති වර්ග කිහිපයකි:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>වර්ගය</th>
+                    <th>උදාහරණ</th>
+                    <th>විස්තරය</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><b>Microsoft Windows</b></td><td>Windows 10, 11</td><td>ලොව පුරා බහුලව භාවිතා වන වාණිජ මෙහෙයුම් පද්ධතියකි. පහසු චිත්‍රක අතුරු මුහුණතක් (GUI) සපයයි.</td></tr>
+                <tr><td><b>Linux</b></td><td>Ubuntu, Fedora</td><td>විවෘත මූලාශ්‍ර (Open Source) මෙහෙයුම් පද්ධතියකි. ආරක්ෂාව, ස්ථාවරත්වය සහ වේගය නිසා සර්වර් (Servers) සඳහා ජනප්‍රියය.</td></tr>
+                <tr><td><b>macOS</b></td><td>Sonoma, Ventura</td><td>Apple සමාගම විසින් Macintosh පරිගණක සඳහා නිපදවූ මෙහෙයුම් පද්ධතියකි.</td></tr>
+                <tr><td><b>Mobile OS</b></td><td>Android, iOS</td><td>ස්මාර්ට්ෆෝන් සහ ටැබ්ලට් සඳහා භාවිතා වේ.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-folder-open"></i> 3. ගොනු කළමනාකරණය (File Management)</h2>
+        <p>මෙහෙයුම් පද්ධතිය දත්ත ගබඩා කර සංවිධානය කරන ආකාරය මෙයයි.</p>
+        
+        <h3>3.1 ගොනුවක් යනු කුමක්ද? (What is a File?)</h3>
+        <ul class="feature-list">
+            <li>ගොනුවක් යනු ද්විතියික ගබඩා උපාංගයක (Hard Disk, SSD) තැන්පත් කර ඇති දත්ත හෝ තොරතුරු එකතුවකි.</li>
+            <li><b>ගොනු නාමය (File Name) සහගොනු දිගුව (File Extension)</b> මඟින් ගොනුවක් හඳුනා ගනී.</li>
+            <li>උදා: `My_Report.docx` - මෙහි `.docx` යනු ගොනුවේ වර්ගය (Word Document) පෙන්වයි.</li>
+        </ul>
+
+        <h3>3.2 ගොනු කළමනාකරණ පද්ධතියේ කාර්යයන්</h3>
+        <p>මෙහෙයුම් පද්ධතිය විසින් ගොනු පද්ධතියක් (File System) භාවිත කර ගොනු කළමනාකරණය කරයි.</p>
+        <ul class="feature-list">
+            <li><b>ගබඩා කිරීම (Storage):</b> දෘඪ තැටියේ ගොනු තැන්පත් කිරීමේ ආකාරය කළමනාකරණය කිරීම (උදා: NTFS).</li>
+            <li><b>සංවිධානය (Organization):</b>
+               
+                    <b><br>- ෆෝල්ඩර (Folders):</b> ගොනු ක්‍රමවත්ව සංවිධානය කිරීමට භාවිතා කරයි. <br>
+                    <b>- මාර්ගය (Path):</b> ගොනුවක් දෘඪ තැටිය තුළ පිහිටා ඇති ස්ථානය (උදා: C:\Users\Admin\Documents\Report.pdf).
+                </ul>
+            </li>
+            <li><b>මෙහෙයුම් (Operations):</b>ගොනු නිර්මාණය කිරීම, පිටපත් කිරීම (Copy), ගෙනයාම (Move), නැවත නම් කිරීම (Rename) සහ මැකීම (Delete).</li>
+        </ul>
+        
+        <h3>3.3 ගොනු ආරක්ෂාව (File Security)</h3>
+        <p>ගොනු වෙත ප්‍රවේශ වීමට ඇති අවසරයන් (Permissions) පාලනය කිරීම මඟින් ආරක්ෂාව තහවුරු කරයි:</p>
+        <ul class="feature-list">
+            <li><b>කියවීම (Read):</b> ගොනුව බැලීමට පමණක් අවසර දීම.</li>
+            <li><b>ලිවීම (Write):</b> ගොනුව වෙනස් කිරීමට හෝ සංස්කරණය කිරීමට අවසර දීම.</li>
+            <li><b>ක්‍රියාත්මක කිරීම (Execute):</b> වැඩසටහන් ගොනු ක්‍රියාත්මක කිරීමට අවසර දීම.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
+        <h2 style="color:yellow; justify-content: center;"><i class="fab fa-youtube"></i> වැඩිදුර අධ්‍යාපනය සඳහා</h2>
+        <p style="margin-bottom: 20px;">මෙහෙයුම් පද්ධති පිළිබඳ මෙම වීඩියෝව නරඹන්න.</p>
+        <a href="https://www.youtube.com/watch?v=FDbGOVv-YJA" class="btn-action" target="_blank">
+            වීඩියෝව නරඹන්න <i class="fas fa-play-circle"></i>
+        </a>
+    </div>
+
+    <div class="glass-panel" style="background: rgba(0, 210, 255, 0.05);" data-aos="fade-up">
+        <h2 style="color: #fff;"><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
+        <ol style="margin-left: 20px; color: var(--text-dim);">
+            <li>මෙහෙයුම් පද්ධතියක ප්‍රධාන කාර්යයන් දෙකක් නම් කරන්න.</li>
+            <li>Windows සහ Linux මෙහෙයුම් පද්ධති අතර ඇති ප්‍රධාන වෙනස කුමක්ද?</li>
+            <li>ගොනුවක් කළමනාකරණය කිරීමේදී ගොනු දිගුවෙහි (File Extension) කාර්යභාරය කුමක්ද?</li>
+            <li>බහු කාර්ය (Multi-Tasking) මෙහෙයුම් පද්ධතියක් යනු කුමක්ද?</li>
+        </ol>
+        <p style="margin-top:15px; color: var(--accent-blue);">මෙම නිබන්ධනය තුළින් මෙහෙයුම් පද්ධතිවල මූලික සංකල්ප සහ කාර්යයන් ගැන මූලික අවබෝධයක් ලබා ගත හැකිය.</p>
+    </div>
+
+    <button class="back-to-menu" onclick="window.location.href='tutorials.html'" data-aos="fade-in">
+        <i class="fas fa-arrow-left"></i> නිබන්ධන මෙනුවට ආපසු
+    </button>
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+    </div>
+    
+    <div class="footer-info">
+        <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+        <p>withanagetharushi00@gmail.com | 0762903345</p>
+        <p>Gampaha, Sri Lanka</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>
+
+```

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <title>OL ICT Resource Portal - 7. ඉදිරිපත් කිරීම් (MS PowerPoint)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --primary: #00f2fe;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            color: lightgreen;
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        .definition-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .feature-list { list-style: none; }
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .feature-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .back-to-menu {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            transition: 0.3s;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .back-to-menu:hover {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
+        .social-icons img { width: 35px; filter: brightness(0.9); }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        @media (max-width: 992px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo" class="main-logo"> 
+            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="NotesPage.html">Notes</a></li>
+            <li><a href="tutorials.html" class="nav-active">Tutorial</a></li>
+            <li><a href="PastPapers.html">Papers</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="Blogposts.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-section" data-aos="zoom-in">
+        <h1>7. ඉදිරිපත් කිරීම් (MS PowerPoint)</h1>
+        <p>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී Slides භාවිතයෙන් අදහස්, තොරතුරු සහ දත්ත දෘශ්‍යමය ලෙස ඉදිරිපත් කිරීම පිළිබඳව විස්තරාත්මකව ඉගෙන ගනිමු.</p>
+    </section>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-file-powerpoint"></i> හැඳින්වීම</h2>
+        <div class="definition-card">
+            <p><strong>MS PowerPoint</strong> යනු Presentation Software එකකි. Slides භාවිතයෙන් අදහස්, තොරතුරු සහ දත්ත දෘශ්‍යමය ලෙස ඉදිරිපත් කිරීමට භාවිතා කරයි.</p>
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-layer-group"></i> 1. Presentation මූලික කොටස්</h2>
+        <ul class="feature-list">
+            <li><b>Presentation</b> – PowerPoint file එක (.pptx)</li>
+            <li><b>Slide</b> – Presentation හි එක් පිටුවක්</li>
+            <li><b>Slide Layout</b> – Slide හි content සකස් වීමේ ආකෘතිය</li>
+            <li><b>Placeholder</b> – Text / Image දාන්න තියෙන කොටස්</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-plus-circle"></i> 2. Slides නිර්මාණය කිරීම (Slide Creation)</h2>
+        <h3>2.1 නව Slide එකක් එකතු කිරීම</h3>
+        <ul class="feature-list">
+            <li>Home tab → New Slide</li>
+            <li>Layout එකක් තෝරන්න</li>
+        </ul>
+        <h3>2.2 Text ඇතුළත් කිරීම</h3>
+        <ul class="feature-list">
+            <li>Click placeholder → Text type කරන්න</li>
+            <li>Font size, color, alignment වෙනස් කළ හැක</li>
+        </ul>
+        <h3>2.3 Pictures / Shapes ඇතුළත් කිරීම</h3>
+        <ul class="feature-list">
+            <li>Insert tab → Pictures / Shapes</li>
+            <li>Images resize, move කළ හැක</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-palette"></i> 3. Design සහ Themes</h2>
+        <ul class="feature-list">
+            <li>Design tab → Theme select කරන්න</li>
+            <li>Background color / image වෙනස් කළ හැක</li>
+            <li>Consistency (සමරූපතාව) වැදගත්ය</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-magic"></i> 4. Transitions (සංක්‍රාන්ති)</h2>
+        <p>Slide එකෙන් තවත් slide එකකට යන විදිහ Transition එකක් වේ.</p>
+        <ul class="feature-list">
+            <li>Transitions tab → Transition type තෝරන්න</li>
+            <li>Duration / Sound set කළ හැක</li>
+            <li>Apply To All භාවිතයෙන් සියලු slides වලට දාන්න</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-running"></i> 5. Animations (ඇනිමේෂන්)</h2>
+        <p>Slide එක ඇතුළත text / image move වීම Animation ලෙස හඳුන්වයි.</p>
+        <ul class="feature-list">
+            <li>Animation tab → Object select කරන්න</li>
+            <li>Animation type (Entrance, Emphasis, Exit)</li>
+            <li>Animation Pane භාවිතයෙන් order control කරන්න</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-play"></i> 6. Slide Show ක්‍රියාත්මක කිරීම</h2>
+        <ul class="feature-list">
+            <li>Slide Show tab → From Beginning</li>
+            <li>F5 key භාවිතයෙන් presentation start කරන්න</li>
+            <li>Esc → Exit</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-save"></i> 7. Presentation Save & Print</h2>
+        <ul class="feature-list">
+            <li>File → Save / Save As (.pptx ලෙස save වේ)</li>
+            <li>File → Print → Slides / Handouts</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-lightbulb"></i> 8. වැදගත් උපදෙස් (Presentation Tips)</h2>
+        <ul class="feature-list">
+            <li>Slide එකකට අධික text දාන්න එපා</li>
+            <li>Font size පැහැදිලිව පෙනෙන ලෙස තෝරන්න</li>
+            <li>Animations & Transitions අධිකව භාවිතා නොකරන්න</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
+        <h2 style="color:yellow; justify-content: center;"><i class="fab fa-youtube"></i> වැඩිදුර අධ්‍යාපනය සඳහා</h2>
+        <p style="margin-bottom: 20px;">ඉදිරිපත් කිරීම් පිළිබඳ මෙම වීඩියෝ මාලාව නරඹන්න.</p>
+        <a href="https://www.youtube.com/watch?v=uWtMM5ejAyc&list=PLICYOljVT6BnKjI8nZjSy4OZsuXDCPcq4" class="btn-action" target="_blank">
+            වීඩියෝව නරඹන්න <i class="fas fa-play-circle"></i>
+        </a>
+    </div>
+
+    <div class="glass-panel" style="background: rgba(0, 210, 255, 0.05);" data-aos="fade-up">
+        <h2 style="color: #fff;"><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
+        <ol style="margin-left: 20px; color: var(--text-dim);">
+            <li>Slide Layout කියන්නේ මොකක්ද?</li>
+            <li>Transition සහ Animation අතර වෙනස ලියන්න.</li>
+            <li>Presentation start කරන්න භාවිතා කරන key එක කුමක්ද?</li>
+            <li>Theme භාවිතා කිරීමේ ප්‍රයෝජනයක් ලියන්න.</li>
+        </ol>
+    </div>
+
+    <a href="tutorials.html" class="back-to-menu" data-aos="fade-in">
+        <i class="fas fa-arrow-left"></i> නිබන්ධන මෙනුවට ආපසු
+    </a>
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+    </div>
+    <div class="footer-info">
+        <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+        <p>withanagetharushi00@gmail.com | 0762903345</p>
+        <p>Gampaha, Sri Lanka</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <title>OL ICT Resource Portal - 6. විස්තීර්ණ පත්‍ර (MS Excel)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --primary: #00f2fe;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            color: lightgreen;
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        .definition-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .feature-list { list-style: none; }
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .feature-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.02);
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        table, th, td { border: 1px solid var(--border); }
+        th { background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); }
+        th, td { padding: 12px; text-align: center; }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .back-to-menu {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            transition: 0.3s;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .back-to-menu:hover {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
+        .social-icons img { width: 35px; filter: brightness(0.9); }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        @media (max-width: 992px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo" class="main-logo"> 
+            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="NotesPage.html"> Notes</a></li>
+            <li><a href="tutorials.html" class="nav-active">Tutorial</a></li>
+            <li><a href="PastPapers.html"> Papers</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="Blogposts.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+    <section class="hero-section" data-aos="zoom-in">
+        <h1>6. විස්තීර්ණ පත්‍ර (MS Excel)</h1>
+        <p>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී අපි ගණනය කිරීම්, දත්ත සංවිධානය කිරීම, ලකුණු පත්‍ර සෑදීම සහ Charts භාවිතයෙන් දත්ත දෘශ්‍යමය ලෙස පෙන්වීම පිළිබඳව විස්තරාත්මකව ඉගෙන ගනිමු.</p>
+    </section>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-file-excel"></i> හැඳින්වීම</h2>
+        <div class="definition-card">
+             <p><strong>MS Excel</strong> යනු Spreadsheet Software එකකි. ගණනය කිරීම්, දත්ත සංවිධානය කිරීම, ලකුණු පත්‍ර සෑදීම සහ Charts භාවිතයෙන් දත්ත දෘශ්‍යමය ලෙස පෙන්වීමට මෙය භාවිතා කරයි.</p>
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-th"></i> 1. MS Excel හි මූලික කොටස්</h2>
+        <ul class="feature-list">
+            <li><b>Workbook</b> – Excel file එක (Book1.xlsx)</li>
+            <li><b>Worksheet</b> – Workbook එක ඇතුළත ඇති sheet</li>
+            <li><b>Row</b> – 1,2,3 ලෙස පේළි</li>
+            <li><b>Column</b> – A,B,C ලෙස තීරු</li>
+            <li><b>Cell</b> – Row + Column එකතුව (A1, B2)</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-keyboard"></i> 2. දත්ත ඇතුළත් කිරීම (Entering Data)</h2>
+        <ul class="feature-list">
+            <li><b>Text</b> – නම, විෂය</li>
+            <li><b>Number</b> – ලකුණු, මුදල්</li>
+            <li><b>Date</b> – 2025/01/01</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-calculator"></i> 3. Formulas (සූත්‍ර)</h2>
+        <p>Excel හි සෑම Formula එකක්ම <b>=</b> ලකුණෙන් ආරම්භ වේ.</p>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr><th>සූත්‍රය</th><th>භාවිතය</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>=A1+B1</td><td>එකතු කිරීම</td></tr>
+                    <tr><td>=A1-B1</td><td>අඩු කිරීම</td></tr>
+                    <tr><td>=A1*B1</td><td>ගුණ කිරීම</td></tr>
+                    <tr><td>=A1/B1</td><td>බෙදීම</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-function"></i> 4. Functions (කාර්යයන්)</h2>
+        <p>Functions කියන්නේ Excel තුළ තිබෙන සූදානම් සූත්‍ර වේ.</p>
+        <ul class="feature-list">
+            <li><b>SUM</b> – =SUM(A1:A5)</li>
+            <li><b>AVERAGE</b> – =AVERAGE(A1:A5)</li>
+            <li><b>MAX</b> – =MAX(A1:A5)</li>
+            <li><b>MIN</b> – =MIN(A1:A5)</li>
+            <li><b>COUNT</b> – =COUNT(A1:A5)</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-table"></i> 5. Practical Example – Marks Sheet</h2>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr><th>නම</th><th>ගණිතය</th><th>විද්‍යාව</th><th>ඉංග්‍රීසි</th><th>මුළු ලකුණු</th><th>සාමාන්‍යය</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Amal</td><td>65</td><td>70</td><td>75</td><td>=SUM(B2:D2)</td><td>=AVERAGE(B2:D2)</td></tr>
+                    <tr><td>Nimali</td><td>80</td><td>78</td><td>85</td><td>=SUM(B3:D3)</td><td>=AVERAGE(B3:D3)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><b>Fill Handle</b> භාවිතයෙන් formulas පහළට drag කර භාවිතා කළ හැක.</p>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2><i class="fas fa-chart-pie"></i> 6. Charts</h2>
+        <p>Charts භාවිතයෙන් දත්ත දෘශ්‍යමය ලෙස පෙන්වයි.</p>
+        <ul class="feature-list">
+            <li>Column Chart</li>
+            <li>Bar Chart</li>
+            <li>Pie Chart</li>
+            <li>Line Chart</li>
+        </ul>
+        <h3>Chart එකක් සෑදීමේ පියවර</h3>
+        <ol style="margin-left: 20px; color: var(--text-dim);">
+            <li>Data select කරන්න</li>
+            <li>Insert tab → Charts</li>
+            <li>Chart Type එක තෝරන්න</li>
+            <li>Chart Title add කරන්න</li>
+        </ol>
+    </div>
+
+    <div class="glass-panel" style="text-align: center;" data-aos="flip-up">
+        <h2 style="color:yellow; justify-content: center;"><i class="fab fa-youtube"></i> වැඩිදුර අධ්‍යාපනය සඳහා</h2>
+        <p style="margin-bottom: 20px;">විස්තීර්ණ පත්‍ර පිළිබඳ මෙම වීඩියෝව නරඹන්න.</p>
+        <a href="https://www.youtube.com/watch?v=8Jq6tQW8jrI" class="btn-action" target="_blank">
+            වීඩියෝව නරඹන්න <i class="fas fa-play-circle"></i>
+        </a>
+    </div>
+
+    <div class="glass-panel" style="background: rgba(0, 210, 255, 0.05);" data-aos="fade-up">
+        <h2 style="color: #fff;"><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
+        <ol style="margin-left: 20px; color: var(--text-dim);">
+            <li>A1 සිට A10 දක්වා එකතුව සඳහා Formula එක ලියන්න.</li>
+            <li>වැඩිම අගය සොයන Function එක කුමක්ද?</li>
+            <li>Chart එකක් සෑදීමේ පියවර 3ක් ලියන්න.</li>
+            <li>Workbook සහ Worksheet අතර වෙනස ලියන්න.</li>
+        </ol>
+    </div>
+
+    <a href="tutorials.html" class="back-to-menu" data-aos="fade-in">
+        <i class="fas fa-arrow-left"></i> නිබන්ධන මෙනුවට ආපසු
+    </a>
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+    </div>
+    <div class="footer-info">
+        <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+        <p>withanagetharushi00@gmail.com | 0762903345</p>
+        <p>Gampaha, Sri Lanka</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

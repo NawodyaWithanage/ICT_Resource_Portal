@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT Resource Portal | සංඛ්‍ය පද්ධති සහ තාර්කික ද්වාර</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-blue: #00f3ff;
+            --accent-purple: #bc13fe;
+            --bg-dark: #020617;
+            --glass-bg: rgba(15, 23, 42, 0.85);
+            --border-glow: rgba(0, 243, 255, 0.3);
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #f8fafc;
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+       
+        .bg-animation {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+ 
+    background-image: url('https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+   
+    filter: brightness(0.25) contrast(1.1);
+    animation: bgZoom 25s infinite alternate;
+}
+
+        @keyframes bgZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        .blob {
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { top: -10%; left: -10%; }
+            to { top: 60%; left: 70%; }
+        }
+
+          header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px; height: 60px;
+            border-radius: 12px; object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px; font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover { color: var(--accent-blue); background: rgba(255, 255, 255, 0.05); }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+       
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 { color: var(--accent-blue); margin-bottom: 25px; display: flex; align-items: center; gap: 15px; font-size: 1.8rem; }
+        h3 { color: var(--accent-purple); margin: 25px 0 15px 0; }
+
+        .post-meta { text-align: center; color: var(--accent-purple); font-weight: bold; margin-bottom: 30px; letter-spacing: 1px; }
+
+        .featured-image { width: 100%; border-radius: 20px; margin: 20px 0; border: 1px solid var(--border-glow); }
+
+       
+        .tech-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: rgba(0,0,0,0.2); border-radius: 15px; overflow: hidden; }
+        .tech-table th { background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); padding: 15px; color: #000; text-align: center; font-weight: 700; }
+        .tech-table td { padding: 15px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); }
+
+       
+        .motivation-card {
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.1), rgba(0, 243, 255, 0.1));
+            border: 2px dashed var(--accent-blue);
+            border-radius: 30px; padding: 50px; text-align: center; margin: 60px 0;
+        }
+        blockquote { font-size: 1.6rem; color: #fff; font-style: italic; margin: 25px 0; }
+
+        
+        .comment-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid var(--accent-purple); }
+        .comment-author { color: var(--accent-blue); font-weight: 800; margin-bottom: 5px; }
+        
+        .comment-form input, .comment-form textarea {
+            width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid #333; margin-bottom: 15px; outline: none;
+        }
+        .btn-submit {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000; padding: 14px 35px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn-submit:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-blue); }
+
+       
+        #scrollTopBtn {
+            position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); width: 50px; height: 50px;
+            border-radius: 12px; border: none; cursor: pointer; display: none; box-shadow: 0 0 20px var(--accent-blue); z-index: 100;
+        }
+
+        footer { background: #010409; padding: 60px 20px; text-align: center; border-top: 1px solid var(--border-glow); }
+        .social-icons a { margin: 0 15px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3); }
+        .social-icons img { width: 35px; }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .container { margin-top: 30px; }
+            .glass-panel { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+    <div class="blob"></div>
+
+    <header>
+        <nav>
+            <a href="OLICTResoursePortal.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html" >Tutorials</a></li>
+                <li><a href="PastPapers.html">Papers</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="blogposts.html" class="nav-active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <section data-aos="fade-down">
+            <h1>සංඛ්‍යා පද්ධති සහ තාර්කික ද්වාර <br> (Number Systems & Logic Gates)</h1>
+            <div class="post-meta">
+                <span><i class="fas fa-user"></i> Nawodya Withanage</span> | 
+                <span><i class="fas fa-calendar"></i> December 17, 2025</span> | 
+                nbsp <span><i class="fas fa-clock"></i> 12 මිනිත්තු</span>
+            </div>
+            <img src="https://cdn.sparkfun.com/assets/d/4/f/8/f/51e5c089ce395f6916000000.png" class="featured-image" alt="Header Image">
+        </section>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <p>O/L ICT විෂයේ ඉතාම වැදගත් කොටසක් තමයි <strong>සංඛ්‍යා පද්ධති (Number Systems)</strong> සහ <strong>තාර්කික ද්වාර (Logic Gates)</strong> ගැන ඉගෙන ගන්න එක. පරිගණකය තුල සියලුම දත්ත binary (0 සහ 1) විදිහට store වෙනවා. මේ ලිපියෙන් සරලව බලමු conversions, Boolean algebra සහ truth tables ගැන.</p>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-right">
+            <h2><i class="fas fa-list-ol"></i> සංඛ්‍යා පද්ධති (Number Systems)</h2>
+            <p>පරිගණකයේ භාවිතා වෙන ප්‍රධාන සංඛ්‍යා පද්ධති තුනක් තියෙනවා:</p>
+            <ul style="margin: 20px 0 20px 40px; color: var(--text-dim);">
+                <li><strong>Decimal (Base 10)</strong> - අපි දෛනිකව භාවිතා කරන (0-9)</li>
+                <li><strong>Binary (Base 2)</strong> - පරිගණකයේ මූලික (0-1)</li>
+                <li><strong>Hexadecimal (Base 16)</strong> - Binary simplify කරන්න භාවිතා වෙනවා (0-9, A-F)</li>
+            </ul>
+            <img src="https://mathmonks.com/wp-content/uploads/2024/02/Number-System-Chart.jpg" class="featured-image" alt="Chart">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-left">
+            <h2><i class="fas fa-exchange-alt"></i> Conversions (පරිවර්තන)</h2>
+            <p><strong>Decimal to Binary:</strong> සංඛ්‍යාව 2න් බෙදලා remainders backward ලියන්න.</p>
+            <p><strong>Binary to Decimal:</strong> Powers of 2 එක්ක multiply කරන්න.</p>
+            <p><strong>Binary to Hex:</strong> 4 bits බැගින් group කරලා hex digits ලියන්න.</p>
+            <img src="https://www.onlinewebtoolkit.com/images/pages/hexadecimal-number-conversion.png" class="featured-image">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h2><i class="fas fa-microchip"></i> තාර්කික ද්වාර (Logic Gates)</h2>
+            <p>තාර්කික ද්වාර යනු digital circuits වල මූලික blocks. Inputs (0/1) භාරගෙන output එකක් දෙනවා Boolean rules අනුව.</p>
+            <img src="https://www.hackatronic.com/wp-content/uploads/2025/02/Types-of-Logic-Gates-with-Truth-Table-scaled.webp" class="featured-image">
+
+            <h3>AND Gate</h3>
+            <table class="tech-table">
+                <tr><th>A</th><th>B</th><th>Output (A·B)</th></tr>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td></tr>
+            </table>
+
+            <h3>OR Gate</h3>
+            <table class="tech-table">
+                <tr><th>A</th><th>B</th><th>Output (A+B)</th></tr>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td></tr>
+            </table>
+        </div>
+
+        <div class="motivation-card" data-aos="zoom-in">
+            <h2><i class="fas fa-rocket"></i> Motivation</h2>
+            <blockquote>“තාක්ෂණය ලෝකය වෙනස් කරනවා – ඒක ඉගෙන ගන්න ඔයාටත් පුළුවන්!”<br><small style="color: var(--accent-blue)">– Bill Gates</small></blockquote>
+            <img src="https://blog.invgate.com/hubfs/IT-quotes.jpg" class="featured-image" style="max-width: 500px; margin: 0 auto 20px auto; display: block;">
+            <p><strong>ඔයාගේ O/L exam එකට Good Luck! මේ topics හොඳින් practice කරන්න – A pass එක ඔයාට ලැබෙයි!</strong></p>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h3><i class="fas fa-comments"></i> අදහස් (<span id="commentCount">0</span>)</h3>
+            <br>
+            <div id="commentsList">
+                </div>
+
+            <div class="comment-form" style="margin-top: 30px;">
+                <h4>ඔබේ අදහස එකතු කරන්න</h4>
+                <br>
+                <input type="text" id="commentName" placeholder="ඔබේ නම" required>
+                <textarea id="commentText" rows="3" placeholder="ඔබේ අදහස" required></textarea>
+                <button class="btn-submit" id="submitComment">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="insta.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+        <div style="color: var(--text-dim); font-size: 13px; margin-top: 25px;">
+            <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+            <p>withanagetharushi00@gmail.com | 0762903345</p>
+            <p>Gampaha, Sri Lanka</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+       
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        window.onscroll = () => {
+            if (window.scrollY > 400) scrollBtn.style.display = 'block';
+            else scrollBtn.style.display = 'none';
+        };
+        scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        
+        const nameInput = document.getElementById('commentName');
+        const textInput = document.getElementById('commentText');
+        const submitBtn = document.getElementById('submitComment');
+        const commentsList = document.getElementById('commentsList');
+        const countDisplay = document.getElementById('commentCount');
+
+        let comments = JSON.parse(localStorage.getItem('ict_logic_comments')) || [
+            { name: "අශින්ත", text: "Truth tables පැහැදිලියි. Thanks!" },
+            { name: "හිරැනි", text: "Diagrams super! Exam එකට help වෙයි." }
+        ];
+
+        function render() {
+            commentsList.innerHTML = '';
+            comments.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'comment-box';
+                div.innerHTML = `<div class="comment-author">${c.name}</div><p>${c.text}</p>`;
+                commentsList.appendChild(div);
+            });
+            countDisplay.innerText = comments.length;
+        }
+
+        submitBtn.onclick = () => {
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            if(name && text) {
+                comments.push({ name, text });
+                localStorage.setItem('ict_logic_comments', JSON.stringify(comments));
+                nameInput.value = ''; textInput.value = '';
+                render();
+            } else { alert("කරුණාකර නම සහ අදහස ඇතුළත් කරන්න."); }
+        };
+
+        render();
+    </script>
+</body>
+</html>

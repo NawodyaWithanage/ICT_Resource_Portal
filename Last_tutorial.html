@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <title>OL ICT Resource Portal - 13. සමාජයේ ICT සහ සදාචාරය</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --primary: #00f2fe;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                            url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            flex-wrap: nowrap; 
+        }
+
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            text-decoration: none; 
+            flex-shrink: 0; 
+        }
+        
+        .main-logo {
+            width: 60px; 
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; 
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+ nav ul { list-style: none; display: flex; gap: 5px; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        main {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: lightgreen;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .definition-box {
+            background: rgba(0, 210, 255, 0.1);
+            border-left: 5px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        ul, ol { margin-left: 25px; margin-bottom: 20px; color: var(--text-dim); }
+        li { margin-bottom: 10px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        th { background: rgba(0, 210, 255, 0.2); color: var(--accent-blue); }
+
+        .exercise {
+            background: rgba(157, 80, 187, 0.05);
+            border-left: 5px solid var(--accent-purple);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .back-to-menu {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            transition: 0.3s;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .back-to-menu:hover {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.3) rotate(15deg); }
+        .social-icons img { width: 35px; }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        @media (max-width: 1200px) {
+            .logo-text { font-size: 20px; }
+            nav ul li a { padding: 10px 12px; font-size: 14px; }
+        }
+
+        @media (max-width: 992px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo" class="main-logo"> 
+            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="NotesPage.html"> Notes</a></li>
+            <li><a href="tutorials.html" class="nav-active">Tutorial</a></li>
+            <li><a href="PastPapers.html"> Papers</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="Blogposts.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-section" data-aos="zoom-in">
+        <h1>13. සමාජයේ ICT සහ සදාචාරය</h1>
+        <p>සාදරයෙන් පිළිගනිමු මෙම නිබන්ධනයට! <br> මෙහිදී තොරතුරු හා සන්නිවේදන තාක්ෂණය (ICT) සමාජයට බලපාන ආකාරය, එහි සදාචාරාත්මක අංශ සහ ආරක්ෂණ ක්‍රමවේද පිළිබඳව ඉගෙන ගනිමු.</p>
+    </section>
+
+    <div class="glass-panel" data-aos="fade-up">
+ <h2><i class="fas fa-sync-alt"></i> හැඳින්වීම</h2>
+        <div class="definition-box">
+            <strong>තොරතුරු හා සන්නිවේදන තාක්ෂණය (ICT)</strong> යනු තොරතුරු රැස් කිරීම, ගබඩා කිරීම, සැකසීම, සම්ප්‍රේෂණය කිරීම සහ හුවමාරු කිරීම සඳහා භාවිතා කරන තාක්ෂණික මෙවලම් හා සම්පත් සමූහයයි.
+        </div>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2>1. ICT හි සමාජීය බලපෑම</h2>
+        <h3>1.1. ICT හි වාසි (Advantages)</h3>
+        <ul>
+            <li><b>අධ්‍යාපනය:</b> දුරස්ථ අධ්‍යාපනය (Online Learning), ඊ-පුස්තකාල සහ අධ්‍යයන ද්‍රව්‍ය පහසුවෙන් ලබා ගැනීම.</li>
+            <li><b>ව්‍යාපාර:</b> ඊ-වාණිජ්‍යය (e-Commerce), ගෝලීය වෙළෙඳපොළට ප්‍රවේශය සහ කාර්යක්ෂමතාව වැඩි දියුණු කිරීම.</li>
+            <li><b>සන්නිවේදනය:</b> විද්‍යුත් තැපෑල, වීඩියෝ ඇමතුම් සහ සමාජ මාධ්‍ය හරහා ක්ෂණික සන්නිවේදනය.</li>
+            <li><b>රජය:</b> ඊ-රාජ්‍ය සේවා (e-Government) තුළින් පුරවැසියන්ට පහසුවෙන් සේවා ලබා දීම.</li>
+        </ul>
+
+        <h3>1.2. ICT හි අවදානම් සහ අභියෝග (Risks and Challenges)</h3>
+        <ul>
+            <li><b>ඩිජිටල් බෙදීම (Digital Divide):</b> තාක්ෂණයට ප්‍රවේශය ඇති අය සහ නැති අය අතර පරතරය වැඩි වීම.</li>
+            <li><b>රැකියා අහිමි වීම:</b> ස්වයංක්‍රීයකරණය (Automation) නිසා ඇතැම් සාම්ප්‍රදායික රැකියා අහිමි වීම.</li>
+            <li><b>පෞද්ගලිකත්ව උල්ලංඝනය:</b> අන්තර්ජාලය තුළ පුද්ගලික දත්ත අනාරක්ෂිත වීම.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2>2. සදාචාරාත්මක ගැටළු (Ethical Issues)</h2>
+        <h3>2.1. බුද්ධිමය දේපල අයිතිවාසිකම් (Intellectual Property Rights)</h3>
+        <ul>
+            <li><b>කොල්ලකෑම (Piracy):</b> මෘදුකාංග හෝ සංගීතය අවසරයකින් තොරව පිටපත් කිරීම හෝ බෙදා හැරීම.</li>
+            <li><b>ප්‍රකාශන අයිතිය (Copyright):</b> නිර්මාණයක මුල් හිමිකරුගේ අයිතිවාසිකම්වලට ගරු කිරීම.</li>
+        </ul>
+        <h3>2.2. ප්ලැජියරිස්වාදය (Plagiarism)</h3>
+        <p>අන් අයගේ නිර්මාණ හෝ අදහස්, ඒවායේ මූලාශ්‍රය සඳහන් නොකර තමාගේ ඒවා ලෙස ඉදිරිපත් කිරීම.</p>
+    </div>
+
+    <div class="glass-panel" data-aos="fade-up">
+        <h2>3. සයිබර් ආරක්ෂාව සහ අවදානම් (Cyber Security and Risks)</h2>
+        <h3>3.1. ප්‍රධාන ආරක්ෂක අවදානම් (Threats)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>අවදානම් වර්ගය</th>
+                    <th>විස්තරය</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>වයිරස (Virus) / මෘදුකාංග දූෂක (Malware)</b></td>
+                    <td>පරිගණකයකට හානි කරන, දත්ත විනාශ කරන හෝ සොරකම් කරන අනිෂ්ට මෘදුකාංග.</td>
+                </tr>
+                <tr>
+                    <td><b>ෆිෂින් (Phishing)</b></td>
+                    <td>වංචනික විද්‍යුත් තැපෑලක් හෝ වෙබ් අඩවියක් හරහා පුද්ගලික තොරතුරු (මුරපද, කාඩ්පත් තොරතුරු) ලබා ගැනීමට උත්සාහ කිරීම.</td>
+                </tr>
+                <tr>
+                    <td><b>අනතුරුදායක ප්‍රවේශය (Unauthorized Access)</b></td>
+                    <td>අනවසර පුද්ගලයන් විසින් පරිගණක පද්ධති හෝ ජාලවලට ඇතුළු වීම (Hacking).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.2. ආරක්ෂක ක්‍රමවේද (Security Measures)</h3>
+        <ul>
+            <li><b>ශක්තිමත් මුරපද (Strong Passwords):</b> දිගු, සංකීර්ණ සහ අකුරු, සංඛ්‍යා, සහ සලකුණු මිශ්‍ර මුරපද භාවිතා කිරීම.</li>
+            <li><b>ෆයර්වෝල් (Firewall):</b> පරිගණක ජාලයකට අනවසර ප්‍රවේශයන් වළක්වන ආරක්ෂක පද්ධතියකි.</li>
+            <li><b>ප්‍රති-වයිරස මෘදුකාංග (Anti-virus Software):</b> අනිෂ්ට මෘදුකාංග හඳුනාගෙන ඉවත් කිරීම.</li>
+            <li><b>දත්ත සංකේතනය (Data Encryption):</b> දත්ත රහස්‍යව තබා ගැනීමට සංකේතනය කිරීම.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel " data-aos="fade-up">
+        <h2><i class="fas fa-edit"></i> පුහුණු ප්‍රශ්න</h2>
+        <ol>
+            <li>ICT නිසා අධ්‍යාපනයට ලැබෙන ධනාත්මක බලපෑම් දෙකක් සඳහන් කරන්න.</li>
+            <li>"ඩිජිටල් බෙදීම" (Digital Divide) යනු කුමක්ද?</li>
+            <li>ප්ලැජියරිස්වාදය (Plagiarism) යන්න අර්ථ දක්වන්න.</li>
+            <li>සයිබර් ආරක්ෂාවේදී ෆයර්වෝලයක (Firewall) කාර්යභාරය කුමක්ද?</li>
+            <li>ශක්තිමත් මුරපදයක් (Strong Password) යන්නෙහි ලක්ෂණ දෙකක් ලියන්න.</li>
+        </ol>
+    </div>
+
+    <a href="tutorials.html" class="back-to-menu" data-aos="fade-in">
+        <i class="fas fa-arrow-left"></i> නිබන්ධන මෙනුවට ආපසු
+    </a>
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+    </div>
+    <div class="footer-info">
+        <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+        <p>withanagetharushi00@gmail.com | 0762903345</p>
+        <p>Gampaha, Sri Lanka</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT: Internet, Email සහ Web Browsers</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-blue: #00f3ff;
+            --accent-purple: #bc13fe;
+            --bg-dark: #020617;
+            --glass-bg: rgba(15, 23, 42, 0.8);
+            --border-glow: rgba(0, 243, 255, 0.3);
+            --text-dim: #94a3b8;
+        }
+
+        body.light-mode {
+            --bg-dark: #f8f9fa;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-dim: #475569;
+            --border-glow: rgba(0, 123, 255, 0.2);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #f8fafc;
+            line-height: 1.8;
+            overflow-x: hidden;
+            transition: 0.3s;
+        }
+
+        body.light-mode { color: #1e293b; }
+
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop') no-repeat center center/cover;
+            z-index: -2; filter: brightness(0.3);
+            animation: bgZoom 20s infinite alternate;
+        }
+
+        @keyframes bgZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+        .blob {
+            position: fixed; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, transparent 70%);
+            z-index: -1; filter: blur(80px);
+            animation: move 15s infinite alternate;
+        }
+
+        @keyframes move { from { top: -10%; left: -10%; } to { top: 60%; left: 70%; } }
+
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        
+        .main-logo {
+            width: 60px; height: 60px;
+            border-radius: 12px; object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 5px; align-items: center; }
+        
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px; font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover { color: var(--accent-blue); background: rgba(255, 255, 255, 0.05); }
+
+        .nav-active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        #themeToggle {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        #themeToggle:hover { background: var(--accent-blue); color: #000; }
+
+        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+
+        .glass-panel {
+            background: var(--glass-bg); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px; padding: 40px; margin-bottom: 40px;
+            position: relative; transition: 0.4s;
+        }
+
+        .glass-panel:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
+
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; text-align: center; margin-bottom: 10px; color: #fff; }
+        body.light-mode h1 { color: #1e293b; }
+        
+        .post-meta { text-align: center; color: var(--accent-purple); font-weight: bold; margin-bottom: 30px; font-size: 14px; }
+        h2 { color: var(--accent-blue); margin: 30px 0 20px; font-size: 1.6rem; border-left: 4px solid var(--accent-blue); padding-left: 15px; }
+
+        .featured-image { width: 100%; border-radius: 20px; margin-bottom: 25px; border: 1px solid var(--border-glow); }
+
+        .motivation-card {
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.1), rgba(0, 243, 255, 0.1));
+            border-radius: 30px; padding: 40px; text-align: center; border: 1px solid rgba(255,255,255,0.1); margin: 50px 0;
+        }
+
+        blockquote { font-size: 1.3rem; color: var(--accent-blue); font-style: italic; margin: 20px 0; }
+
+        .comment { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--accent-blue); }
+        .comment-author { font-weight: bold; color: var(--accent-blue); margin-bottom: 5px; }
+        
+        .comment-form input, .comment-form textarea {
+            width: 100%; padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid #333; margin-bottom: 10px;
+        }
+        body.light-mode .comment-form input, body.light-mode .comment-form textarea { background: #fff; color: #000; border: 1px solid #ccc; }
+        
+        .btn-submit {
+            background: var(--accent-blue); color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn-submit:hover { opacity: 0.8; transform: scale(1.05); }
+
+        #scrollTopBtn {
+            position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); width: 50px; height: 50px;
+            border-radius: 12px; border: none; cursor: pointer; display: none; z-index: 1000; box-shadow: 0 0 20px var(--accent-blue);
+        }
+
+        footer { background: #020408; padding: 60px 20px; text-align: center; border-top: 1px solid var(--border-glow); }
+        .social-icons a { display: inline-block; margin: 0 10px; }
+        .social-icons img { width: 30px; transition: 0.3s; }
+        .social-icons img:hover { transform: scale(1.3); }
+
+        @media (max-width: 900px) { 
+            nav ul { display: none; } 
+            .logo-text { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+    <div class="blob"></div>
+
+    <header>
+        <nav>
+            <a href="OLICTResoursePortal.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="PastPapers.html">Papers</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="blogposts.html" class="nav-active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section data-aos="fade-down">
+            <h1>Internet, Email සහ Web Browsers</h1>
+            <div class="post-meta">
+                <span><i class="fas fa-user"></i> Nawodya Withanage</span> | 
+                <span><i class="fas fa-calendar"></i> December 17, 2025</span> | 
+                <span><i class="fas fa-clock"></i> 12 මිනිත්තු</span>
+            </div>
+        </section>
+
+        
+
+        <div class="glass-panel" data-aos="fade-up">
+            <p>O/L ICT විෂයේ ඉතාම වැදගත් කොටසක් තමයි <strong>Internet</strong>, <strong>Email</strong> සහ <strong>Web Browsers</strong> ගැන ඉගෙන ගන්න එක. Practical එකේ email send කරන්න, browsing කරන්න එනවා. Theory එකේත් MCQ ගොඩක් එනවා.</p>
+
+            <h2>Internet යනු කුමක්ද?</h2>
+            <p>Internet යනු computers ගොඩක් interconnect වෙලා තියෙන global network එකක්. WWW (World Wide Web), Email, File Sharing වගේ services ලබාදෙනවා.</p>
+            
+            <img src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2023/02/20174835/How-Internet-Works.png" alt="How Internet Works" class="featured-image">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h2><i class="fas fa-globe"></i> Web Browsers</h2>
+            <p>Web pages view කරන්න භාවිතා වෙන software. Popular browsers: Google Chrome, Firefox, Edge, Safari.</p>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li>URL type කරලා websites open කරන්න</li>
+                <li>Bookmarks, History, Tabs use කරන්න</li>
+                <li>Incognito mode privacy සඳහා</li>
+            </ul>
+            <img src="https://www.engineersgarage.com/wp-content/uploads/2019/07/Block-Diagram-Showing-Web-Browser-Architecture.gif" alt="Web Browser Architecture" class="featured-image">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h2><i class="fas fa-envelope"></i> Email භාවිතය</h2>
+            <p>Email යනු electronic mail. Gmail, Yahoo, Outlook වගේ services භාවිතා කරනවා.</p>
+            <ol style="margin-left: 20px;">
+                <li>Compose > To: email address type කරන්න</li>
+                <li>Subject සහ message ලියන්න</li>
+                <li>Attachments add කරන්න (files, images)</li>
+                <li>Send click කරන්න</li>
+                <li>CC / BCC use කරලා copy send කරන්න</li>
+            </ol>
+            <img src="https://media.gcflearnfree.org/content/55e073917dd48174331f5195_01_17_2014/sending_compose_button.jpg" alt="Gmail Sending Email" class="featured-image" style="margin-top: 20px;">
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h2><i class="fas fa-shield-alt"></i> Internet Safety Tips</h2>
+            <ul style="margin-left: 20px;">
+                <li>Strong passwords use කරන්න</li>
+                <li>Phishing emails වලට click නොකරන්න</li>
+                <li>HTTPS websites විතරක් use කරන්න</li>
+                <li>Antivirus install කරලා තියෙන්න</li>
+            </ul>
+        </div>
+
+        <div class="motivation-card" data-aos="zoom-in">
+            <h2><i class="fas fa-rocket"></i> Motivations</h2>
+            <blockquote style="color: var(--accent-blue);">“Internet එක safe විදිහට use කරන්න – knowledge ගන්න ලෝකය ඔයා ලඟ!”</blockquote>
+            <blockquote style="color: var(--accent-blue);">“කවදාවත් ඉගෙන ගන්න නවත්තන්න එපා. දැනුම කවදාවත් නාස්ති වෙන්නේ නෑ.”</blockquote>
+            <p>ඔයාගේ O/L exam එකට Good Luck! Email send කරලා practice කරන්න!</p>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <h3><i class="fas fa-comments"></i> අදහස් (<span id="commentCount">0</span>)</h3>
+            <div id="commentsList" style="margin-top: 20px;"></div>
+
+            <div class="comment-form" style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <h4>ඔබේ අදහස එකතු කරන්න</h4>
+                <input type="text" id="commentName" placeholder="ඔබේ නම" required>
+                <textarea id="commentText" rows="4" placeholder="ඔබේ අදහස" required></textarea>
+                <button class="btn-submit" id="submitComment">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="FB"></a>
+            <a href="#"><img src="insta.png" alt="IG"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YT"></a>
+        </div>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 20px;">
+            <b>&copy; 2025 O/L ICT Resource Portal</b><br>
+            withanagetharushi00@gmail.com | 0762903345<br>
+            Gampaha, Sri Lanka
+        </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+       
+        AOS.init({ duration: 1000, once: true });
+
+        
+        const themeBtn = document.getElementById('themeToggle');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            themeBtn.innerText = isLight ? 'Dark Mode' : 'Light Mode';
+        });
+
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+       
+        const nameField = document.getElementById('commentName');
+        const textField = document.getElementById('commentText');
+        const submitBtn = document.getElementById('submitComment');
+        const listContainer = document.getElementById('commentsList');
+        const countSpan = document.getElementById('commentCount');
+
+        
+        let savedComments = JSON.parse(localStorage.getItem('ict_blog_comments')) || [
+            { name: "සමුද්‍ර", text: "Safety tips හොඳයි. Thanks!" },
+            { name: "නදීෂා", text: "Email steps පැහැදිලියි. Practical එකට help වෙයි." }
+        ];
+
+        function displayComments() {
+            listContainer.innerHTML = '';
+            savedComments.forEach(item => {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerHTML = `<div class="comment-author">${item.name}</div><p>${item.text}</p>`;
+                listContainer.appendChild(commentDiv);
+            });
+            countSpan.innerText = savedComments.length;
+        }
+
+        submitBtn.addEventListener('click', () => {
+            const user = nameField.value.trim();
+            const msg = textField.value.trim();
+
+            if (user && msg) {
+                savedComments.push({ name: user, text: msg });
+                localStorage.setItem('ict_blog_comments', JSON.stringify(savedComments));
+                nameField.value = '';
+                textField.value = '';
+                displayComments();
+            } else {
+                alert("කරුණාකර නම සහ අදහස ඇතුළත් කරන්න.");
+            }
+        });
+
+        
+        displayComments();
+    </script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O/L ICT Resource Portal | Interactive Blog</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Iskoola+Pota&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-overlay: rgba(6, 9, 15, 0.9); 
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(20, 30, 48, 0.95); 
+            --text-white: #ffffff;
+            --text-dim: #cbd5e1;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box;  font-family: 'Poppins', sans-serif; }
+
+        body {
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+        }
+
+        
+        header {
+            background: rgba(6, 9, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .main-logo {
+            width: 60px;  
+            height: 60px; 
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px; 
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 12px;
+        }
+
+        nav ul li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-blog {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+      
+        @media (max-width: 1100px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo-text { font-size: 18px; }
+            .main-logo { width: 45px; height: 45px; }
+            nav ul li a { padding: 8px 15px; font-size: 13px; }
+            header { padding: 15px 0; }
+        }
+
+
+        
+        .search-container {
+            background: var(--glass);
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 2px solid var(--accent-blue);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-size: 16px;
+        }
+
+       
+        .container { max-width: 1250px; margin: 40px auto; padding: 0 20px; }
+        .blog-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 40px; }
+
+       
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s;
+        }
+
+        .card:hover { 
+            transform: translateY(-10px) scale(1.01); 
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2);
+        }
+
+        .card-img-container { position: relative; overflow: hidden; height: 300px; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .card-img { transform: scale(1.1); }
+
+        .read-time {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: var(--accent-blue);
+        }
+
+        .card-body { padding: 30px; }
+        .card-meta { color: #8892b0; font-size: 0.85rem; margin-bottom: 10px; display: flex; gap: 15px; }
+
+        
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-widget h3 {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .tag:hover { background: var(--accent-blue); color: #000; }
+#backToTop {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 50px; height: 50px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000; border: none; border-radius: 50%;
+            font-size: 20px; cursor: pointer; display: none; z-index: 2000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+
+       
+        footer {
+            background: #020408;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
+        
+    
+        .social-icons a:hover { 
+            transform: scale(1.3) rotate(15deg); 
+        }
+        
+        .social-icons img { 
+            width: 35px; 
+            filter: brightness(0.9); 
+            transition: 0.3s;
+        }
+
+        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+        .btn-read {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-read:hover { box-shadow: 0 0 20px var(--accent-blue); transform: scale(1.05); }
+
+        @media (max-width: 968px) {
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+ <button id="backToTop" onclick="scrollToTop()">↑</button>
+   <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo" class="main-logo"> 
+                <div class="logo-text">O/L ICT Resource Portal</div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="NotesPage.html">Notes</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="PastPapers.html" >Papers</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="blogposts.html" class="nav-blog">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="search-container" data-aos="fade-down">
+        <div class="search-box">
+            <input type="text" placeholder="පාඩම් හෝ මාතෘකා සොයන්න (Search lessons...)" id="blogSearch">
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="blog-grid">
+            
+            <section class="feed">
+                <article class="card" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" class="card-img">
+                        <span class="read-time">⏱ 5 min read</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>📅 Jan 2025</span>
+                            <span>👤 By Nawodya</span>
+                        </div>
+                        <h2>පරිගණකය කෙතැනත් කලාවක්? – ICT මූලික දැනුම</h2>
+                        <p>Hardware, Software සහ පද්ධති ඒකකය (System Unit) ඇතුළත සිදුවන ක්‍රියාවලිය ඉතා සරළ සිංහලෙන් ඉගෙන ගන්න.</p>
+                        <a href="blogpartsofcomputer.html" class="btn-read">Continue Reading</a>
+                    </div>
+                </article>
+
+                <article class="card" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80" class="card-img">
+                        <span class="read-time">⏱ 8 min read</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>📅 Dec 17, 2025</span>
+                            <span>👤 By Nawodya</span>
+                        </div>
+                        <h2>සංඛ්‍යා පද්ධති සහ තාර්කික ද්වාර</h2>
+                        <p>Binary, Octal සහ Hexadecimal අතර පරිවර්තන (Conversions) පහසුවෙන් මතක තබා ගන්නා ආකාරය.</p>
+                        <a href="blog2.html" class="btn-read">Continue Reading</a>
+                    </div>
+                </article>
+
+
+<article class="card" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="blog3.jpg" class="card-img">
+                        <span class="read-time">⏱ 7 min read</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>📅 Dec 18, 2025</span>
+                            <span>👤 By Nawodya</span>
+                        </div>
+                        <h2>මූලික Programming Concepts සහ Flowcharts</h2>
+                        <p>About <strong>Algorithm</strong>, <strong>Pseudocode</strong>, <strong>Flowcharts</strong>, <strong>Variables</strong>, <strong>Conditions</strong>, <strong>Loops</strong>....</p>
+                        <a href="blog3.html" class="btn-read">Continue Reading</a>
+                    </div>
+                </article>
+
+
+<article class="card" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="blog4.jpg" class="card-img">
+                        <span class="read-time">⏱ 15 min read</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>📅 Dec 19, 2025</span>
+                            <span>👤 By Nawodya</span>
+                        </div>
+                        <h2>දත්ත සමුදායන් සහ Microsoft Access</h2>
+                        <p>About Tables, Queries, Forms, Reports....</p>
+                        <a href="blog4.html" class="btn-read">Continue Reading</a>
+                    </div>
+                </article>
+
+<article class="card" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="blog5.jpg" class="card-img">
+                        <span class="read-time">⏱ 15 min read</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>📅 Dec 20, 2025</span>
+                            <span>👤 By Nawodya</span>
+                        </div>
+                         <h2>Microsoft Word, Excel සහ PowerPoint ප්‍රායෝගික භාවිතය</h2>
+                         <p> Word (mail merge), Excel (formulas, charts), PowerPoint (animations) etc...</p>
+                        <a href="blog5.html" class="btn-read">Continue Reading</a>
+                    </div>
+                </article>
+
+<article class="card" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="blog6.jpg" class="card-img">
+                        <span class="read-time">⏱ 10 min read</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>📅 Dec 21, 2025</span>
+                            <span>👤 By Nawodya</span>
+                        </div>
+                          <h2>Internet, Email සහ Web Browsers</h2>
+                         
+                        <p> About Internet, Emailand Web Browsers,Internet Safety Tips) etc...</p>
+                        <a href="blog6.html" class="btn-read">Continue Reading</a>
+                    </div>
+                </article>
+            </section>
+
+            <aside class="sidebar">
+                <div class="sidebar-widget" data-aos="fade-left">
+                    <h3>🔥 Trending Now</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 15px;">
+                            <a href="#" style="color: var(--text-dim); text-decoration: none; font-size: 14px;">1. HTML මූලික ටැග්ස් (Tags)</a>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <a href="#" style="color: var(--text-dim); text-decoration: none; font-size: 14px;">2. Flowcharts අඳින නිවැරදි ක්‍රමය</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="100">
+                    <h3>🏷 Popular Tags</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">#Programming</a>
+                        <a href="#" class="tag">#LogicGates</a>
+                        <a href="#" class="tag">#Hardware</a>
+                        <a href="#" class="tag">#Python</a>
+                        <a href="#" class="tag">#WebDesign</a>
+                        <a href="#" class="tag">#Office</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="200">
+                    <h3>✉️ Weekly Updates</h3>
+                    <p style="font-size: 13px; color: var(--text-dim);">අලුත්ම Short Notes සතියකට වරක් ඔබේ Inbox එකටම ගෙන්වා ගන්න.</p>
+                    <input type="email" placeholder="Your Email" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-blue); background: transparent; color: white; margin-top: 15px;">
+                    <button class="btn-read" style="width: 100%; border: none; cursor: pointer;">Join Now</button>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61583593973036"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="insta.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+        
+        <div class="footer-info">
+            <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
+            <p>withanagetharushi00@gmail.com | 0762903345</p>
+            <p>Gampaha, Sri Lanka</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+       
+        AOS.init({ duration: 1000, once: true });
+
+       
+        const searchInput = document.getElementById('blogSearch');
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h2').innerText.toLowerCase();
+                const description = card.querySelector('p').innerText.toLowerCase();
+                
+                if (title.includes(filter) || description.includes(filter)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+
+      
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                document.getElementById("backToTop").style.display = "block";
+            } else {
+                document.getElementById("backToTop").style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
