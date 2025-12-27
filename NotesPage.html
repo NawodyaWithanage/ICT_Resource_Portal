@@ -19,7 +19,8 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box;  font-family: 'Poppins', sans-serif; }
-body {
+        
+        body {
             background: linear-gradient(rgba(6, 9, 15, 0.85), rgba(6, 9, 15, 0.85)), 
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -28,14 +29,14 @@ body {
             background-repeat: no-repeat;
             color: var(--text-white);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        
         header {
             background: rgba(6, 9, 15, 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -58,35 +59,35 @@ body {
         }
 
         .main-logo {
-            width: 60px;  
-            height: 60px; 
+            width: 50px;  
+            height: 50px; 
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         .logo-text {
-            font-size: 26px; 
+            font-size: 22px; 
             font-weight: 800;
             background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 12px;
+            gap: 8px;
         }
 
         nav ul li a {
             color: var(--text-dim);
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             transition: 0.3s ease;
             white-space: nowrap;
@@ -104,126 +105,124 @@ body {
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
-      
+        /* Responsive Header Navigation */
         @media (max-width: 1100px) {
             nav {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px;
+                gap: 5px;
             }
+            .logo-text { font-size: 18px; }
         }
 
         @media (max-width: 600px) {
-            .logo-text { font-size: 18px; }
-            .main-logo { width: 45px; height: 45px; }
-            nav ul li a { padding: 8px 15px; font-size: 13px; }
-            header { padding: 15px 0; }
+            .logo-text { font-size: 16px; }
+            .main-logo { width: 40px; height: 40px; }
+            nav ul li a { padding: 6px 12px; font-size: 12px; }
         }
 
+        .hero { text-align: center; padding: 60px 20px 40px; }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 10px; }
 
-      
-        .hero { text-align: center; padding: 90px 20px 50px; }
-        .hero h1 { font-size: 3.2rem; margin-bottom: 15px; text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-
-      
         .notes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             max-width: 1350px;
-            margin: 0 auto 80px;
-            padding: 0 25px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
         }
 
         .note-card {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 30px;
+            padding: 30px;
+            border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.4s ease;
             cursor: pointer;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .note-card:hover { transform: translateY(-10px); border-color: var(--accent-blue); box-shadow: 0 15px 35px rgba(0, 210, 255, 0.2); }
-        .note-card h3 { color: var(--accent-blue); font-size: 23px; margin-bottom: 15px; }
-        .note-card p { color: #fff; font-size: 15px; line-height: 1.6; }
+        .note-card:hover { transform: translateY(-8px); border-color: var(--accent-blue); }
+        .note-card h3 { color: var(--accent-blue); font-size: 20px; margin-bottom: 12px; }
+        .note-card p { color: #fff; font-size: 14px; margin-bottom: 15px; }
+        .note-card a { color: var(--accent-purple); text-decoration: none; font-weight: 600; font-size: 14px; }
 
-       
-        .content-container { max-width: 1050px; margin: 0 auto; padding: 0 25px; }
+        .content-container { max-width: 1050px; margin: 0 auto; padding: 0 20px; }
         .content-card {
             background: var(--card-bg);
-            padding: 55px;
-            border-radius: 35px;
+            padding: 40px 30px;
+            border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
         }
 
-        .content-card h2 { color: var(--accent-blue); font-size: 2.1rem; margin-bottom: 25px; border-left: 6px solid var(--accent-purple); padding-left: 20px; }
-        .content-card p { font-size: 1.15rem; margin-bottom: 20px; text-align: justify; line-height: 1.8; color: #e2e8f0; }
-        .content-card img { width: 100%; border-radius: 20px; margin: 30px 0; border: 1px solid rgba(255,255,255,0.1); }
+        .content-card h2 { 
+            color: var(--accent-blue); 
+            font-size: clamp(1.4rem, 4vw, 2.1rem); 
+            margin-bottom: 20px; 
+            border-left: 6px solid var(--accent-purple); 
+            padding-left: 15px; 
+        }
+
+        .content-card p { font-size: 1rem; margin-bottom: 20px; text-align: justify; line-height: 1.7; color: #e2e8f0; }
+        .content-card img { width: 100%; height: auto; border-radius: 20px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); }
         
-        table { width: 100%; border-collapse: collapse; margin: 25px 0; background: rgba(0,0,0,0.2); }
-        th, td { padding: 18px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        /* Table Responsiveness */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 15px;
+        }
+
+        table { width: 100%; min-width: 500px; border-collapse: collapse; background: rgba(0,0,0,0.2); }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.05); text-align: left; font-size: 14px; }
         th { background: rgba(0, 210, 255, 0.15); color: var(--accent-blue); }
 
-       
         #backToTop {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 55px;
-            height: 55px;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
             color: #000;
             border: none;
             border-radius: 50%;
-            font-size: 26px;
+            font-size: 24px;
             cursor: pointer;
             display: none;
             z-index: 2000;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: 0.3s;
-            line-height: 55px; /* Alignment fix */
-            text-align: center;
-        }
-        #backToTop:hover { transform: scale(1.1); }
-
-        /* Responsive Scroll Button */
-        @media (max-width: 600px) {
-            #backToTop {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                line-height: 45px;
-            }
         }
 
-        
         footer {
             background: #020408;
-            padding: 60px 20px;
+            padding: 50px 20px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .social-icons { margin-bottom: 25px; }
-        .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
-        .social-icons a:hover { transform: scale(1.3) rotate(10deg); }
-        
-        .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+        .social-icons { margin-bottom: 20px; }
+        .social-icons a { margin: 0 10px; display: inline-block; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.2); }
+        .footer-info { color: var(--text-dim); font-size: 12px; line-height: 1.6; }
+
+        /* General List Styling for Content */
+        .content-card ul { margin-left: 20px; margin-bottom: 20px; }
+        .content-card li { margin-bottom: 10px; color: #e2e8f0; }
 
     </style>
 </head>
-<body >
+<body>
 
     <button id="backToTop" onclick="scrollToTop()">↑</button>
 
@@ -239,7 +238,7 @@ body {
                 <li><a href="tutorials.html">Tutorials</a></li>
                 <li><a href="PastPapers.html">Papers</a></li>
                 <li><a href="quizzes.html">Quizzes</a></li>
-		<li><a href="blogposts.html">Blog</a></li>
+                <li><a href="blogposts.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -247,224 +246,90 @@ body {
 
     <div class="hero" data-aos="fade-down">
         <h1>අ.පො.ස. සා.පෙළ තොරතුරු තාක්ෂණ සටහන්</h1>
-        <p style="color: var(--accent-blue); font-size: 1.25rem;">O/L ICT Notes</p>
+        <p style="color: var(--accent-blue); font-size: 1.1rem;">O/L ICT Notes</p>
     </div>
 
     <div class="notes-grid">
         <div class="note-card" onclick="scrollToSection('note1')" data-aos="zoom-in">
             <h3>01. තොරතුරු තාක්ෂණය</h3>
             <p>තොරතුරු තාක්ෂණය යනු කුමක්ද?</p>
-          <a href="https://nibmehub.com/opac-service/pdf/read/Lesson%201.6.pdf">වැඩිදුර කියවන්න →</a>
+            <a href="#">වැඩිදුර කියවන්න →</a>
         </div>
         <div class="note-card" onclick="scrollToSection('note2')" data-aos="zoom-in" data-aos-delay="50">
             <h3>02. පරිගණකයේ මූලික කොටස්</h3>
             <p>පරිගණකයේ මූලික කොටස් පිළිබඳ විස්තර.</p>
-          <a href="https://myschool.lk/%E0%B6%BD%E0%B7%92%E0%B6%B4%E0%B7%92/14--%E0%B6%B4%E0%B6%BB%E0%B7%92%E0%B6%9C%E0%B6%AB%E0%B6%9A-%E0%B6%B4%E0%B6%AF%E0%B7%8A%E0%B6%B0%E0%B6%AD%E0%B7%92%E0%B6%BA%E0%B6%9A-%E0%B6%B8%E0%B7%96%E0%B6%BD%E0%B7%92%E0%B6%9A-%E0%B7%83%E0%B6%82%E0%B6%BB%E0%B6%A0%E0%B6%9A-%E0%B6%AD%E0%B7%9D%E0%B6%BB%E0%B7%8F-%E0%B7%80%E0%B6%BB%E0%B7%8A%E0%B6%9C%E0%B7%93%E0%B6%9A%E0%B6%BB%E0%B6%AB%E0%B6%BA-%E0%B6%9A%E0%B7%92%E0%B6%BB%E0%B7%93%E0%B6%B8--1-%E0%B6%9A%E0%B7%9C%E0%B6%A7%E0%B7%83">වැඩිදුර කියවන්න →</a>
+            <a href="#">වැඩිදුර කියවන්න →</a>
         </div>
-        <div class="note-card" onclick="scrollToSection('note3')" data-aos="zoom-in" data-aos-delay="200">
+        <div class="note-card" onclick="scrollToSection('note3')" data-aos="zoom-in" data-aos-delay="100">
             <h3>03. මෘදුකාංග වර්ග</h3>
              <p>මෘදුකාංග වර්ග පිළිබඳ මූලික තොරතුරු සහිත සටහන්.</p>
-<a href="https://myschool.lk/%E0%B6%BD%E0%B7%92%E0%B6%B4%E0%B7%92/14-:-%E0%B6%B4%E0%B6%BB%E0%B7%92%E0%B6%9C%E0%B6%AB%E0%B6%9A-%E0%B6%B8%E0%B7%98%E0%B6%AF%E0%B7%94%E0%B6%9A%E0%B7%8F%E0%B6%82%E0%B6%9C-%E0%B7%80%E0%B6%BB%E0%B7%8A%E0%B6%9C%E0%B7%93%E0%B6%9A%E0%B6%BB%E0%B6%AB%E0%B6%BA">වැඩිදුර කියවන්න →</a>
+            <a href="#">වැඩිදුර කියවන්න →</a>
         </div>
-        <div class="note-card" onclick="scrollToSection('note4')" data-aos="zoom-in" data-aos-delay="350">
-            <h3>04. තොරතුරු තාක්ෂණය‍  භාවිතයේ වාසි</h3>
-           <p>තොරතුරු තාක්ෂණය‍  භාවිතයේ වාසි පිළිබඳ  සටහන්.</p>
+        <div class="note-card" onclick="scrollToSection('note4')" data-aos="zoom-in" data-aos-delay="150">
+            <h3>04. ICT භාවිතයේ වාසි</h3>
+           <p>තොරතුරු තාක්ෂණය භාවිතයේ වාසි පිළිබඳ සටහන්.</p>
+           <a href="#">වැඩිදුර කියවන්න →</a>
         </div>
- <div class="note-card" onclick="scrollToSection('note5')" data-aos="zoom-in" data-aos-delay="350">
+        <div class="note-card" onclick="scrollToSection('note5')" data-aos="zoom-in" data-aos-delay="200">
             <h3>05. පරිගණක ජාල</h3>
-          <p>ජාලකරණය පිළිබඳ මූලික තොරතුරු සහිත සටහන්.</p>
-         <a href="https://madhushiict.blogspot.com/p/blog-page_47.html">වැඩිදුර කියවන්න →</a>
+            <p>ජාලකරණය පිළිබඳ මූලික තොරතුරු සහිත සටහන්.</p>
+            <a href="#">වැඩිදුර කියවන්න →</a>
         </div>
-<div class="note-card" onclick="scrollToSection('note6')" data-aos="zoom-in" data-aos-delay="350">
-            <h3>06. අන්තර්ජාල මූලික දැනුම</h3>
-          <p> අන්තර්ජාල මූලික දැනුම සහිත සටහන්.</p>
-        </div>
-<div class="note-card" onclick="scrollToSection('note7')" data-aos="zoom-in" data-aos-delay="350">
-            <h3>07. අන්තර්ජාල ආරක්ෂක උපදෙස්</h3>
-           <p>අන්තර්ජාල ආරක්ෂක උපදෙස් සහිත සටහන්.</p>
-        </div>
-<div class="note-card" onclick="scrollToSection('note8')" data-aos="zoom-in" data-aos-delay="350">
-            <h3>08. තොරතුරු තාක්ෂණයේ පොදු පද</h3>
-              <p>තොරතුරු තාක්ෂණයේ පොදු පද සහිත සටහන්.</p>
-        </div>
-<div class="note-card" onclick="scrollToSection('note9')" data-aos="zoom-in" data-aos-delay="350">
-            <h3>09. පරිගණකයේ පරම්පරා (Computer Generations)</h3>
-              <p>පරිගණකයේ පරම්පරා ඇතුලත් සටහන්.</p>
+        <div class="note-card" onclick="scrollToSection('note9')" data-aos="zoom-in" data-aos-delay="250">
+            <h3>09. පරිගණක පරම්පරා</h3>
+            <p>පරිගණකයේ පරම්පරා ඇතුළත් සටහන්.</p>
+            <a href="#">වැඩිදුර කියවන්න →</a>
         </div>
     </div>
+
+    
 
     <div class="content-container">
         <div class="content-card" id="note1" data-aos="fade-up">
             <h2>1. තොරතුරු හා සන්නිවේදන තාක්ෂණය යනු කුමක්ද?</h2>
-           <p> තොරතුරු නිර්මාණය කිරීමට, කළමණාකරනය කිරීමට, එම තොරතුරු භාවිතා කිරීමට සහ එකිනෙකා සමග හුවමාරු කර ගනීම සදහා භාවිතා කරන තාක්ෂණය <strong> තොරතුරු හා සන්නිවේදන තාක්ෂණය </strong> නම් වේ.  අතීතයේ සිට වර්තමානය දක්වා මිනිසා විසින් විවිධ යුග (ගල් යුගය, එඬේර යුගය, ගොවි යුගය, කාර්මික යුගය) ගණනාවක් පසු කරමින් වර්තමාන තාක්ෂණ යුගයට එළඹ තිබෙනවා. කලින් පැවති සෑම යුගයකටම වඩා වර්තමාන තාක්ෂණ යුගය ඉතාමත් දියුණු මට්ටමක තිබෙනවා. මිනිසාගේ මෙම සීග්‍ර දියුණුවත් සමගම ඔවුන්ගේ අවශ්‍යතාවයන් වගේම දැනුමත් වැඩි වුණා. එමනිසා අවශ්‍යතාවයන් පෙරට වඩා සංකීර්ණ වුණා. <br> <br>
-උ.දා :- ගුවන් විදුලියෙන් හෝ රූපවාහිනියෙන් ප්‍රවෘත්ති විකාශණය ඇසීම හෝ නැරඹීම. අන්තර්ජාලය භාවිතයෙන් ශ්‍රව්‍ය/දෘශ්‍ය මාධ්‍ය දුරකථන ඇමතුම් ලබාගැනීම(Skype Call). ඈත රටක සිටින මිතුරෙකුට විද්‍යුත් තැපැල් පණිවුඩයක් යැවීම(Email). ෆැක්ස් යන්ත්‍රයක් මගින් දෘඩ පිටපතක් අවශ්‍ය ස්ථානයකට සන්නිවේදනය කිරීම. මේ සියළුම අවශ්‍යතාවයන් සපුරාගැනීමට මිනිසුන්ට තොරතුරු(Information) අවශ්‍ය වුණා. ඔවුන් තොරතුරු නිර්මාණය කිරීමට, එක්රැස් කිරීමට, ගබඩා කිරීමට, හැසිරවීමට, සන්නිවේදනය කිරීමට, භාවිතා කිරීමට සහ කළමනාකරණය කිරීමට උත්සහ කළා. මෙහි ප්‍රතිඵලයක් ලෙස අක්ෂර, ඉලක්කම්, සංකේත වැනි දෑ සොයාගනු ලැබුවා. මෙලෙස තොරතුරු හැසිරවීමට ඔවුන්ට යම් කිසි තාක්ෂණයක් අවශ්‍ය වුණා. ඒ සඳහා භාවිතා කල තාක්ෂණය තොරතුරු හා සන්නිවේදන තාක්ෂණය(Information & Communication Technology) ලෙස හඳුන්වනවා. වර්තමානය වන විට තොරතුරු හැසිරවීම බොහෝසෙයින් දියුණුවී ඇත. මේ සඳහා විද්‍යුත් මාධ්‍යයන් භාවිතා කරයි. තොරතුරු හා සන්නිවේදන තාක්ෂණය යන්න පහත පරිදි අර්ථ දැක්විය හැක. තොරතුරු නිර්මාණය කිරීමට, කළමණාකරනය කිරීමට, එම තොරතුරු භාවිතා කිරීමට සහ එකිනෙකා සමග හුවමාරු කර ගනීම සදහා භාවිතා කරන තාක්ෂණය තොරතුරු හා සන්නිවේදන තාක්ෂණය නම් වේ.</p>
+            <p>තොරතුරු නිර්මාණය කිරීමට, කළමණාකරනය කිරීමට, එම තොරතුරු භාවිතා කිරීමට සහ එකිනෙකා සමග හුවමාරු කර ගනීම සදහා භාවිතා කරන තාක්ෂණය <strong>තොරතුරු හා සන්නිවේදන තාක්ෂණය</strong> නම් වේ. අතීතයේ සිට වර්තමානය දක්වා මිනිසා විසින් විවිධ යුග ගණනාවක් පසු කරමින් වර්තමාන තාක්ෂණ යුගයට එළඹ තිබේ.</p>
             
-            
-
-            <table>
-                <tr><th>අංගය</th><th>විස්තරය</th></tr>
-                <tr><td>දත්ත (Data)</td><td>අමුද්‍රව්‍ය ලෙස සලකන, සැකසීමට භාජනය නොකළ කරුණු.</td></tr>
-                <tr><td>තොරතුරු (Information)</td><td>යම් අරමුණක් සඳහා සකස් කරන ලද අර්ථවත් දත්ත.</td></tr>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>අංගය</th><th>විස්තරය</th></tr>
+                    <tr><td>දත්ත (Data)</td><td>අමුද්‍රව්‍ය ලෙස සලකන, සැකසීමට භාජනය නොකළ කරුණු.</td></tr>
+                    <tr><td>තොරතුරු (Information)</td><td>යම් අරමුණක් සඳහා සකස් කරන ලද අර්ථවත් දත්ත.</td></tr>
+                </table>
+            </div>
             <img src="manavaya.jpg" alt="Evolution of ICT">
         </div>
 
         <div class="content-card" id="note2" data-aos="fade-up">
-            <h2>2.පරිගණකයේ මූලික කොටස්</h2>
-             <p>ආදාන, ප්‍රතිදාන සහ සැකසුම් ඒකක මීට අයත් වේ.</p>
-          <img src="partsofcomputer.jpg" alt="Image">
-<ul>
-        <li><strong>ආදාන උපාංග යනු</strong>:  පරිගණකයට දත්ත හා උපදෙස් ලබාදීම සඳහා භාවිතා කරනු ලබන උපාංග වේ. ප්‍රතිදාන උපාංග යනු පරිගණකය තුල සකස් කරනලද දත්ත හා තොරතුරු පිටතට ලබා ගැනීම සඳහා භාවිත කරනු ලබන උපාංග වේ . උදාහරණ ලෙස <strong> යතුරු පුවරුව, මවුස්, ස්කෑනරය</strong> පෙන්වා දිය හැකිය.</li>
-        <li><strong>සැකසීමේ ඒකකය</strong>:මධ්‍යම සැකසුම් ඒකකයක් (CPU) නැතහොත් සකසනයක් යනු පරිගණක ක්‍රමලේඛ ක්‍රියා කරවිය හැකි තාර්කික යන්ත්‍රයකි. </li>
-        <li><strong>ප්‍රතිදාන උපාංග  යනු</strong>:පරිගණක පද්ධතියකින් සකස් කරන ලද තොරතුරු සහ සංඥ පිටතට ලබා දීමට භාවිතා කරන උපක්‍රමය වේ.
-උදාහරණ ලෙස <strong> තිරය (Monitor), මුද්‍රකය  (Printer), , Speaker (ශ්‍රව්‍ය උපාංග) </strong> පෙන්වා දිය හැකිය.</li>
-        <li><strong>ගබඩා උපාංග</strong>:පරිගණකයක දත්ත ගබඩා කිරීමේ උපාංග යනු අපගේ මෙහෙයුම් පද්ධතිය සහ පරිශීලක ගොනු පරිගණකයේ ගබඩා කිරීමට අප භාවිතා කරන උපාංගයකි. එය අභ්‍යන්තර හෝ බාහිර ගබඩා උපාංගයක් විය හැකිය .උදාහරණ ලෙස <strong> Hard Drive, SSD, Pen Drive</strong> පෙන්වා දිය හැකිය.</li>
-      </ul>
-        </div>
-<div class="content-card" id="note3" data-aos="fade-up">
-            <h2>3. මෘදුකාංග වර්ග</h2>
+            <h2>2. පරිගණකයේ මූලික කොටස්</h2>
+            <p>ආදාන, ප්‍රතිදාන සහ සැකසුම් ඒකක මීට අයත් වේ.</p>
             
-        <p>පරිගණක පද්ධතියක් යම් අරමුණක් කරා මෙහෙයවීම සඳහා පිළිවෙලකට ලබා දී ඇති උපදෙස් මාලා සමූහයක් පරිගණක මෘදුකාංගයක් (Computer software) ලෙස හැඳින්වේ. පරිගණක මෘදුකාංග වර්ගීකරණය කළ හැකි ආකාර දෙකකි. පද්ධති මෘදුකාංග (System software) යෙදුම් මෘදුකාංග (Application software) පද්ධති මෘදුකාංග (System software) මෙහිදී පද්ධති මෘදුකාංග ක්‍රියාකාරීත්වය අනුව ආකාර තුනකින් හඳුනාගත හැක. <br><br><ul type="disc">
-<li>මෙහෙයුම් පද්ධති (Operating systems) </li>
-<li>භාෂා පරිවර්තක (Language translators ) </li>
-<li>උපයෝගීතා මෘදුකාංග (Utility software)</li>
-<li> මෙහෙයුම් පද්ධති (Operating systems)</li>
-</ul>
-<br><br> මෙහෙයුම් පද්ධතියක් යනු පරිඝණකයේ දෘඩාංග (Computer Hardware) හා පරිශීලකයා (User) අතර සම්බන්ධතාවයක් ගොඩනගා ගැනීමට අතුරු මුහුණත් (Interface) සපයන මෘදුකාංගයකි. උදාහරණ ලෙස DOS, Windows , Linux, Unix දැක්විය හැක. <br><br>භාෂා පරිවර්තක (Language translators) පරිඝණකයක් භාවිතයෙන් යම් කිසි කාර්යයක් ඉටුකර ගැනීමේදී පරිඝණකයට දත්ත සහ උපදෙස් ආදානය කල යුතුය. ඒ සඳහා භාවිතා කරන්නේ මානව භාෂාවන්ට ඉතාම සමීප පරිඝණක භාෂාවක් අනුසාරයෙන් ගොනුකළ පරිඝණක ක්‍රමක්ලේඛයකි (Computer program). නමුත් පරිඝණකයේ භාවිතා වන්නේ යාන්ත්‍ර භාෂාවයි (Machine language) එය 0 සහ 1 යන සංඛේතයන්ගෙන් සමන්විත වේ. වෙනත් භාෂාවකින් ඇති දෑ පරිඝණකයට තේරුම් ගැනීමට යාන්ත්‍රික භාෂාවට පරිවර්තනය කල යුතු වේ. මේ සඳහා භාෂා පරිවර්තක භාවිතා කරයි. <br><br>උපයෝගීතා මෘදුකාංග (Utility software) පරිගණකයේ උපාංග කලමණාකරණය කරන්න, නඩත්තු කරන්න ඒවගේම පරිගණකයේ කාර්යක්ෂමතාව වැඩි කරන්න උදව් වෙන මෘදුකාංග උපයෝගීතා මෘදුකාංග නමින් හඳුන්වනවා. මේ මෘදුකාංග බොහෝ අවස්ථාවලදී මෙහෙයුම් පද්ධතියත් සමගම පරිගණකයට ස්ථාපිත (Install) වේ. <br><br>උපස්ථ මෘදුකාංග (Backup Software) ඩිස්ක විභාගීකාරකය (Disk Defragmenter) ඩිස්ක සුපිරික්සීම (Scan Disk) උපක්‍රම ධාවක (Device Drivers) වෛරස ආරක්ෂණ මෘදුකාංග (Virus Guards) යෙදුම් මෘදුකාංග (Application software) පරිඝණකය ක්‍රියාකරවන්නෙකුට තම අවශ්‍යතාවය ඉටුකර ගැනීම සඳහා පරිඝණකය තුල ක්‍රියාත්මක කල යුතු මෘදුකාංග යෙදුම් මෘදුකාංග ලෙස හැඳින්වේ. පද්ධති මෘදුකාංග මෙන් නොව දිනෙන් දින නවතම යෙදුම් මෘදුකාංග වෙළඳපොළට නිකුත්වේ. වදන් සැකසුම් මෘදුකාංග (Word Processing software) පැතුරුම්පත් මෘදුකාංග (Spreadsheet software) ඉදිරිපත් කිරීමේ මෘදුකාංග (Presentation software) චිත්‍රක සැකසුම් මෘදුකාංග (Graphic Designing software) පරිඝණක ප්‍රකාශන මෘදුකාංග (Desktop Publishing software) පරිඝණක සහායික සැලසුම් මෘදුකාංග (Computer Aided Design software) අද ලෝකයේ අයිතිය සම්බන්ධයෙන් මෘදුකාංග අවස්ථා දෙකක් දක්නට ලැබේ. හිමිකම් ආශ්‍රිත මෘදුකාංග (Copyrighted software) විවෘත මූලාශ්‍ර මෘදුකාංග (Open Source software) හිමිකම් ආශ්‍රිත මෘදුකාංග (Copyrighted software) යම් පාර්ශ්වයකට නීත්‍යානුකූලව අයිතියක් ඇති මෘදුකංග මෙම ගණයට අයත් වේ. වෙනත් පුද්ගලයෙකුට මෙම මෘදුකාංග භාවිත කිරීමට, වෙනස් කිරීමට හා බෙදා හැරීමට අවස්ථාව ඇත්තේ අයිතිකරු හා එළඹි එකඟතාවය මත පමණි. මෙම මෘදුකාංග හා නීතිමය පදනමක් ඇත. මේවා හඳුන්වා දුන් ආයතන ලෙස Microsoft, Adobe, Macromedia නම් කළ හැකිය. විවෘත මූලාශ්‍ර මෘදුකාංග (Open Source software) නීත්‍යානුකූල අයිතියකට හිමිකම් නොකියන මෘදුකාංග මේ ගණයට අයත් වේ. මෙම මෘදුකාංග භාවිත කිරීමට, වෙනස් කිරීමට, සංස්කරණය කිරීමට හෝ බෙදා හැරීමට මුළුමනින්ම හෝ යම් ප්‍රමාණයකට නීතිමය වශයෙන් අවසර දී ඇත. මේවා නිදහස් මෘදුකාංග ලෙස ද හැඳින්වේ. <br><br>ස්ථිරාංග (Firmware) පරිගණක පද්ධතියක සමාරම්භය සඳහා මූලිකවම අවශ්‍ය වන ක්‍රමලේඛ ස්ථිරාංග ලෙස හඳුන්වයි. මෙම ස්ථිරාංග, දෘඩාංග නිපදවීමේදී ඒවා තුල යොදන අතර පසු කාලීනව වෙනස් කළ නොහැකි වේ. උදාහරණ ලෙස පරිඝණක පඨන මාත්‍ර මතකය (Read Only Memory - ROM) ගත හැක. ජීවාංග (Liveware) යමෙකු පරිඝණකය පරිශීලනය කරමින් සිටීද එම අවස්තාවේදී ඔහු හෝ ඇය ජීවාංගය ලෙස හඳුන්වනු ලැබේ.</p>
-      <ul>
-        <li><strong>පද්ධති මෘදුකාංග</strong>:මෙහෙයුම් පද්ධති (උදා: Windows, Linux)</li>
-        <li><strong>යෙදුම් මෘදුකාංග</strong>: MS Word, Excel, Photoshop</li>
-        <li><strong>උපයෝගි මෘදුකාංග</strong>: ඇන්ටිවෛරස් (Antivirus) , File compression tools</li>
-      </ul>
-        </div>
-<div class="content-card" id="note4" data-aos="fade-up">
-            <h2>4.  තොරතුරු තාක්ෂණය‍  භාවිතයේ වාසි</h2>
-<p>පුද්ගලයන්ගේ දෛනික කටයුතු සහ ආයතනයන්හි කාර්යයසාධනය, නිෂ්පාදනය, කාර්යක්ෂමතාව සහ ඵලදායිතාව දියුණු කිරීම සඳහා භාවිතා කළ හැකි මෙවලමක් ලෙස තොරතුරු හා සන්නිවේදන තාක්ෂණය මුළු ලොවම හඳුනාගෙන ඇත. එදිනෙදා ජීවිතයෙදි අපිට මුහුණපෑමට සිදුවන සමහර ගැටළු වලට ඉක්මන් ඒ වගේම ගොඩක් සාර්ථක විසඳුම් තොරතුරු තාක්ෂණය භාවිතා කර ලබාගත හැක. තොරතුරු තාක්ෂණය භාවිතා වන ක්ෂේත්‍ර හා භාවිතා වන ආකාරයන් පහතින් දැක්වේ.</p> <br> 
-      <ul>
-        <li>ඉක්මන් සන්නිවේදනය (emails, messages)</li>
-        <li>තොරතුරු පහසුවෙන් ලබාගැනීම (internet)</li>
-        <li>මාධ්‍ය ක්ෂේත්‍රය (විකාශන විසුරුවාහැරීම, පටිගත කිරීම, ශ්‍රව්‍ය හා දෘශ්‍ය නිර්මාණ සංස්කරණය)</li>
- <li>බැංකු ක්ෂේත්‍රය (ATM, ක්‍රෙඩිට් කාඩ්, අන්තර්ජාලය හරහා මුදල් හුවමාරු කිරීම)</li>
-<li>වෛද්‍ය ක්ෂේත්‍රය (ECG, EEG, CT, MRI, US SCAN, රසායනික විශ්ලේෂණ, සැත්කම්)</li>
-<li>අධ්‍යාපන ක්ෂේත්‍රය (පරිගණක සහයක ඉගෙනුම [CAL], පරිගණක සහයක ඇඳීම [CAD], ඉදිරිපත් කිරීම්, ප්‍රකාශන, ගවේෂණ)</li>
-<li>ආරක්ෂක ක්ෂේත්‍රය (මිසයිල හැසිරවීම, සංඥා හැසිරවීම, න්‍යෂ්ටික විෂ්ලේෂණ)</li>
-      </ul>
-        </div>
-        <div class="content-card" id="note5" data-aos="fade-up">
-            <h2>5. පරිගණක ජාල</h2>
-           <p><strong>පරිගණක ජාලයක්</strong> යනු  දෘඩාංග , මෘදුකාංග සහ තොරතුරු හුවමාරු කරගැනීමටත් සන්නිවේදන කාර්යයන් ඉතා පහසුවෙන් හා කාර්යක්ෂමව සිදුකර ගැනීමට අවම වශයෙන් පරිගණක 02 ක් අතර නිර්මාණය කරගන්නා ඒකකය පරිගණක ජාලයක් ලෙස හැඳින් වේ.පරිගණක ජාල භෞතිකව ( භුමි ප්‍රදේශ අනුව ) පිහිටුවා ඇති ආකාරය අනුව ප්‍රධාන වර්ග කිහිපයකට බෙදා දැක්විය හැකිය.</p>
-<br> <br>
-      <ul>
-        <li><strong>LAN</strong>: කුඩා ප්‍රදේශයක පරිගණක සම්බන්ධ කිරීම (උදා: පාසල) </li>
-<li> <strong>MAN</strong>:කුඩාත් නොවූ විශාලත් නොවූ ප්‍රදේශයක පරිගණක සම්බන්ධ කිරීම (උදා: විශ්ව විද්‍යාල) </li>
-        <li><strong>WAN</strong>: විශාල ප්‍රදේශ වල පරිගණක සම්බන්ධ කිරීම (උදා: අන්තර්ජාලය)</li>
-        <li><strong>Wi-Fi</strong>: රේඛීය තරංග මඟින් පරිගණක සම්බන්ධ කිරීම</li>
-      </ul>
-        </div>
-<div class="content-card" id="note6" data-aos="fade-up">
-            <h2>6. අන්තර්ජාල මූලික දැනුම  </h2>
-          <p>අන්තර්ජාලය යනු ලොව පුරා ඇති පරිගණක ජාල එකට සම්බන්ධ කරන විශාල ජාලයකි.</p>
-      <ul>
-        <li><strong>Browser</strong>: Sවෙබ් අඩවි විවෘත කිරීමට භාවිතා කරන මෘදුකාංගය (උදා: Chrome)</li>
-        <li><strong>Search Engine</strong>:- තොරතුරු සෙවීම (උදා: Google)</li>
-        <li> Social media (e.g., Facebook)  </li>
-<li>Zoom/Google Meet වැනි video calls </li>
-<li><strong>Email</strong>: ඉලෙක්ට්‍රොනික තැපෑල තොරතුරු සන්නිවේදනය සඳහා </li>
-
-<li> Online education </li>
-        <li><strong>URL</strong>: වෙබ් පිටුවක ලිපිනය (උදා: www.moe.gov.lk)</li>
-      </ul>
-        </div>
-<div class="content-card" id="note7" data-aos="fade-up">
-            <h2>7. අන්තර්ජාල ආරක්ෂක උපදෙස්   </h2>
-          <ul>
-        <li>ශක්තිමත් මුරපද භාවිතා කරන්න (Use strong passwords)</li>
-        <li>පුද්ගලික තොරතුරු බෙදා නොදෙන්න (Don’t share personal info online)</li>
-        <li>අනන්‍ය ලින්ක් මත ක්ලික් නොකරන්න (Avoid clicking unknown links)</li>
-        <li>ඇන්ටිවෛරස් ස්ථාපනය කර තබන්න (Install antivirus software)</li>
-      </ul>
-        </div>
-<div class="content-card" id="note8" data-aos="fade-up">
-            <h2>8. තොරතුරු තාක්ෂණයේ පොදු පද  Common ICT Terms  </h2>
+            <img src="partsofcomputer.jpg" alt="Computer Parts">
             <ul>
-        <li><strong>Hardware</strong>: පරිගණකයේ භෞතික කොටස්</li><li><strong>Software</strong>: පරිගණකයේ ක්‍රියාත්මක වන්නා වූ මෘදුකාංග</li>
-        <li><strong>Data</strong>: තොරතුරු (Raw Data)</li>
-        <li><strong>Information</strong>: සැකසුම්ලත්, අර්ථවත් තොරතුරු</li>
-      </ul>
+                <li><strong>ආදාන උපාංග</strong>: යතුරු පුවරුව, මවුස්, ස්කෑනරය.</li>
+                <li><strong>සැකසීමේ ඒකකය</strong>: මධ්‍යම සැකසුම් ඒකකය (CPU).</li>
+                <li><strong>ප්‍රතිදාන උපාංග</strong>: තිරය (Monitor), මුද්‍රකය (Printer), ස්පීකර්.</li>
+                <li><strong>ගබඩා උපාංග</strong>: Hard Drive, SSD, Pen Drive.</li>
+            </ul>
         </div>
-<div class="content-card" id="note9" data-aos="fade-up">
-            <h2>9. පරිගණකයේ පරම්පරා (Computer Generations)  </h2>
-        
-        <p>පරිගණක තාක්ෂණයේ දියුණුව පදනම් කරගෙන ප්‍රධාන වශයෙන් පරම්පරා 5 කට වර්ගීකරණය කර ඇත. මෙම වර්ගීකරණය සිදු කර ඇත්තේ එක් එක් යුගයේදී පරිගණකයේ <strong>මූලික විද්‍යුත් උපාංගය (Main Electronic Component)</strong> වෙනස්වීම පදනම් කරගෙනයි.</p>
-        
-        <br> <br>
-        <h3>1. පළමු පරම්පරාවේ පරිගණක (First Generation: 1940 – 1956)</h3>
-<br>
-        <table border=" 1" width="750" height="350">
-           <tr><th align:center;>අංගය</th><th>විස්තරය</th></tr>
-            <tr><td><strong>ප්‍රධාන උපාංගය</strong>  </td><td><strong>රික්තක නල (Vacuum Tubes)</strong></td></tr>
-            <tr><td><strong>මතකය (Memory)</strong>  </td><td>චුම්බක ඩ්‍රම් (Magnetic Drums)</td></tr>
-            <tr><td><strong>පරිගණක භාෂාව</strong></td> <td><strong>යන්ත්‍ර භාෂාව (Machine Language)</strong> - පහළ මට්ටමේ භාෂාවක්.</td></tr>
-            <tr><td><strong>දත්ත ඇතුළත් කිරීම</strong></td>  <td>සිදුරු කාඩ්පත් (Punch Cards) හෝ කඩදාසි පටි මඟින්.</td></tr>
-            <tr><td><strong>උදාහරණ</strong>  </td><td>ENIAC, UNIVAC I.</td></tr>
-            <tr><td><strong>විශේෂ ලක්ෂණ</strong>  </td><td>ප්‍රමාණය: ඉතා විශාලයි, අධික තාපය, අඩු විශ්වාසනීයත්වය, විශාල විදුලි බලයක් අවශ්‍ය වීම.</td></tr>
-        </table>
-<img src="vacuum.jpeg" alt="Image" width="700" height="400" > <br> <center> <strong>-- රික්තක නල (Vacuum Tubes) --</strong> </center> <br>
-		
 
-<br>
-        <h3>2. දෙවන පරම්පරාවේ පරිගණක (Second Generation: 1956 – 1963)</h3><br>
-        <table border=" 1" width="750" height="350">
-            <tr><th>අංගය</th><th>විස්තරය</th></tr>
-            <tr><td><strong>ප්‍රධාන උපාංගය</strong></td><td><strong>ට්‍රාන්සිස්ටර (Transistors)</strong></td></tr>
-            <tr><td><strong>මතකය (Memory)</strong></td><td>චුම්බක හරය (Magnetic Core) මතකය.</td></tr>
-            <tr><td><strong>පරිගණක භාෂාව</strong></td><td><strong>සමවර්ථන භාෂාව (Assembly Language)</strong> සහ මුල් ඉහළ මට්ටමේ භාෂා (FORTRAN, COBOL).</td></tr>
-            <tr><td><strong>විශේෂ ලක්ෂණ</strong></td><td>ප්‍රමාණය: පළමු පරම්පරාවට වඩා කුඩා, වේගවත්, අඩු තාපයක් නිකුත් කිරීම.</td></tr>
-        </table>
+        <div class="content-card" id="note9" data-aos="fade-up">
+            <h2>9. පරිගණකයේ පරම්පරා (Computer Generations)</h2>
+            <p>පරිගණක තාක්ෂණයේ දියුණුව පදනම් කරගෙන ප්‍රධාන වශයෙන් පරම්පරා 5 කට වර්ගීකරණය කර ඇත.</p>
+            
+            
 
-<img src="transistors.jpeg" alt="Image" width="700" height="400" > <br> <center> <strong>-- ට්‍රාන්සිස්ටර (Transistors) --</strong> </center> <br>
-<br>
-        <h3>3. තුන්වන පරම්පරාවේ පරිගණක (Third Generation: 1964 – 1971)</h3><br>
-       <table border=" 1" width="750" height="350">
-            <tr><th>අංගය</th><th>විස්තරය</th></tr>
-            <tr><td><strong>ප්‍රධාන උපාංගය</strong></td><td><strong>අනුකලිත පරිපථ (Integrated Circuits - ICs)</strong> (SSI, MSI)</td></tr>
-            <tr><td><strong>දත්ත ඇතුළත් කිරීම</strong></td><td>යතුරු පුවරුව (Keyboard) සහ මොනිටරය (Monitor).</td></tr>
-            <tr><td><strong>මෙහෙයුම් පද්ධතිය</strong></td><td>කාලය බෙදාගැනීමේ (Time-Sharing) සහ බහු-ක්‍රමලේඛන (Multiprogramming) පද්ධති.</td></tr>
-            <tr><td><strong>විශේෂ ලක්ෂණ</strong></td><td>ප්‍රමාණය: තවත් කුඩා වීම (Minicomputers බිහි විය), විශ්වාසනීයත්වය ඉහළයි.</td></tr>
-        </table>
-<br>
-        <h3>4. සිව්වන පරම්පරාවේ පරිගණක (Fourth Generation: 1971 – වර්තමානය)</h3><br>
-       <table border=" 1"width="750" height="350">
-            <tr><th>අංගය</th><th>විස්තරය</th></tr>
-            <tr><td><strong>ප්‍රධාන උපාංගය</strong></td><td><strong>ක්ෂුද්‍ර සකසනය (Microprocessor)</strong> (VLSI තාක්ෂණය)</td></tr>
-            <tr><td><strong>මතකය (Memory)</strong></td><td>අර්ධ සන්නායක මතකය (Semiconductor Memory - RAM, ROM).</td></tr>
-            <tr><td><strong>උදාහරණ</strong></td><td>පුද්ගලික පරිගණක (PCs), Laptop.</td></tr>
-            <tr><td><strong>විශේෂ ලක්ෂණ</strong></td><td>අතිශය වේගවත්, ජාලකරණය (Networking) බිහිවීම, ව්‍යූහමය පරිශීලක අතුරු මුහුණත් (GUIs).</td></tr>
-        </table>
-<br>
-        <h3>5. පස්වන පරම්පරාවේ පරිගණක (Fifth Generation: වර්තමානය සහ අනාගතය)</h3><br>
-        <table border=" 1" width="750" height="350">
-            <tr><th>අංගය</th><th>විස්තරය</th></tr>
-            <tr><td><strong>ප්‍රධාන උපාංගය</strong></td><td>ULSI තාක්ෂණය සහ සමාන්තර සැකසුම් (Parallel Processing).</td></tr>
-            <tr><td><strong>තාක්ෂණය</strong></td><td><strong>කෘත්‍රිම බුද්ධිය (Artificial Intelligence - AI)</strong>, ස්වාභාවික භාෂා සැකසුම (NLP).</td></tr>
-            <tr><td><strong>ඉලක්කය</strong></td><td>මිනිසෙකු මෙන් සිතීමට හා තීරණ ගැනීමට හැකි පරිගණක සෑදීම.</td></tr>
-        </table>
-<br>
-        
-
-        <h3> සාරාංශය (Summary for Study)</h3>
-        <table class="summary-table" border=" 1" width="750" height="350">
-            <tr><th>පරම්පරාව</th><th>කාලය</th><th>ප්‍රධාන උපාංගය</th><th>මතක වර්ගය</th><th>උදාහරණ</th></tr>
-            <tr><td><strong>1st</strong></td><td>1940 – 1956</td><td><strong>රික්තක නල (Vacuum Tubes)</strong></td><td>Magnetic Drum</td><td>ENIAC, UNIVAC</td></tr>
-            <tr><td><strong>2nd</strong></td><td>1956 – 1963</td><td><strong>ට්‍රාන්සිස්ටර (Transistors)</strong></td><td>Magnetic Core</td><td>IBM 7000 Series</td></tr>
-            <tr><td><strong>3rd</strong></td><td>1964 – 1971</td><td><strong>අනුකලිත පරිපථ (ICs)</strong></td><td>Magnetic Core</td><td>IBM 360, Minicomputers</td></tr>
-            <tr><td><strong>4th</strong></td><td>1971 – වර්තමානය</td><td><strong>ක්ෂුද්‍ර සකසනය (Microprocessor)</strong></td><td>Semiconductor Memory</td><td>PC, Apple Macintosh</td></tr>
-            <tr><td><strong>5th</strong></td><td>වර්තමානය/අනාගතය</td><td><strong>ULSI/AI</strong></td><td>High Capacity SSD/RAM</td><td>AI, Robotics, Siri</td></tr>
-        </table>
-<br>
-</div>
-      </div>
-<br> <br> <br>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>පරම්පරාව</th><th>කාලය</th><th>ප්‍රධාන උපාංගය</th><th>උදාහරණ</th></tr>
+                    <tr><td>1st</td><td>1940 – 1956</td><td>රික්තක නල (Vacuum Tubes)</td><td>ENIAC, UNIVAC</td></tr>
+                    <tr><td>2nd</td><td>1956 – 1963</td><td>ට්‍රාන්සිස්ටර (Transistors)</td><td>IBM 7000</td></tr>
+                    <tr><td>3rd</td><td>1964 – 1971</td><td>අනුකලිත පරිපථ (ICs)</td><td>IBM 360</td></tr>
+                    <tr><td>4th</td><td>1971 – වර්තමානය</td><td>ක්ෂුද්‍ර සකසනය (Microprocessor)</td><td>Personal Computers</td></tr>
+                    <tr><td>5th</td><td>අනාගතය</td><td>AI / ULSI</td><td>Robotics, Siri</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="social-icons">
@@ -485,7 +350,8 @@ body {
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if(element) {
-                window.scrollTo({ top: element.offsetTop - 110, behavior: 'smooth' });
+                const offset = window.innerWidth < 1100 ? 150 : 110;
+                window.scrollTo({ top: element.offsetTop - offset, behavior: 'smooth' });
             }
         }
 

@@ -35,11 +35,12 @@
             overflow-x: hidden;
         }
 
+        /* --- Header - Original Sizes Maintained --- */
         header {
             background: rgba(6, 9, 15, 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px 0; /* Original size */
+            padding: 25px 0; /* Original */
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -54,22 +55,17 @@
             padding: 0 25px;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        
         .main-logo {
-            width: 60px; height: 60px; /* Original size */
+            width: 60px; height: 60px; /* Original */
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         .logo-text {
-            font-size: 26px; /* Original size */
+            font-size: 26px; /* Original */
             font-weight: 800;
             background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text;
@@ -78,18 +74,14 @@
             letter-spacing: 1.5px;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 12px;
-        }
+        nav ul { list-style: none; display: flex; gap: 12px; }
 
         nav ul li a {
             color: var(--text-dim);
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 12px 20px; /* Original */
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 15px; /* Original */
             font-weight: 500;
             transition: 0.3s ease;
             white-space: nowrap;
@@ -107,21 +99,15 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
-        /* Mobile Menu Button - Hidden by default */
         .menu-toggle {
             display: none;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
         }
 
-        .main-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-        }
+        /* Main Content */
+        .main-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 20px; }
 
         .contact-card {
             background: var(--card-bg);
@@ -133,58 +119,19 @@
             overflow: hidden;
             border: 1px solid rgba(0, 210, 255, 0.2);
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            position: relative;
         }
 
-        .contact-info {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            padding: 60px 50px;
-            color: white;
-        }
+        .contact-info { background: linear-gradient(135deg, #0f172a, #1e293b); padding: 60px 50px; }
+        .contact-info h2 { font-size: 38px; margin-bottom: 20px; color: var(--accent-blue); }
+        .info-item { display: flex; align-items: center; gap: 20px; margin-bottom: 35px; }
+        .info-icon { min-width: 55px; height: 55px; background: rgba(0, 210, 255, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-size: 24px; border: 1px solid rgba(0, 210, 255, 0.4); }
 
-        .contact-info h2 { 
-            font-size: 38px; 
-            margin-bottom: 20px; 
-            color: var(--accent-blue);
-        }
-
-        .info-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-            margin-bottom: 35px; 
-            padding: 15px;
-            border-radius: 20px;
-        }
-
-        .info-icon { 
-            min-width: 55px; height: 55px; 
-            background: linear-gradient(45deg, rgba(0, 210, 255, 0.2), rgba(157, 80, 187, 0.2)); 
-            border-radius: 15px; display: flex; align-items: center; justify-content: center;
-            color: var(--accent-blue); font-size: 24px; 
-            border: 1px solid rgba(0, 210, 255, 0.4);
-        }
-
-        .contact-form-side { 
-            padding: 60px 50px; 
-            background: rgba(255, 255, 255, 0.01); 
-        }
-
+        .contact-form-side { padding: 60px 50px; background: rgba(255, 255, 255, 0.01); }
         .form-group { margin-bottom: 25px; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 18px 25px; 
-            background: rgba(10, 15, 25, 0.6);
-            border: 1.5px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 16px; color: white; outline: none;
-            font-size: 15px;
-        }
+        .form-group input, .form-group textarea { width: 100%; padding: 18px 25px; background: rgba(10, 15, 25, 0.6); border: 1.5px solid rgba(255, 255, 255, 0.1); border-radius: 16px; color: white; outline: none; }
+        .btn-send { width: 100%; padding: 18px; border: none; border-radius: 16px; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); color: #000; font-weight: 800; font-size: 17px; cursor: pointer; text-transform: uppercase; }
 
-        .btn-send {
-            width: 100%; padding: 18px; border: none; border-radius: 16px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: #000; font-weight: 800; font-size: 17px; cursor: pointer; text-transform: uppercase;
-        }
-  footer {
+       footer {
             background: #020408;
             padding: 60px 20px;
             text-align: center;
@@ -208,25 +155,32 @@
         .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
 
 
-        /* --- MOBILE RESPONSIVE STYLES --- */
-        @media (max-width: 1024px) {
-            nav ul { display: none; } /* Hide menu on mobile */
+        /* --- Mobile Responsive Rules --- */
+        @media (max-width: 1100px) {
+            nav ul {
+                display: none; /* Hide menu initially on tablets/phones */
+                flex-direction: column;
+                position: absolute;
+                top: 110px; /* Header height offset */
+                left: 0;
+                width: 100%;
+                background: rgba(6, 9, 15, 0.98);
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
             .menu-toggle { display: block; }
-            .logo-text { font-size: 18px; }
-            .contact-card { grid-template-columns: 1fr; }
-            .contact-info, .contact-form-side { padding: 40px 30px; }
+            nav ul.nav-active { display: flex; } /* Show when toggled */
+            
+            .contact-card { grid-template-columns: 1fr; margin-top: 20px; }
         }
 
-        /* Mobile Menu Active State */
-        .nav-active {
-            display: flex !important;
-            flex-direction: column;
-            position: absolute;
-            top: 110px; left: 0; width: 100%;
-            background: rgba(6, 9, 15, 0.98);
-            padding: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
+        @media (max-width: 600px) {
+            header { padding: 15px 0; }
+            .main-logo { width: 50px; height: 50px; }
+            .logo-text { font-size: 20px; }
+            .contact-info, .contact-form-side { padding: 40px 25px; }
+            .contact-info h2 { font-size: 30px; }
         }
     </style>
 </head>
@@ -252,28 +206,25 @@
     </header>
 
     <div class="main-wrapper">
-        <div class="contact-card" data-aos="fade-up" data-aos-duration="1200">
+        <div class="contact-card" data-aos="fade-up">
             <div class="contact-info">
-                <h2 data-aos="fade-right" data-aos-delay="200">සම්බන්ධ වන්න</h2>
-                <p data-aos="fade-right" data-aos-delay="300">ඔබට ඇති ඕනෑම ගැටලුවක් හෝ යෝජනාවක් අප වෙත යොමු කරන්න.</p>
-                
-                <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                <h2>සම්බන්ධ වන්න</h2>
+                <p>ඔබට ඇති ඕනෑම ගැටලුවක් හෝ යෝජනාවක් අප වෙත යොමු කරන්න.</p>
+                <div class="info-item">
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <div class="info-text">
                         <h4>Email</h4>
                         <p>Withanagetharushi00@gmail.com</p>
                     </div>
                 </div>
-
-                <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="info-item">
                     <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                     <div class="info-text">
                         <h4>Phone</h4>
                         <p>+94 762903345</p>
                     </div>
                 </div>
-
-                <div class="info-item" data-aos="fade-up" data-aos-delay="600">
+                <div class="info-item">
                     <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div class="info-text">
                         <h4>Address</h4>
@@ -284,16 +235,10 @@
 
             <div class="contact-form-side">
                 <form id="contactForm" action="https://formspree.io/f/mgoevkyw" method="POST">
-                    <div class="form-group" data-aos="fade-left" data-aos-delay="400">
-                        <input type="text" name="name" placeholder="ඔබේ නම (Full Name)" required>
-                    </div>
-                    <div class="form-group" data-aos="fade-left" data-aos-delay="500">
-                        <input type="email" name="email" placeholder="විද්‍යුත් ලිපිනය (Email Address)" required>
-                    </div>
-                    <div class="form-group" data-aos="fade-left" data-aos-delay="600">
-                        <textarea name="message" rows="6" placeholder="ඔබේ පණිවිඩය (Your Message...)" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-send" data-aos="zoom-in" data-aos-delay="700">පණිවිඩය යොමු කරන්න</button>
+                    <div class="form-group"><input type="text" name="name" placeholder="ඔබේ නම (Full Name)" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="විද්‍යුත් ලිපිනය (Email Address)" required></div>
+                    <div class="form-group"><textarea name="message" rows="6" placeholder="ඔබේ පණිවිඩය (Your Message...)" required></textarea></div>
+                    <button type="submit" class="btn-send">පණිවිඩය යොමු කරන්න</button>
                 </form>
             </div>
         </div>
@@ -305,49 +250,15 @@
             <a href="#"><img src="insta.png" alt="IG"></a>
             <a href="https://www.youtube.com/@websitefor"><img src="youtube.png" alt="YT"></a>
         </div>
-        <div class="footer-info">
-            <p><b>&copy; 2025 O/L ICT Resource Portal</b></p>
-        </div>
+        <div class="footer-info"><p><b>&copy; 2025 O/L ICT Resource Portal</b></p></div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Animations Initialization
-        AOS.init({ duration: 1000, once: true, offset: 50 });
-
-        // Mobile Menu Toggle
+        AOS.init({ duration: 1000, once: true });
         function toggleMenu() {
             document.getElementById('nav-links').classList.toggle('nav-active');
         }
-
-        // Form Handling
-        const form = document.getElementById('contactForm');
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> යවමින් පවතී...';
-            btn.style.pointerEvents = 'none';
-
-            try {
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: new FormData(this),
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (response.ok) {
-                    alert('සාර්ථකයි! ඔබේ පණිවිඩය අප වෙත ලැබුණි.');
-                    this.reset();
-                } else {
-                    alert('දෝෂයක් සිදු විය.');
-                }
-            } catch (error) {
-                alert('සබඳතාවයේ දෝෂයක් පවතී.');
-            } finally {
-                btn.innerText = originalText;
-                btn.style.pointerEvents = 'all';
-            }
-        });
     </script>
 </body>
 </html>

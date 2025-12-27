@@ -6,7 +6,7 @@
     <title>OL ICT Resource Portal | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-   
+    
     <style>
         :root {
             --bg-dark: #06090f;
@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        
         header {
             background: rgba(6, 9, 15, 0.95);
             backdrop-filter: blur(15px);
@@ -112,7 +111,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
-       
+        /* --- Tablet & Mobile Responsive Fixes --- */
         @media (max-width: 1100px) {
             nav {
                 flex-direction: column;
@@ -125,6 +124,20 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .hero-title {
+                margin: 40px 0 15px;
+            }
+            .welcome {
+                margin: 0 20px 40px;
+                padding: 25px;
+            }
+            .feature-card {
+                width: 100%; /* ෆෝන් එකේදී කාඩ් එක තිරයේ පළලටම පෙන්වයි */
+                max-width: 350px;
+            }
+        }
+
         @media (max-width: 600px) {
             .logo-text { font-size: 18px; }
             .main-logo { width: 45px; height: 45px; }
@@ -132,7 +145,6 @@
             header { padding: 15px 0; }
         }
 
-        
         .hero-title {
             text-align: center;
             font-size: clamp(32px, 5vw, 50px);
@@ -163,7 +175,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        
         .search-container {
             display: flex;
             justify-content: center;
@@ -207,7 +218,6 @@
             cursor: pointer;
         }
 
-       
         .features {
             display: flex;
             flex-wrap: wrap;
@@ -262,7 +272,6 @@
             font-size: 14px;
         }
 
-        
         footer {
             background: #020408;
             padding: 60px 20px;
