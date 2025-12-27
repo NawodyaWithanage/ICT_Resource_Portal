@@ -25,8 +25,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-             font-family: 'Poppins', sans-serif;
-}
+            font-family: 'Poppins', 'Iskoola Pota', sans-serif;
+        }
 
         body {
             background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
@@ -43,7 +43,7 @@
             background: rgba(6, 9, 15, 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
-            padding: 25px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -61,15 +61,15 @@
         .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         
         .main-logo {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         .logo-text {
-            font-size: 26px;
+            font-size: clamp(16px, 4vw, 24px);
             font-weight: 800;
             background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text;
@@ -78,16 +78,17 @@
             letter-spacing: 1.5px;
         }
 
-        nav ul { list-style: none; display: flex; gap: 5px; }
+        nav ul { list-style: none; display: flex; gap: 8px; }
         
         nav ul li a {
             color: var(--text-dim);
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 10px 18px;
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             transition: 0.3s ease;
+            white-space: nowrap;
         }
 
         nav ul li a:hover {
@@ -118,6 +119,7 @@
             color: #fff;
             text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
             margin-bottom: 15px;
+            line-height: 1.2;
         }
 
         .glass-panel {
@@ -125,7 +127,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 35px;
+            padding: clamp(20px, 5vw, 35px);
             margin-bottom: 30px;
             transition: 0.4s ease;
         }
@@ -138,7 +140,7 @@
 
         h2 {
             color: var(--accent-blue);
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -148,7 +150,7 @@
         h3 {
             color: lightgreen;
             margin: 25px 0 15px 0;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
         }
 
         .definition-box {
@@ -176,14 +178,22 @@
             color: var(--accent-blue);
         }
 
+        /* Responsive Table */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
             background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            overflow: hidden;
+            min-width: 600px;
         }
+
         th, td {
             padding: 15px;
             border: 1px solid var(--border);
@@ -205,9 +215,10 @@
             padding: 20px;
             border-radius: 12px;
             font-family: 'Courier New', monospace;
-            color: #38bdf8;
+            color: yellow;
             margin: 15px 0;
             overflow-x: auto;
+            white-space: pre;
         }
 
         .btn-action {
@@ -262,9 +273,16 @@
 
         .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
 
+        /* Mobile Adjustments */
         @media (max-width: 992px) {
-            nav { flex-direction: column; gap: 15px; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
+            nav { flex-direction: column; gap: 20px; padding: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; width: 100%; }
+            nav ul li a { padding: 8px 12px; font-size: 13px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section p { font-size: 14px; }
+            .btn-action { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -274,7 +292,7 @@
     <nav>
         <a href="index.html" class="logo-container">
             <img src="logo.png" alt="Logo" class="main-logo"> 
-            <div class="logo-text"> &nbsp O/L ICT Resource PORTAL</div>
+            <div class="logo-text">O/L ICT Resource PORTAL</div>
         </a>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -296,7 +314,7 @@
     </section>
 
     <div class="glass-panel" data-aos="fade-up">
- <h2><i class="fas fa-sync-alt"></i> හැඳින්වීම</h2>
+        <h2><i class="fas fa-sync-alt"></i> හැඳින්වීම</h2>
         <div class="definition-box">
             <strong>බහුමාධ්‍ය (Multimedia)</strong> යනු තොරතුරු ඉදිරිපත් කිරීම සඳහා <b>පෙළ (Text)</b>, <b>රූප (Images)</b>, <b>ශබ්ද (Audio)</b>, <b>වීඩියෝ (Video)</b> සහ <b>සජීවීකරණ (Animation)</b> වැනි විවිධ මාධ්‍ය සංයෝජනය කිරීමයි.
         </div>
@@ -307,27 +325,29 @@
         
         <h3>1.1. රූප (Images)</h3>
         <p>පරිගණකයේ රූප ගබඩා කිරීමේ ප්‍රධාන ආකාර දෙකකි:</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>රූප වර්ගය</th>
-                    <th>විස්තරය</th>
-                    <th>උදාහරණ ගොනු ආකෘති</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>Bitmap / Raster Images</b></td>
-                    <td>තිත් (Pixels) සමූහයකින් සමන්විත වේ. විශාල කළ විට රූපයේ ගුණාත්මකභාවය අඩු වේ.</td>
-                    <td>JPEG, PNG, GIF, BMP</td>
-                </tr>
-                <tr>
-                    <td><b>Vector Images</b></td>
-                    <td>ගණිතමය සමීකරණ මඟින් නිරූපණය වේ. ඕනෑම ප්‍රමාණයකට විශාල කළ විට ගුණාත්මකභාවය නොවෙනස්ව පවතී.</td>
-                    <td>SVG, AI, EPS</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>රූප වර්ගය</th>
+                        <th>විස්තරය</th>
+                        <th>උදාහරණ ගොනු ආකෘති</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Bitmap / Raster Images</b></td>
+                        <td>තිත් (Pixels) සමූහයකින් සමන්විත වේ. විශාල කළ විට රූපයේ ගුණාත්මකභාවය අඩු වේ.</td>
+                        <td>JPEG, PNG, GIF, BMP</td>
+                    </tr>
+                    <tr>
+                        <td><b>Vector Images</b></td>
+                        <td>ගණිතමය සමීකරණ මඟින් නිරූපණය වේ. ඕනෑම ප්‍රමාණයකට විශාල කළ විට ගුණාත්මකභාවය නොවෙනස්ව පවතී.</td>
+                        <td>SVG, AI, EPS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h3>1.2. ශබ්ද (Audio)</h3>
         <ul class="feature-list">
@@ -349,51 +369,53 @@
 
         <h3>2.1. HTML මූලික ව්‍යුහය</h3>
         <div class="pseudocode-box">
-&lt;!DOCTYPE html&gt;<br>
-&lt;html lang="si"&gt;<br>
-&lt;head&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;වෙබ් පිටුවේ මාතෘකාව&lt;/title&gt;<br>
-&lt;/head&gt;<br>
-&lt;body&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;ප්‍රධාන මාතෘකාව&lt;/h1&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;මෙය ඡේදයකි.&lt;/p&gt;<br>
-&lt;/body&gt;<br>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="si"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;වෙබ් පිටුවේ මාතෘකාව&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;ප්‍රධාන මාතෘකාව&lt;/h1&gt;
+    &lt;p&gt;මෙය ඡේදයකි.&lt;/p&gt;
+&lt;/body&gt;
 &lt;/html&gt;
         </div>
 
         <h3>2.2. බහුලව භාවිතා වන HTML ටැග් (Tags)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>HTML ටැගය</th>
-                    <th>කාර්යය</th>
-                    <th>උදාහරණය</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>&lt;h1&gt; to &lt;h6&gt;</td>
-                    <td>මාතෘකා නිර්මාණය කිරීමට.</td>
-                    <td>&lt;h1&gt;මාතෘකාව&lt;/h1&gt;</td>
-                </tr>
-                <tr>
-                    <td>&lt;p&gt;</td>
-                    <td>ඡේදයක් නිර්මාණය කිරීමට.</td>
-                    <td>&lt;p&gt;ඡේදයකි.&lt;/p&gt;</td>
-                </tr>
-                <tr>
-                    <td>&lt;a&gt;</td>
-                    <td>සබැඳියක් (Hyperlink) නිර්මාණය කිරීමට.</td>
-                    <td>&lt;a href="#"&gt;Link&lt;/a&gt;</td>
-                </tr>
-                <tr>
-                    <td>&lt;img&gt;</td>
-                    <td>රූපයක් ඇතුළත් කිරීමට.</td>
-                    <td>&lt;img src="img.jpg"&gt;</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>HTML ටැගය</th>
+                        <th>කාර්යය</th>
+                        <th>උදාහරණය</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;h1&gt; to &lt;h6&gt;</td>
+                        <td>මාතෘකා නිර්මාණය කිරීමට.</td>
+                        <td>&lt;h1&gt;මාතෘකාව&lt;/h1&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;p&gt;</td>
+                        <td>ඡේදයක් නිර්මාණය කිරීමට.</td>
+                        <td>&lt;p&gt;ඡේදයකි.&lt;/p&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;a&gt;</td>
+                        <td>සබැඳියක් (Hyperlink) නිර්මාණය කිරීමට.</td>
+                        <td>&lt;a href="#"&gt;Link&lt;/a&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;img&gt;</td>
+                        <td>රූපයක් ඇතුළත් කිරීමට.</td>
+                        <td>&lt;img src="img.jpg"&gt;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h3>2.3. Attributes (ගුණාංග)</h3>
         <p>Attributes යනු ටැග් එකකට අමතර තොරතුරු සැපයීමට භාවිතා කරන යෙදුම් වේ. (උදා: &lt;img&gt; ටැගයේ ඇති <code>src</code>, <code>alt</code>).</p>
@@ -440,7 +462,8 @@
     AOS.init({
         duration: 1000,
         once: true,
-        offset: 100
+        offset: 100,
+        disable: 'mobile' // Optional: disabling on very small screens if it lags, but usually fine
     });
 </script>
 
