@@ -24,7 +24,7 @@ Tech Stack
 
  Project Preview
 
-*(You can add a screenshot here by uploading it to your repo and linking it like this)*
+
 ![Portal Home Page](https://nawodyawithanage.github.io/ICT_Resource_Portal/logo.png)
 
  Project Structure
@@ -34,7 +34,7 @@ Tech Stack
 - `PastPapers.html` - Examination resources
 - `quizzes.html` - Interactive quiz system
 - `tutorials.html` - Practical guides
--  `Blogpost.html - Blogs
+-  `Blogposts.html - Blogs
 
  How to Run Locally
 
