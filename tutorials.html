@@ -17,27 +17,25 @@
             --card-bg: rgba(15, 23, 42, 0.9); 
             --text-white: #ffffff;
             --text-dim: #94a3b8;
-       
             --bg-overlay: rgba(6, 9, 15, 0.85);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box;  font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Iskoola Pota', sans-serif; scroll-behavior: smooth; }
 
         body {
-             /* Online Technology Background Image */
-             background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
-                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2048') center/cover fixed no-repeat;
+            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2048') center/cover fixed no-repeat;
             color: var(--text-white);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        
+        /* Header & Nav */
         header {
             background: rgba(6, 9, 15, 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -53,70 +51,31 @@
         }
 
         .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        
-        .main-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-        }
+        .main-logo { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); }
+        .logo-text { font-size: 22px; font-weight: 800; background: linear-gradient(to right, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        .logo-text {
-            font-size: 26px;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+        /* Menu Button for Mobile */
+        .menu-btn { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-btn span { width: 28px; height: 3px; background: var(--accent-blue); border-radius: 2px; }
 
-        nav ul { list-style: none; display: flex; gap: 12px; }
-        
-        nav ul li a {
-            color: var(--text-dim);
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 500;
-            transition: 0.3s ease;
-        }
+        nav ul { list-style: none; display: flex; gap: 10px; }
+        nav ul li a { color: var(--text-dim); text-decoration: none; padding: 10px 18px; border-radius: 50px; font-size: 14px; font-weight: 500; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent-blue); background: rgba(255, 255, 255, 0.05); }
+        .nav-active { background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); color: #000 !important; font-weight: 700 !important; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
 
-        nav ul li a:hover {
-            color: var(--accent-blue);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-active {
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: #000 !important;
-            font-weight: 700 !important;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-        }
-
-       
-        .hero { text-align: center; padding: 80px 20px 40px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--text-white); }
+        /* Hero */
+        .hero { text-align: center; padding: 70px 20px 40px; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; color: var(--text-white); }
         .hero h3 { color: var(--accent-blue); font-weight: 400; margin-bottom: 10px; }
-        .hero h4 { color: var(--text-dim); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        .hero h4 { color: var(--text-dim); max-width: 850px; margin: 0 auto; line-height: 1.6; }
 
+        /* Main Container */
         .main-container { max-width: 1100px; margin: 0 auto; padding: 0 25px 80px; }
-
-        h2 { 
-            color: var(--accent-blue); 
-            font-size: 2rem; 
-            margin: 50px 0 30px; 
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        h2 { color: var(--accent-blue); font-size: 1.8rem; margin: 50px 0 30px; display: flex; align-items: center; gap: 15px; }
         h2::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
 
-        
+        /* Tutorial Items */
         .tutorial-list { list-style: none; }
-
         .tutorial-item {
             background: var(--card-bg);
             margin-bottom: 20px;
@@ -127,132 +86,71 @@
             position: relative;
             overflow: hidden;
         }
-
-        .tutorial-item:hover {
-            transform: scale(1.02);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
-        }
-
-        .tutorial-item a {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .tutorial-item p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-       
-        .tutorial-item::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; height: 100%; width: 4px;
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
-            opacity: 0; transition: 0.3s;
-        }
+        .tutorial-item:hover { transform: scale(1.02); border-color: var(--accent-blue); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); }
+        .tutorial-item a { font-size: 1.25rem; font-weight: 700; color: var(--accent-blue); text-decoration: none; display: block; margin-bottom: 8px; }
+        .tutorial-item p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+        .tutorial-item::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple)); opacity: 0; transition: 0.3s; }
         .tutorial-item:hover::before { opacity: 1; }
 
-       
+        /* Buttons (Fixed) */
         #backToTop {
-            position: fixed; bottom: 40px; right: 40px;
+            position: fixed; bottom: 30px; right: 25px;
             width: 50px; height: 50px;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
             color: #000; border: none; border-radius: 50%;
             font-size: 20px; cursor: pointer; display: none; z-index: 2000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-       
-        footer {
-            background: #020408;
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        .notepad-container { position: fixed; bottom: 30px; left: 25px; z-index: 2000; }
+        .notepad-toggle { width: 55px; height: 55px; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; font-size: 24px; box-shadow: 0 5px 15px rgba(0,210,255,0.4); }
+        
+        #notepad-content {
+            width: 300px; height: 350px; background: #1e293b; border: 2px solid var(--accent-blue);
+            border-radius: 15px; display: none; flex-direction: column; padding: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5); margin-bottom: 15px; position: absolute; bottom: 70px; left: 0;
         }
+        #note-area { flex: 1; background: #0f172a; color: white; border: none; padding: 10px; border-radius: 10px; resize: none; font-size: 13px; outline: none; }
+        .note-btns { margin-top: 10px; display: flex; gap: 5px; }
+        .note-btns button { flex: 1; padding: 8px; border: none; border-radius: 5px; cursor: pointer; font-size: 11px; font-weight: 700; }
+        .btn-download { background: var(--accent-blue); color: #000; }
+        .btn-clear { background: #ef4444; color: white; }
 
+        /* Footer */
+        footer { background: #020408; padding: 60px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
         .social-icons { margin-bottom: 25px; }
         .social-icons a { margin: 0 12px; display: inline-block; transition: 0.3s; }
         .social-icons a:hover { transform: scale(1.3) rotate(10deg); }
         .social-icons img { width: 35px; filter: brightness(0.8); }
-        
         .footer-info { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
 
-        
-        @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 15px; padding: 10px; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2rem; }
-            .logo-text { font-size: 18px; }
+        /* Responsive Mobile Layout */
+        @media (max-width: 992px) {
+            .menu-btn { display: flex; z-index: 1100; }
+            nav ul {
+                position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
+                background: rgba(6, 9, 15, 0.98); flex-direction: column; align-items: center;
+                justify-content: center; transition: 0.4s; z-index: 1050;
+            }
+            nav ul.active { left: 0; }
+            nav ul li { margin: 15px 0; }
+            nav ul li a { font-size: 18px; padding: 15px 30px; }
+            .hero h1 { font-size: 2.1rem; }
+            .logo-text { font-size: 17px; }
         }
 
-       
-        .notepad-container {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 2000;
-        }
-
-        #notepad-content {
-            width: 300px;
-            height: 350px;
-            background: #1e293b;
-            border: 2px solid var(--accent-blue);
-            border-radius: 15px;
-            display: none; 
-            flex-direction: column;
-            padding: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            margin-bottom: 15px;
-        }
-
-        #notepad-content h5 { margin-bottom: 10px; color: var(--accent-blue); display: flex; justify-content: space-between; }
-
-        #note-area {
-            flex: 1;
-            background: #0f172a;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 10px;
-            resize: none;
-            font-size: 13px;
-            outline: none;
-        }
-
-        .note-btns { margin-top: 10px; display: flex; gap: 5px; }
-        .note-btns button { 
-            flex: 1; padding: 5px; border: none; border-radius: 5px; cursor: pointer; font-size: 11px; font-weight: 700;
-        }
-        .btn-download { background: var(--accent-blue); color: #000; }
-        .btn-clear { background: #ef4444; color: white; }
-
-        .notepad-toggle {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,210,255,0.4);
-            font-size: 24px;
-            border: none;
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            #notepad-content { width: 260px; }
         }
     </style>
 </head>
 <body>
+
     <div class="notepad-container">
         <div id="notepad-content">
-            <h5>Digital Note </h5>
+            <h5 style="color: var(--accent-blue); margin-bottom: 10px;">Digital Note</h5>
             <textarea id="note-area" placeholder="පාඩම බලන අතරතුර වැදගත් දේ මෙහි සටහන් කරගන්න..."></textarea>
             <div class="note-btns">
                 <button class="btn-download" onclick="downloadNote()">Save as File</button>
@@ -270,7 +168,12 @@
                 <img src="logo.png" alt="Logo" class="main-logo"> 
                 <div class="logo-text">O/L ICT Resource Portal</div>
             </a>
-            <ul>
+            
+            <div class="menu-btn" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="NotesPage.html">Notes</a></li>
                 <li><a href="tutorials.html" class="nav-active">Tutorials</a></li>
@@ -311,7 +214,7 @@
                     <a href="operatingsystem.html">4. මෙහෙයුම් පද්ධති</a>
                     <p>මෙහෙයුම් පද්ධතියේ කාර්යයන්, වර්ග (Windows, Linux), ගොනු කළමනාකරණය.</p>
                 </li>
-             <li class="tutorial-item">
+                <li class="tutorial-item">
                     <a href="word.html">5. වචන සැකසුම් (MS Word)</a>
                     <p>ලේඛන ආකෘතිකරණය, වගු, තැපැල් ඒකාබද්ධ කිරීම.</p>
                 </li>
@@ -341,7 +244,7 @@
                     <a href="SDLC.html">10. පද්ධති සංවර්ධන ජීවන චක්‍රය (SDLC)</a>
                     <p>අදියර: සැලසුම්කරණය, විශ්ලේෂණය, නිර්මාණය, ක්‍රියාත්මක කිරීම, නඩත්තුව.</p>
                 </li>
-             <li class="tutorial-item">
+                <li class="tutorial-item">
                     <a href="email.html">11. අන්තර්ජාලය සහ විද්‍යුත් තැපෑල</a>
                     <p>අන්තර්ජාලය ක්‍රියාත්මක වීම, බ්‍රවුසර්, සෙවුම් යන්ත්‍ර, තැපැල් ශිෂ්ටාචාර.</p>
                 </li>
@@ -376,10 +279,17 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize Animations
         AOS.init({ duration: 1000, once: true });
 
+        // Menu Toggle Logic
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Scroll to Top Logic
         window.onscroll = function() {
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 document.getElementById("backToTop").style.display = "block";
             } else {
                 document.getElementById("backToTop").style.display = "none";
@@ -390,18 +300,17 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-       
+        // Notepad Logic
         const noteArea = document.getElementById('note-area');
         const notepadContent = document.getElementById('notepad-content');
 
         noteArea.value = localStorage.getItem('ict_notes') || "";
-
         noteArea.addEventListener('input', () => {
             localStorage.setItem('ict_notes', noteArea.value);
         });
 
         function toggleNotepad() {
-            notepadContent.style.display = notepadContent.style.display === 'flex' ? 'none' : 'flex';
+            notepadContent.style.display = (notepadContent.style.display === 'flex') ? 'none' : 'flex';
         }
 
         function clearNote() {
